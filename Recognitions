@@ -1,1 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Abigail Jennifer</a>
 
+    <div>
+      <a class="nav-link d-inline text-white" href="about.html">About</a>
+      <a class="nav-link d-inline text-white" href="education.html">Education</a>
+      <a class="nav-link d-inline text-white" href="work.html">Work</a>
+      <a class="nav-link d-inline text-white" href="publications.html">Publications</a>
+      <a class="nav-link d-inline text-white" href="awards.html">Awards</a>
+      <a class="nav-link d-inline text-white" href="conferences.html">Conferences</a>
+      <a class="nav-link d-inline text-white" href="blog.html">Blog</a>
+    </div>
+  </div>
+</nav>
