@@ -1,15 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Education - Abigail Jennifer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="index.html">Abigail Jennifer</a>
 
-    <div>
-      <a class="nav-link d-inline text-white" href="about.html">About</a>
-      <a class="nav-link d-inline text-white" href="education.html">Education</a>
-      <a class="nav-link d-inline text-white" href="work.html">Work</a>
-      <a class="nav-link d-inline text-white" href="publications.html">Publications</a>
-      <a class="nav-link d-inline text-white" href="awards.html">Awards</a>
-      <a class="nav-link d-inline text-white" href="conferences.html">Conferences</a>
-      <a class="nav-link d-inline text-white" href="blog.html">Blog</a>
-    </div>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
+      <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
+      <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+      <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
+      <li class="nav-item"><a class="nav-link" href="conferences.html">Conferences</a></li>
+      <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+    </ul>
   </div>
 </nav>
+
+<!-- CONTENT -->
+<div class="container mt-5">
+
+    <h2>Education</h2>
+
+    <!-- PhD -->
+    <div class="section-title">
+        <h4>PhD</h4>
+    </div>
+    <p>
+        <div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">PhD – SRM INSTITUTE OF SCIENCE AND TECHNOLOGY, KATTANKULATHUR, INDIA</h5>
+    <p class="card-text">
+        Chemistry<br>
+        June 2021 – May 2025<br>
+        Advisor: Dr. E. Varathan<br>
+        Research: Quantum Chemical Insights into the Chemical Bonding in Actinide Complexes
+    </p>
+  </div>
+</div>
+    </p>
+
+    <!-- Postgraduate -->
+    <div class="section-title">
+        <h4>Postgraduate (M.Sc.)</h4>
+    </div>
+    <p>
+        <strong>Madras Christian College, Tambaram, India</strong><br>
+        Field: Chemistry<br>
+        Year: June 2019 – April 2021<br>
+        Dissertation: Comp Chem on An/Ln separation (optional)
+    </p>
+
+    <!-- Undergraduate -->
+    <div class="section-title">
+        <h4>Undergraduate (B.Sc / B.Tech)</h4>
+    </div>
+    <p>
+        <strong>College Name</strong><br>
+        Field: Chemistry<br>
+        Year: XXXX – XXXX<br>
+    </p>
+
+    <!-- School -->
+    <div class="section-title">
+        <h4>School Education</h4>
+    </div>
+    <p>
+        <strong>School Name</strong><br>
+        Higher Secondary: XXXX Year<br>
+        Secondary: XXXX Year
+    </p>
+
+</div>
+
+</body>
+</html>
