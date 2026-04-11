@@ -5,6 +5,51 @@
     <title>Abigail Jennifer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* FLOATING PILL */
+.info-pill {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+
+    border-radius: 50px;
+    padding: 8px 14px;
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    transition: all 0.3s ease;
+}
+
+/* EXPANDED STATE */
+.info-pill.expanded {
+    padding: 15px 20px;
+    border-radius: 20px;
+}
+
+/* HIDDEN CONTENT */
+.info-content {
+    display: none;
+    font-size: 14px;
+}
+
+/* SHOW WHEN ACTIVE */
+.info-pill.expanded .info-content {
+    display: block;
+}
+
+/* ICON */
+.info-icon {
+    font-size: 16px;
+}
+
+/* LINKS */
+.info-content a {
+    text-decoration: none;
+    color: #003333;
+}
 .navbar-nav {
     gap: 10px;
 }
@@ -14,6 +59,20 @@
 </style>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="info-pill" onclick="toggleInfo()">
+
+  <!-- ICON (collapsed view) -->
+  <span class="info-icon">ℹ️</span>
+
+  <!-- EXPANDED CONTENT -->
+  <div class="info-content mt-2">
+    <p class="mb-1">Last updated: April 2026</p>
+    <a href="https://github.com/AbigailJennifer" target="_blank">
+      View GitHub
+    </a>
+  </div>
+
+</div>
 <body>
 
 <!-- NAVBAR -->
@@ -57,6 +116,11 @@
         publications, and professional activities.
     </p>
 </div>
+<script>
+function toggleInfo() {
+    document.querySelector('.info-pill').classList.toggle('expanded');
+}
+</script>
 
 </body>
 </html>
