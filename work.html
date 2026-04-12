@@ -22,6 +22,103 @@
         height: 80px;
         object-fit: contain;
     }
+        .btn-tiffany {
+    background-color: #81D8D0;
+    color: #003333;
+    border: none;
+    border-radius: 50px;   /* makes it oval */
+    padding: 8px 18px;
+    text-decoration: none;
+
+    /* glow effect */
+    box-shadow: 0 0 10px rgba(129, 216, 208, 0.6);
+
+    transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.btn-tiffany:hover {
+    background-color: #5fc9c0;
+    color: #002222;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* remove underline globally for these links */
+.btn-tiffany:link,
+.btn-tiffany:visited {
+    text-decoration: none;
+}
+ @media (max-width: 991px) {
+  .nav-link {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 260px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 25px;
+    transition: right 0.3s ease;
+    z-index: 1050;
+  }
+
+  .navbar-collapse.show {
+    right: 0;
+  }
+
+  .nav-link {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+        /* default links */
+.nav-link {
+    color: #333 !important;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+/* hover */
+.nav-link:hover {
+    background-color: #e0f7f5;
+}
+
+/* ACTIVE PAGE (FULL BACKGROUND) */
+.nav-link.active {
+    background-color: #81D8D0 !important;
+    color: #003333 !important;
+    font-weight: 600;
+}
+          /* MOBILE FIX */
+@media (max-width: 768px) {
+
+  /* Make cards slightly bigger visually */
+  .education-card {
+    padding: 10px;
+  }
+
+  /* Increase text size */
+  h5 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+ /* Reduce side margins so it fits screen better */
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
     </style>
 </head>
 
