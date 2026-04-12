@@ -29,6 +29,47 @@
     transform: translateY(-4px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
+                  @media (max-width: 991px) {
+  .nav-link {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 260px;
+    height: 100%;
+    background-color: #ffffff;   /* WHITE panel */
+    padding: 25px;
+    transition: 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  }
+
+  .navbar-collapse.show {
+    right: 0;
+  }
+}
+        /* default links */
+.nav-link {
+    color: #333 !important;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+/* hover */
+.nav-link:hover {
+    background-color: #e0f7f5;
+}
+
+/* ACTIVE PAGE (FULL BACKGROUND) */
+.nav-link.active {
+    background-color: #81D8D0 !important;
+    color: #003333 !important;
+    font-weight: 600;
+}
     </style>
 </head>
 
