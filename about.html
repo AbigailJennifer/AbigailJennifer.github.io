@@ -48,7 +48,7 @@
 
     .about-card {
         border-radius: 15px;
-        padding: 25px;
+        padding: 15px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.08);
         margin-bottom: 25px;
         transition: 0.3s;
@@ -79,15 +79,21 @@
             font-size: 2rem;
         }
     }
-      .profile-img {
-    width: 250px;
+     .profile-img {
+    width: 220px;          /* reduced */
     aspect-ratio: 9 / 16;
     object-fit: cover;
+
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
      @media (max-width: 768px) {
   .profile-img {
-    width: 70%;
-    max-width: 320px;
+    width: 160px;   /* smaller on phone */
+  }
+
+  .container {
+    margin-top: 10px !important;
   }
 }
         .profile-img {
