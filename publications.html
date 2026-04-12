@@ -46,28 +46,6 @@
     margin-bottom: 10px;
   }
 }
-@media (max-width: 991px) {
-  .navbar-collapse {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 260px;
-    height: 100%;
-    background-color: #ffffff;
-    padding: 25px;
-    transition: right 0.3s ease;
-    z-index: 1050;
-  }
-
-  .navbar-collapse.show {
-    right: 0;
-  }
-
-  .nav-link {
-    display: block;
-    margin-bottom: 10px;
-  }
-}
 /* YEAR HEADING STYLE */
 .year-divider {
     display: flex;
@@ -107,24 +85,54 @@ a {
 a:hover {
     text-decoration: none;
 }
-            /* default links */
+      @media (max-width: 991px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 260px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 25px;
+    transition: right 0.3s ease;
+    z-index: 1050;
+  }
+
+  .navbar-collapse.show {
+    right: 0;
+  }
+
+  .nav-link {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+    .navbar-nav {
+        gap: 20px;
+    }
+
+    .navbar {
+        background-color: #81D8D0;
+    }
+
+    /* NAV LINKS */
 .nav-link {
     color: #333 !important;
-    border-radius: 8px;
-    padding: 8px 12px;
+    border-radius: 50px;      /* pill shape */
+    padding: 8px 16px;
+    transition: 0.3s;
 }
 
-/* hover */
+/* HOVER */
 .nav-link:hover {
     background-color: #e0f7f5;
 }
 
-/* ACTIVE PAGE (FULL BACKGROUND) */
 .nav-link.active {
-    background-color: #81D8D0 !important;
-    color: #003333 !important;
-    font-weight: 600;
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
+
           /* MOBILE FIX */
 @media (max-width: 768px) {
 
@@ -170,7 +178,7 @@ a:hover {
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
         <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
-        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+        <li class="nav-item"><a class="nav-link active" href="publications.html">Publications</a></li>
         <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
         <li class="nav-item"><a class="nav-link" href="conferences.html">Conferences</a></li>
         <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
