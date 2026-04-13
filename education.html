@@ -132,6 +132,27 @@
     background-color: #ffffff;
     border-radius: 8px;
 }
+		  .education-card {
+    margin-bottom: 25px;
+    display: block;
+}
+		  .accordion-collapse {
+    transition: none !important;
+}
+		  .education-card {
+    height: 320px;
+    overflow: hidden;
+}
+
+.accordion-body {
+    max-height: 150px;
+    overflow-y: auto;
+}
+		  .accordion-body img {
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
     </style>
 </head>
 
@@ -170,7 +191,7 @@
 <h2>Education</h2>
 
 <div class="card education-card">
-  <div class="card-body d-flex align-items-center">
+  <div class="card-body d-flex align-items-start">
 
     <!-- LOGO -->
     <img src="images/SRM_Logo.png" alt="University Logo" width="90" class="me-3">
@@ -247,7 +268,7 @@
   </div>
 
 <div class="card education-card">
-<div class="card-body d-flex align-items-center">
+<div class="card-body d-flex align-items-start">
       
     <!-- LOGO -->
     <img src="images/MCC_Logo.png" alt="University Logo" width="90" class="me-3">
@@ -265,6 +286,7 @@
   <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#msc1">
     Master's Dissertation
   </button>
+		 </h2>
   <div id="msc1" class="accordion-collapse collapse" data-bs-parent="#mscAccordion">
     <div class="accordion-body">
       <b>Master's Dissertation:</b> Effect of Electron-Withdrawing Substituents in Tuning the Selectivity of Triazolebipyridine Based Ligand for Separation of Am(III) over Eu(III)<br>
@@ -280,6 +302,7 @@
   <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#msc2">
     Research Areas
   </button>
+		 </h2>
   <div id="msc2" class="accordion-collapse collapse" data-bs-parent="#mscAccordion">
     <div class="accordion-body">
       • Actinide–Lanthanide separation<br>
@@ -293,6 +316,7 @@
   <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#msc3">
     Outreach - Teaching
   </button>
+		 </h2>
   <div id="msc3" class="accordion-collapse collapse" data-bs-parent="#mscAccordion">
     <div class="accordion-body">
      <p>
@@ -324,7 +348,7 @@
 </div>
 </div>      
 <div class="card education-card">
-<div class="card-body d-flex align-items-center">
+<div class="card-body d-flex align-items-start">
       
     <!-- LOGO -->
     <img src="images/logo3.jpg" alt="University Logo" width="90" class="me-3">
@@ -341,6 +365,7 @@
   <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#bsc1">
     Bachelor's Dissertation
   </button>
+				 </h2>
   <div id="bsc1" class="accordion-collapse collapse" data-bs-parent="#bscAccordion">
     <div class="accordion-body">
      <b>Bachelor's Dissertation:</b> Hydrogen Generation from Ammonia Borane using the Catalytic Action of Copper and Zinc Oxide Nanoparticles Supported on Micro Chitin<br>
@@ -357,7 +382,7 @@
 		</div>
 
 <div class="card education-card">
- <div class="card-body d-flex align-items-center">
+ <div class="card-body d-flex align-items-start">
            
     <!-- LOGO -->
     <img src="images/csi-ewartlogo-new.png" alt="University Logo" width="90" class="me-3">
