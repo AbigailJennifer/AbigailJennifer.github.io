@@ -92,42 +92,57 @@
     padding: 20px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
-
+/* HOVER EFFECT */
+.contact:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    background-color: #72cfc7; /* slightly darker Tiffany */
+}
 .contact-card a {
     color: #003333;
+    font-weight: 500;
     text-decoration: none;
 }
 
 .contact-card a:hover {
     text-decoration: underline;
 }
-
+.contact:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15),
+                inset 0 0 10px rgba(255,255,255,0.2);
+}
     .contact a {
         text-decoration: none;
         color: #003333;
     }
 
     .contact a:hover {
-        color: #007777;
+           color: #001f1f;
+    text-decoration: underline;
     }
-
+.value {
+    flex: 1;
+    line-height: 1.5;
+}
     @media (max-width: 768px) {
         .hero h1 {
             font-size: 2rem;
         }
     }
     .profile-img-circle {
-    width: 140px;
-    height: 140px;
+    width: 240px;
+    height: 240px;
     margin-bottom: 15px;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
         
      @media (max-width: 768px) {
   .profile-img {
-    width: 160px;   /* smaller on phone */
+    width: 180px;
+     height: 180px;
   }
 
   .container {
@@ -152,22 +167,31 @@
     background-color: #eef5f5;
     margin: 15px 0;
 }
-     .brand-logo-text {
-    width: 40px;
-    height: 40px;
+    .brand-logo-text {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background-color: #003333;
-    color: #ffffff;
-    font-weight: 600;
+    background-color: #ffffff;   /* white circle */
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    letter-spacing: 1px;
+
+    color: #81D8D0;              /* Tiffany blue */
+    
+    font-family: "Californian FB", "Times New Roman", Georgia, serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle depth */
 }
         .navbar-brand span {
     font-weight: 600;
     font-size: 1.1rem;
+}
+        .brand-logo-text {
+    border: 1.5px solid rgba(0,0,0,0.05);
 }
     </style>
 </head>
@@ -205,8 +229,8 @@
 
   <div class="row align-items-center">
 
-    <!-- LEFT: TEXT -->
-    <div class="col-lg-8">
+    <!-- RIGHT: TEXT -->
+    <div class="col-md-7">
 
       <h1 class="fw-bold">Abigail Jennifer</h1>
       <p class="text-muted mb-3">
@@ -226,8 +250,8 @@
 
     </div>
 
-    <!-- RIGHT: IMAGE -->
-    <div class="col-lg-4 text-center">
+    <!-- LEFT: IMAGE -->
+    <div class="col-md-5 text-center">
       <img src="images/profile.jpeg" class="profile-img-circle">
     </div>
 
@@ -260,10 +284,12 @@
         <h5 class="mb-3">Contact</h5>
 
         <p class="mb-2">
-          📍 Electronic Structure Theory Lab<br>
+          📍  <span class="value"> 
+              Electronic Structure Theory Lab<br>
               Department of Chemistry<br>
               Indian Institute of Technology - Madras<br>
               Chennai 600 036, Tamil Nadu, India
+          </span>
         </p>
 
         <p class="mb-2">
