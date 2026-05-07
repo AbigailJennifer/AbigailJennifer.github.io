@@ -187,34 +187,17 @@
     background-color: #eef5f5;
     margin: 15px 0;
 }
-  .brand-logo-text {
-    width: 40px;
-    height: 40px;
-
-    border-radius: 50%;
-    background-color: #f7efe5;   /* champagne beige */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #003333;              /* deep academic teal (better than bright colors) */
-
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 1px;
-
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.06);
+.navbar-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
 }
-.navbar-brand span {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-        .brand-logo-text {
-    border: 1.5px solid rgba(0,0,0,0.05);
+
+/* RESTORE BOOTSTRAP DEFAULT LOOK */
+.brand-name {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #212529;
 }
     </style>
 </head>
@@ -226,8 +209,15 @@
   <div class="container">
     
    <a class="navbar-brand d-flex align-items-center" href="index.html">
-   <div class="brand-logo-text me-2">AJ</div>
-    <span>Abigail Jennifer</span>
+    
+    <!-- LOGO IMAGE -->
+    <img src="images/aj_logo.png"
+         alt="AJ Logo"
+         class="navbar-logo me-2">
+
+    <!-- NAME -->
+    <span class="brand-name">Abigail Jennifer</span>
+
 </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -257,7 +247,7 @@
 
       <h1 class="fw-bold">Abigail Jennifer</h1>
       <p class="text-muted mb-3">
-        Computational Chemist | f-Block Electronic Structure
+        Postdoctoral Researcher
       </p>
 
       <p>
