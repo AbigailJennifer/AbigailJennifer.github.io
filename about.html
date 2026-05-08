@@ -209,17 +209,73 @@ html {
     background-color: #eef5f5;
     margin: 15px 0;
 }
+        /* Navbar Brand */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Circular Logo */
+.logo-circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #f5f1e8; /* beige / off-white */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: #000;
+
+    margin-right: 12px;
+
+    /* keeps Bootstrap font */
+    font-family: inherit;
+
+    transition: 0.3s ease;
+}
+
+/* Optional hover effect */
+.logo-circle:hover {
+    transform: scale(1.05);
+}
+
+/* Brand Text */
+.brand-text {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #000;
+
+    /* keeps Bootstrap default font */
+    font-family: inherit;
+}
     </style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    
-    <a class="navbar-brand" href="index.html">Abigail Jennifer</a>
+
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+
+      <!-- Circular Logo -->
+      <div class="logo-circle me-2">
+        AJ
+      </div>
+
+      <!-- Name -->
+      <span class="brand-text">Abigail Jennifer</span>
+
+    </a>
+
+  </div>
+</nav>
 
     <!-- HAMBURGER BUTTON -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
