@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About - Abigail Jennifer</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ <meta name="color-scheme" content="light only">
+    <style>
+ body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+html {
+    color-scheme: light;
+}
+
+.navbar {
+    background-color: #81D8D0;
+}
+
+.navbar-nav {
+    gap: 20px;
+}
+
+/* NAV LINKS */
+.nav-link {
+    color: #333 !important;
+    border-radius: 50px;
+    padding: 8px 16px;
+    transition: 0.3s;
+}
+
+/* HOVER */
+.nav-link:hover {
+    background-color: #e0f7f5;
+}
+
+/* ACTIVE TAB */
+.nav-link.active {
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* MOBILE MENU */
+@media (max-width: 991px) {
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 260px;
+        height: 100%;
+        background-color: #ffffff;
+        padding: 25px;
+        transition: right 0.3s ease;
+        z-index: 1050;
+    }
+
+    .navbar-collapse.show {
+        right: 0;
+    }
+
+    .nav-link {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+        /* =========================
+           MAIN SECTION
+        ========================= */
+
+        .conference-section {
+            padding: 80px 10%;
+            background: #f8fbff;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            font-size: 2.7rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #475569;
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+
+        /* =========================
+           TABLE STYLE
+        ========================= */
+
+        .conference-table-wrapper {
+            overflow-x: auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .conference-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        .conference-table thead {
+            background: #dbeafe;
+        }
+
+        .conference-table th {
+            padding: 20px;
+            text-align: left;
+            font-size: 0.95rem;
+            color: #1e3a8a;
+            font-weight: 700;
+            border-bottom: 1px solid #bfdbfe;
+        }
+
+        .conference-table td {
+            padding: 22px 20px;
+            vertical-align: top;
+            border-bottom: 1px solid #e5e7eb;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .conference-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .conference-table tr:hover {
+            background: #f8fbff;
+        }
+
+        /* =========================
+           CUSTOM ELEMENTS
+        ========================= */
+
+        .conference-date {
+            font-weight: 700;
+            color: #2563eb;
+            min-width: 120px;
+        }
+
+        .conference-name {
+            font-weight: 700;
+            color: #0f172a;
+            font-size: 1rem;
+        }
+
+        .conference-location {
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .presentation-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 50px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .conference-description {
+            color: #475569;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .conference-section {
+                padding: 60px 5%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .conference-table th,
+            .conference-table td {
+                padding: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light"> 
+    <div class="container"> 
+        <a class="navbar-brand" href="index.html">Abigail Jennifer</a>
+
+    <!-- HAMBURGER BUTTON -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
+        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
+        <li class="nav-item"><a class="nav-link active" href="conferences.html">Conferences</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <!-- MAIN SECTION -->
+    <section class="conference-section">
+        <div class="container">
+            <h2 class="section-title">
+                Conferences Attended
+            </h2>
+            <p class="section-subtitle">
+                Scientific conferences, workshops, symposiums, and research meetings attended.
+            </p>
+            <div class="conference-table-wrapper">
+                <table class="conference-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Conference / Event</th>
+                            <th>Location</th>
+                            <th>Contribution</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                May 25 - 30, 2026
+                            </td>
+                            <td>
+                                <div class="conference-name">
+                                    IITM Workshop on Theoretical and Computational Chemistry (IWTC<sup>2</sup>): Density Functional Theory
+                                </div>
+                            </td>
+
+                            <td class="conference-location">
+                                Department of Chemistry, IIT - Madras
+                            </td>
+                        </tr>
+
+                        <!-- ENTRY -->
+                        <tr>
+
+                            <td class="conference-date">
+                                December 2 - 5, 2025
+                            </td>
+                            <td>
+                                <div class="conference-name">
+                                    Theoretical Chemistry Symposium (TCS) 2025
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                VMCC, IIT Bombay
+                            </td>
+                            </tr>
+
+                        <!-- ENTRY -->
+                        <tr>
+
+                            <td class="conference-date">
+                                September 25 - October 4, 2023
+                            </td>
+                            <td>
+                                <div class="conference-name">
+                                    Next-generation Atomistic Modelling and Simulations with AMS software
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                Virtual. Organized by: Nyro Research India Pvt. Ltd.
+                            </td>
+                           </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                May 30 - June 15, 2023
+                            </td>
+                            <td>
+
+                                <div class="conference-name">
+                                    Innovation Training 2023
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                Virtual. Organized by: Women in Nuclear Innovation (WiNI) Group of Women in Nuclear Global (WiN Global)
+                            </td>
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                March 29 - 31, 2023
+                            </td>
+                            <td>
+                                <div class="conference-name">
+                                    Dr. Paarivendhar Research Colloquium (DPRC)
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                SRM Institute of Science and Technology, Kattankulathur, India
+                            </td>
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                February 28, 2023
+                            </td>
+                            <td>
+
+                                <div class="conference-name">
+                                    Research Day 2023
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                SRM Institute of Science and Technology, Kattankulathur, India
+                            </td>
+                            <td class="conference-description">
+                                Presented Poster titled "Role of Oxygen Substitution in the Competitive Complexation of Am<sup>3+</sup>/Cm<sup>3+</sup> Trichlorides"
+                            </td> 
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                February 16 - 18, 2023
+                            </td>
+                            <td>
+                                <div class="conference-name">
+                                    7<sup>th</sup> International Conference on Recent Advances in Materials Chemistry (ICRAMC) 2023
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                 SRM Institute of Science and Technology, Kattankulathur, India
+                            </td>
+                           <td class="conference-description">
+                                Presented Poster titled "Complexation of Highvalent Actinyls (AnO<sub>2</sub>; An=U-Am) with N,O - Mixed Ligand"
+                            </td>
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                January 23, 2023
+                            </td>
+                            <td>
+
+                                <div class="conference-name">
+                                    Anveshan: Student Research Convention 2023 Project Selection Expo in Basic Sciences
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                SRM Institute of Science and Technology, Kattankulathur, India. Organized by: Association of Indian Universities (AIU)
+                            </td>
+                           <td class="conference-description">
+                                Presented Project titled "Computational Modelling of Macrocyclic Chelators for Selective Complexation of Actinides over Lanthanides to Facilitate their Environmental Remediation"
+                            </td>
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                September 22 - 24, 2022
+                            </td>
+                            <td>
+
+                                <div class="conference-name">
+                                   Current Trends in Theoretical Chemistry (CTTC) 2022
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                Department of Atomic Energy - Board of Research in Nuclear Sciences (DAE-BRNS), Bhabha Atomic Research Centre (BARC), Mumbai, India
+                            </td>
+                           <td class="conference-description">
+                                Presented Poster titled "Chemical Bonding in Actinyl(V/VI) Dipyriamethyrin Complexes for the Actinide Series from Americium to Californium: A Computational Investigation"
+                            </td>
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                               March 24 - 26, 2022
+                            </td>
+                            <td>
+
+                                <div class="conference-name">
+                                    Dr. Paarivendhar Research Colloquium (DPRC)
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                SRM Institute of Science and Technology, Kattankulathur, India
+                            </td>
+                          <td class="conference-description">
+                                Presented Poster titled "Computational Investigation of the Chemical Bonding in Highvalent Actinyl (V/VI) (An=Am,Cm,Bk and Cf) Dipyriamethyrin Complexes"
+                            </td>
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                February 28, 2022
+                            </td>
+                            <td>
+                                <div class="conference-name">
+                                    Research Day 2022
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                SRM Institute of Science and Technology, Kattankulathur, India
+                            </td>
+                         <td class="conference-description">
+                                Presented Poster titled "Chemical Bonding in Actinyl (V/VI) Dipyriamethyrin Complexes for Actinide Series from Americium to Californium: A Computational Investigation"</br>
+                            <b>This poster won the silver medal</b>
+                         </td>  
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                February 17 - 19, 2022
+                            </td>
+                            <td>
+                                <div class="conference-name">
+                                    6<sup>th</sup> International Conference on Recent Advances in Materials Chemistry (ICRAMC) 2023
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                SRM Institute of Science and Technology, Kattankulathur, India
+                            </td>
+                           <td class="conference-description">
+                                Presented Poster titled "Effect of Oxygen Substitution in Dipyriamthyrin Ligands for Highvalent Actinyl (An=U, Np, Pu, Am) Complexation: A DFT Study"
+                            </td>  
+                          </tr>
+                        <!-- ENTRY -->
+                        <tr>
+                            <td class="conference-date">
+                                February 14, 2021
+                            </td>
+                            <td>
+
+                                <div class="conference-name">
+                                    Anveshan: Student Research Convention 2022 Project Selection Expo in Basic Sciences
+                                </div>
+                            </td>
+                            <td class="conference-location">
+                                SRM Institute of Science and Technology, Kattankulathur, India. Organized by: Association of Indian Universities (AIU) 
+                            </td>
+                                          <td class="conference-description">
+                                Presented Project titled "Computational Design of Novel Chelators for Actinium-225 Radiotherapeutics"
+                            </td> 
+                          </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
