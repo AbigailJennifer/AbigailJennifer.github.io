@@ -4,7 +4,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 var(--b)}
 h1,h2,h3,h4{font-family:var(--h);line-height:1.15;margin:0}
-a{color:var(--teal)}img{max-width:100%}
+a{color: var(--teal); text-decoration: none;} a:hover,a:focus-visible {text-decoration: underline;}
 .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 section{padding:76px 0}
 h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
