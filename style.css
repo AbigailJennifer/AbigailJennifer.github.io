@@ -112,6 +112,72 @@ details[open] summary:after{content:"\2212"}
 summary h3{font-size:20px}summary small{display:block;color:var(--mut);font-size:15px;margin-top:3px}
 details .bd{border-top:1px solid var(--line);padding:14px 0 18px;font-size:16px}
 details ul{margin:6px 0 0;padding-left:20px}details li{margin:4px 0}
+
+/* Entry title and year on the same line */
+.entry-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.entry-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  width: 100%;
+}
+
+.entry-heading h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.entry-year {
+  font-family: var(--h);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--mut);
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Institution and location */
+.institution {
+  display: block;
+  margin-top: 5px;
+  font-size: 15px;
+  color: var(--mut);
+  line-height: 1.6;
+}
+
+.location-symbol {
+  font-size: 0.85em;
+  margin-right: 3px;
+}
+
+.institution a {
+  color: inherit;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .entry-heading {
+    gap: 8px;
+  }
+
+  .entry-heading h3,
+  .entry-year {
+    font-size: 15px;
+  }
+
+  .entry-year {
+    white-space: normal;
+    flex-shrink: 0;
+  }
+}
+
 .ga{position:relative;aspect-ratio:16/9;border-radius:14px;background:var(--bg);overflow:hidden;margin-bottom:16px;border:1px solid var(--line)}
 .ga svg,.ga img{position:absolute;inset:0;width:100%;height:100%}.ga img{object-fit:contain;background:var(--card)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
