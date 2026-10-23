@@ -1,9 +1,9 @@
 const $=s=>document.querySelector(s);
 const SHOW_PLACEHOLDERS=true; // set to false before publishing to hide the dashed "add your notes" boxes
-const LAST_UPDATED='8 October 2026, 15:32 IST'; // edit date and time here whenever you update the site
+const LAST_UPDATED='23 October 2026, 10:49 IST'; // edit date and time here whenever you update the site
 const PAGES=[['index.html','About'],['work.html','Work & Education'],['research.html','Research'],['awards.html','Grants & Honors'],['publications.html','Publications'],['outreach.html','Science Communication'],['teaching.html','Teaching & Mentoring']];
-/* pages that exist so far: any other page is greyed out in the menu instead of being a link that would give a 404 */
-const BUILT=['index.html'];
+/* every page exists now. To hide a page from the menu while you work on it, list only the finished pages here, e.g. ['index.html','work.html'] */
+const BUILT=PAGES.map(p=>p[0]);
 const norm=x=>x.replace('.html','')||'index';
 const cur=norm(location.pathname.split('/').pop());
 const items=PAGES.map(p=>BUILT.includes(p[0])?`<a href="${p[0]}"${norm(p[0])===cur?' class="on" aria-current="page"':''}>${p[1]}</a>`:`<span class="soon" title="Coming soon">${p[1]}</span>`).join('');
