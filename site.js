@@ -1,7 +1,7 @@
 const $=s=>document.querySelector(s);
 const SHOW_PLACEHOLDERS=true; // set to false before publishing to hide the dashed "add your notes" boxes
 const LAST_UPDATED='23 October 2026, 10:49 IST'; // edit date and time here whenever you update the site
-const PAGES=[['index.html','About'],['work.html','Work & Education'],['research.html','Research'],['awards.html','Grants & Honors'],['publications.html','Publications'],['outreach.html','Science Communication'],['teaching.html','Teaching & Mentoring']];
+const PAGES=[['index.html','About'],['work.html','Work & Education'],['research.html','Research'],['publications.html','Publications'],['outreach.html','Science Communication'],['awards.html','Grants & Honors'],['blog.html','Blog'],];
 /* every page exists now. To hide a page from the menu while you work on it, list only the finished pages here, e.g. ['index.html','work.html'] */
 const BUILT=PAGES.map(p=>p[0]);
 const norm=x=>x.replace('.html','')||'index';
