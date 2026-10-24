@@ -36,6 +36,7 @@ a.t{color:var(--teal);text-decoration:none;font-weight:600}a.t:hover{text-decora
 .pi{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .pi:hover{transform:translateY(-3px);box-shadow:0 12px 22px -12px rgba(0,0,0,.55)}
 .pi svg{width:30px;height:30px;display:block;}.pi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;padding:0px;background:transparent;border-radius:50%;}
+.pi[data-k="researchgate"] {background:#00ccaa !important;} .pi[data-k="researchgate"] img {width: 100%;height: 100%;object-fit: cover;padding: 0;background: transparent;border-radius: 50%;}
 .yrd{display:flex;align-items:center;gap:18px;margin:40px 0 12px;font:800 17px var(--h);color:var(--mut)}
 .yrd:before,.yrd:after{content:"";flex:1;border-bottom:1px solid var(--line)}
 .pr{display:grid;grid-template-columns:46px 1fr;padding:11px 0}
@@ -109,7 +110,7 @@ const LK=p=>`<a class="t" href="${p.u}" target="_blank" rel="noopener noreferrer
 const CIT=p=>`<em>${p.j}</em>, ${p.y}, ${p.c}.`;
 const PHB=n=>SHOW_PLACEHOLDERS?`<div class="gi ph" data-n="${n}">Graphical abstract<br>save as images/pubs/${n}.png</div>`:`<div class="gi" data-n="${n}"></div>`;
 function loadImgs(root){root.querySelectorAll('.gi').forEach(g=>{const n=g.dataset.n,ex=['png','jpg','jpeg','webp','svg'];let i=0;const im=new Image();im.alt='Graphical abstract of paper '+n;
- im.onload=()=>{g.classList.remove('ph');g.innerHTML='';g.append(im)};
+ im.onload=()=>{a.replaceChildren(im);};
  im.onerror=()=>{i++;if(i<ex.length)im.src='images/pubs/'+n+'.'+ex[i];else if(!SHOW_PLACEHOLDERS){g.parentElement.classList.add('solo');g.remove()}};
  im.src='images/pubs/'+n+'.'+ex[0]})}
 
