@@ -1,7 +1,7 @@
 const $=s=>document.querySelector(s);
 const SHOW_PLACEHOLDERS=true; // set to false before publishing to hide the dashed "add your notes" boxes
-const LAST_UPDATED='23 October 2026, 10:49 IST'; // edit date and time here whenever you update the site
-const PAGES=[['index.html','About'],['work.html','Work & Education'],['research.html','Research'],['publications.html','Publications'],['outreach.html','Science Communication'],['awards.html','Grants & Honors'],['blog.html','Blog'],];
+const LAST_UPDATED='24 October 2026, 11:57 IST'; // edit date and time here whenever you update the site
+const PAGES=[['index.html','About'],['work.html','Experience & Education'],['research.html','Research'],['publications.html','Publications'],['outreach.html','Science Communication'],['awards.html','Grants & Honors'],['blog.html','Blog'],];
 /* every page exists now. To hide a page from the menu while you work on it, list only the finished pages here, e.g. ['index.html','work.html'] */
 const BUILT=PAGES.map(p=>p[0]);
 const norm=x=>x.replace('.html','')||'index';
@@ -21,3 +21,6 @@ const root=document.documentElement,tb=$('#th');
 try{const s=localStorage.getItem('theme');if(s)root.dataset.theme=s}catch(e){}
 tb.onclick=()=>{const d=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=d;try{localStorage.setItem('theme',d)}catch(e){}};
 if(!SHOW_PLACEHOLDERS)document.querySelectorAll('.ph').forEach(e=>e.remove());
+/* links to other websites open in a new tab; links inside your own site stay in the same tab */
+document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a)return;let u;try{u=new URL(a.href,location.href)}catch(x){return}
+if(/^https?:$/.test(u.protocol)&&u.origin!==location.origin){a.target='_blank';a.rel='noopener noreferrer'}});
