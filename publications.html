@@ -23,8 +23,8 @@
 .fs{flex:0 0 100%;scroll-snap-align:start;padding:0 4px}
 .fc{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:30px;align-items:start;background:#122a40;border:1px solid #2a4d69;border-radius:26px;padding:24px}
 .fc.solo,.ac.solo{grid-template-columns:1fr}
-.gi{background:#fff;border-radius:16px;aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}
-.gi img{display: block;width:100%;height:100%;object-fit:contain;object-position: center;}
+.gi{background:#fff;border-radius:16px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0;}
+.gi img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;}
 .gi.ph{background:transparent;border:2px dashed var(--line);color:var(--mut);font:italic 14px/1.5 var(--b);text-align:center;padding:14px}
 .fp .gi.ph{border-color:#2a4d69;color:#9db3c4}
 .fp a.t{color:var(--glow)}
@@ -35,7 +35,7 @@ a.t{color:var(--teal);text-decoration:none;font-weight:600}a.t:hover{text-decora
 .pi-row{display:flex;gap:12px;margin:8px 0 26px;flex-wrap:wrap;align-items:center}
 .pi{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .pi:hover{transform:translateY(-3px);box-shadow:0 12px 22px -12px rgba(0,0,0,.55)}
-.pi svg{width:30px;height:30px}.pi img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:9px;background:#fff}
+.pi svg{width:30px;height:30px;display:block;}.pi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;padding:0px;background:transparent;border-radius:50%;}
 .yrd{display:flex;align-items:center;gap:18px;margin:40px 0 12px;font:800 17px var(--h);color:var(--mut)}
 .yrd:before,.yrd:after{content:"";flex:1;border-bottom:1px solid var(--line)}
 .pr{display:grid;grid-template-columns:46px 1fr;padding:11px 0}
@@ -48,7 +48,6 @@ a.t{color:var(--teal);text-decoration:none;font-weight:600}a.t:hover{text-decora
 .ac h3 a.t{font:700 clamp(19px,2.2vw,23px)/1.3 var(--h)}
 .ac .cit{color:var(--mut);margin:8px 0}.ac .au{margin:8px 0}.ac .sy{margin:12px 0 0}
 @media(max-width:800px){.fc,.ac{grid-template-columns:1fr}.fp{margin:30px 0 0;border-radius:24px}}
-.pi .lg2{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .pi[data-k=wos]{border:1px solid var(--line)} 
 .pi[data-k="researchgate"] {overflow: hidden;}.pi[data-k="researchgate"] img {position: absolute;
     inset: 0;
