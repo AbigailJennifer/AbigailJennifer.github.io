@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.fv{display:flex;gap:12px;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.fv{display:flex;gap:14px;align-items:flex-start;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
 .fvb{background:none;border:0;padding:0;width:46px;height:46px;flex:none;cursor:pointer;border-radius:12px}
 .fvb svg{width:100%;height:100%;display:block}
 .fvb:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
@@ -16,6 +16,7 @@
 @keyframes flwspin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.fvb.spin .flw{animation:none}}
 .fv p{margin:2px 0 0}
+#info .pop{width:min(430px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 200px);overflow-y:auto;overscroll-behavior:contain}
 </style></head>
 <body id="top"><div id="nav"></div>
 
