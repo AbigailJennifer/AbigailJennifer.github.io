@@ -52,7 +52,8 @@
 <a href="mailto:abigailjennifer.g@gmail.com" style="font:700 clamp(18px,2.6vw,26px) var(--h);word-break:break-all">abigailjennifer.g@gmail.com</a>
 <div class="soc" id="soc"></div></div>
 <form class="fg" id="cf"><div><label for="n">Your name</label><input id="n" required></div><div><label for="e">Your email</label><input id="e" type="email" required></div><div><label for="s">Subject</label><input id="s"></div><div><label for="m">Message</label><textarea id="m" rows="5" required></textarea></div>
-<button class="btn p" type="submit" style="cursor:pointer">Send email</button><span class="sm">This opens your email app with the message ready to send.</span></form>
+<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+<button class="btn p" type="submit" style="cursor:pointer">Send</button><span class="sm" id="st" role="status"></span></form>
 </div></section>
 
 <div id="info"><div class="pop" id="pop" role="status"><b>Last updated</b><p id="lud"></p>
@@ -103,9 +104,22 @@ const SOC=[
 ["Bluesky","https://bsky.app/profile/abigailjennifer.bsky.social","M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"]];
 $('#soc').innerHTML=SOC.map(s=>`<a href="${s[1]}" target="_blank" rel="noopener" aria-label="${s[0]}" title="${s[0]}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${s[2]}"/></svg></a>`).join('');
 
-/* ===== contact form opens the visitor's email app ===== */
-$('#cf').onsubmit=e=>{e.preventDefault();location.href='mailto:abigailjennifer.g@gmail.com?subject='+encodeURIComponent($('#s').value||'Message from your website')+'&body='+encodeURIComponent($('#m').value+'\n\n'+$('#n').value+' ('+$('#e').value+')')};
-
+/* ===== contact form: sends straight to my inbox via Web3Forms ===== */
+const WEB3_KEY='95730428-8baf-461d-a534-16224ac595e4';
+$('#cf').onsubmit=async e=>{
+ e.preventDefault();
+ const f=e.target,b=f.querySelector('button'),st=$('#st');
+ b.disabled=true;b.textContent='Sending…';st.textContent='';
+ try{
+  const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+   body:JSON.stringify({access_key:WEB3_KEY,name:$('#n').value,email:$('#e').value,replyto:$('#e').value,
+    subject:$('#s').value||'Message from your website',message:$('#m').value,botcheck:f.botcheck.checked})});
+  const j=await r.json();
+  if(!j.success)throw 0;
+  f.reset();st.textContent='Thank you! Your message has been sent, and I will reply soon.';
+ }catch(_){st.innerHTML='Sorry, that did not go through. Please email me at <a href="mailto:abigailjennifer.g@gmail.com">abigailjennifer.g@gmail.com</a>.'}
+ b.disabled=false;b.textContent='Send';
+};
 /* ===== last-updated pop-up (date and time come from LAST_UPDATED in site.js) ===== */
 $('#lud').textContent=LAST_UPDATED;
 const inf=$('#info'),ib=$('#ib');
