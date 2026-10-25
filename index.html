@@ -16,8 +16,6 @@
 @keyframes flwspin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.fvb.spin .flw{animation:none}}
 .fv p{margin:2px 0 0}
-@media(prefers-reduced-motion:reduce){.fv img{transition:none}}
- $('#fvi').onclick=e=>{const b=$('#fvi');b.onclick=()=>{b.classList.remove('spin');void b.offsetWidth;b.classList.add('spin')};b.addEventListener('animationend',()=>b.classList.remove('spin'))}
 </style></head>
 <body id="top"><div id="nav"></div>
 
@@ -57,11 +55,12 @@
 </div></section>
 
 <div id="info"><div class="pop" id="pop" role="status"><b>Last updated</b><p id="lud"></p>
-<div class="fv"><div class="fv"><button type="button" class="fvb" id="fvi" aria-label="Spin the flower" title="Click me"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#102a43"/><g class="flw"><g id="petals"><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(60 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8" transform="rotate(120 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(180 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8" transform="rotate(240 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(300 32 32)"/></g><circle cx="32" cy="32" r="4.5" fill="#f3f4f6"/></g></svg></button><div><b>About the icon</b><p>The flower is a stylised f-orbital, the six-lobed shape that electrons take in the f-block elements. The two colours stand for the alternating phases of the wavefunction, and the "f" in the name once stood for "fun" and "fundamentally" different! :)".</p></div></div>
-
-<div id="foot"></div>
+<div class="fv"><button type="button" class="fvb" id="fvi" aria-label="Spin the flower" title="Click me"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#102a43"/><g class="flw"><g id="petals"><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(60 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8" transform="rotate(120 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(180 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8" transform="rotate(240 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(300 32 32)"/></g><circle cx="32" cy="32" r="4.5" fill="#f3f4f6"/></g></svg></button><div><b>About the icon</b><p>The flower is a stylised f-orbital, the six-lobed shape that electrons take in the f-block elements. The two colours stand for the alternating phases of the wavefunction, and the "f" in the name once stood for "fun" and "fundamentally" different! :)</p></div></div>
+</div><button id="ib" aria-label="When was this site last updated?" aria-expanded="false" aria-controls="pop">i</button></div>
+ <div id="foot"></div>
 <script src="site.js"></script>
 <script>
+ {const b=$('#fvi');b.onclick=()=>{b.classList.remove('spin');void b.offsetWidth;b.classList.add('spin')};b.addEventListener('animationend',()=>b.classList.remove('spin'))}
 /* ===== photo: tries these paths in order; keep your portrait at the first one ===== */
 const PH=["images/profile.jpeg","images/profile.jpg","images/profile.png","images/photo.jpg","images/photo.jpeg","images/photo.png","profile.jpg","profile.jpeg","profile.png","assets/images/profile.jpg","assets/images/profile.jpeg","assets/profile.jpg"];
 let pk=0;const pf=$("#pf");
