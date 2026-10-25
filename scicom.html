@@ -10,16 +10,14 @@
 <link rel="stylesheet" href="style.css">
 <style>
 /* ---- contributions ---- */
-.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px;margin-top:6px}
-.cc{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
-.cc:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(16,42,67,.55)}
-.cp{position:relative;aspect-ratio:3/2;background:color-mix(in srgb,var(--teal) 11%,var(--card));display:grid;place-items:center;overflow:hidden}
-.cp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cp.ph{border-bottom:2px dashed var(--line);color:var(--mut);font:italic 14px/1.5 var(--b);text-align:center;padding:14px;background:transparent}
-.cb{padding:22px 24px 26px}
+.cg{display:grid;grid-template-columns:1fr;gap:22px;margin-top:6px}
+.cc{background:var(--card);border:1px solid var(--line);border-radius:24px;display:grid;grid-template-columns:1fr;gap:10px 30px;align-items:center;padding:26px 28px}
+.cc.has{grid-template-columns:minmax(0,1fr) minmax(0,36%)}
+.cp img{display:block;max-width:100%;max-height:420px;width:auto;height:auto;margin:0 auto}
 .cb h3{font-size:21px;line-height:1.25}
 .cb .sub{font:600 15px/1.5 var(--h);color:var(--mut);margin:8px 0 0}
 .cb p.d{margin:12px 0 0;font-size:16px}
+@media(max-width:700px){.cc.has{grid-template-columns:1fr}}
 .cb .lk{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .cb .lk a{font:700 14px var(--h);border:1px solid var(--line);border-radius:99px;padding:7px 14px;color:var(--teal);text-decoration:none}
 .cb .lk a:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
@@ -69,7 +67,6 @@ const CT=[
 {k:'chemmag',t:'Editorial work, ChemMag',s:'The department\u2019s chemistry magazine',d:'Editorial role with ChemMag, the department magazine.',ph:1},
 {k:'boarding',t:'Outreach to a residential school',s:'Kings and Queens Residential School, Arakkonam, Aug to Sep 2019',d:'Taught middle school science through a UBCHEA grant for popularizing science among tribal children.'},
 {k:'tribal',t:'Outreach to a tribal community',s:'Tamil Nadu SSA Residential School, Vattakolly, Nilgiris, Feb 2020',d:'Taught basic science in collaboration with the Nilgiris-Wayanad Tribal Welfare Society.'},
-{k:'blogs',t:'Blogs',s:'Computations and Theory in the World of Chemistry, and The Surreal Chemist',d:'Research discussions, academic experiences and chemistry beyond textbooks.',links:[['Computations and Theory in the World of Chemistry','https://abigailjennifer.blogspot.com/'],['The Surreal Chemist','https://abigail-jennifer.blogspot.com/']]},
 {k:'cen',t:'Chemistry Pictures, C&amp;EN',s:'Chemical &amp; Engineering News',d:'Sharing chemistry through pictures for Chemical &amp; Engineering News.',ph:1}];
 
 /* ===== EDIT ME: events (latest first). Each event: y (year), d (dates), t (name), l (place), x (extra lines, optional)
@@ -92,16 +89,18 @@ const EV=[
 {y:2022,d:'March 24 \u2013 26, 2022',t:'Dr. Paarivendhar Research Colloquium (DPRC)',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[['contrib','Presented a poster titled \u201CComputational Investigation of the Chemical Bonding in Highvalent Actinyl (V/VI) (An=Am,Cm,Bk and Cf) Dipyriamethyrin Complexes\u201D']]},
 {y:2022,d:'February 28, 2022',t:'Research Day 2022',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[['contrib','Presented a poster titled \u201CChemical Bonding in Actinyl (V/VI) Dipyriamethyrin Complexes for Actinide Series from Americium to Californium: A Computational Investigation\u201D'],['award','This poster won the silver medal']]},
 {y:2022,d:'February 17 \u2013 19, 2022',t:'6<sup>th</sup> International Conference on Recent Advances in Materials Chemistry (ICRAMC) 2022',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[['contrib','Presented a poster titled \u201CEffect of Oxygen Substitution in Dipyriamthyrin Ligands for Highvalent Actinyl (An=U, Np, Pu, Am) Complexation: A DFT Study\u201D']]},
-{y:2021,d:'February 14, 2021',t:'Anveshan: Student Research Convention 2022, Project Selection Expo in Basic Sciences',l:'SRM Institute of Science and Technology, Kattankulathur, India. Organized by: Association of Indian Universities (AIU)',x:[['contrib','Presented a project titled \u201CComputational Design of Novel Chelators for Actinium-225 Radiotherapeutics\u201D']]}];
+{y:2021,d:'February 14, 2021',t:'Anveshan: Student Research Convention 2022, Project Selection Expo in Basic Sciences',l:'SRM Institute of Science and Technology, Kattankulathur, India. Organized by: Association of Indian Universities (AIU)',x:[['contrib','Presented a project titled \u201CComputational Design of Novel Chelators for Actinium-225 Radiotherapeutics\u201D']]},
+{y:2021,d:'June 17, 2020',t:'MCC - Research Colloquium',l:'Virtual. Organized by: Madras Christian College, Chennai India',x:[['contrib','Delivered a talk on \u201CExtended Learning: A Lockdown Narrative\u201D']]},
+{y:2021,d:'October 1, 2018',t:'Cross Cultural Learning: Becoming a Global Citizen',l:'Women &apos s Christian College, Chennai, India. Organized in association with Concordia College, New York',x:[]}];
 
 /* ---- contributions ---- */
-function loadPic(box,k){const ex=['jpg','png','jpeg','webp'];let i=0;const im=new Image();im.alt='';
- im.onload=()=>{box.classList.remove('ph');box.innerHTML='';box.append(im)};
- im.onerror=()=>{i++;if(i<ex.length)im.src='images/scicom/'+k+'.'+ex[i];else if(!SHOW_PLACEHOLDERS)box.remove()};
+function loadPic(card,k){const ex=['jpg','png','jpeg','webp'];let i=0;const im=new Image();im.alt='';
+ im.onload=()=>{const box=document.createElement('div');box.className='cp';box.append(im);card.append(box);card.classList.add('has')};
+ im.onerror=()=>{i++;if(i<ex.length)im.src='images/scicom/'+k+'.'+ex[i]};
  im.src='images/scicom/'+k+'.'+ex[0]}
-$('#cg').innerHTML=CT.map(c=>`<article class="cc"><div class="cp ph" data-k="${c.k}">${SHOW_PLACEHOLDERS?'Add a picture<br>save as images/scicom/'+c.k+'.jpg':''}</div><div class="cb"><h3>${c.t}</h3><p class="sub">${c.s}</p><p class="d">${c.d}</p>${c.links?`<div class="lk">${c.links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]}</a>`).join('')}</div>`:''}${c.ph&&SHOW_PLACEHOLDERS?'<div class="note ph">Add more here: your role, the issues or pieces, and what you learned.</div>':''}</div></article>`).join('');
-document.querySelectorAll('.cp').forEach(b=>loadPic(b,b.dataset.k));
-
+$('#cg').innerHTML=CT.map(c=>`<article class="cc" data-k="${c.k}"><div class="cb"><h3>${c.t}</h3><p class="sub">${c.s}</p><p class="d">${c.d}</p>${c.links?`<div class="lk">${c.links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]}</a>`).join('')}</div>`:''}${c.ph&&SHOW_PLACEHOLDERS?'<div class="note ph">Add more here: your role, the issues or pieces, and what you learned.</div>':''}</div></article>`).join('');
+document.querySelectorAll('.cc').forEach(c=>loadPic(c,c.dataset.k));
+   
 /* ---- events ---- */
 const PIN='<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>';
 const XL={award:'Distinction',contrib:'Contribution',note:'',reflect:''};
