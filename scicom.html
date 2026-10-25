@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Science Communication | Abigail Jennifer</title>
+<meta name="description" content="Science communication, outreach and events of Abigail Jennifer: contributions, conferences, workshops and symposiums.">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="alternate icon" href="./favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Caveat:wght@500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---- contributions ---- */
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px;margin-top:6px}
+.cc{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.cc:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(16,42,67,.55)}
+.cp{position:relative;aspect-ratio:3/2;background:color-mix(in srgb,var(--teal) 11%,var(--card));display:grid;place-items:center;overflow:hidden}
+.cp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cp.ph{border-bottom:2px dashed var(--line);color:var(--mut);font:italic 14px/1.5 var(--b);text-align:center;padding:14px;background:transparent}
+.cb{padding:22px 24px 26px}
+.cb h3{font-size:21px;line-height:1.25}
+.cb .sub{font:600 15px/1.5 var(--h);color:var(--mut);margin:8px 0 0}
+.cb p.d{margin:12px 0 0;font-size:16px}
+.cb .lk{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cb .lk a{font:700 14px var(--h);border:1px solid var(--line);border-radius:99px;padding:7px 14px;color:var(--teal);text-decoration:none}
+.cb .lk a:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+/* ---- events ---- */
+.yrd{display:flex;align-items:center;gap:18px;margin:44px 0 20px;font:800 18px var(--h);color:var(--mut)}
+.yrd:first-child{margin-top:8px}
+.yrd:before,.yrd:after{content:"";flex:1;border-bottom:1px solid var(--line)}
+.ev{list-style:none;margin:0 0 0 8px;padding:0}
+.ev li{position:relative;padding:0 0 30px 32px;border-left:2px solid color-mix(in srgb,var(--teal) 30%,var(--line))}
+.ev li:last-child{border-left-color:transparent;padding-bottom:6px}
+.ev li:before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--teal);border:3px solid var(--bg);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 26%,transparent)}
+.ev .ed{font:700 15px var(--h);color:var(--teal);letter-spacing:.02em}
+.ev h3{font-size:clamp(18px,2vw,21px);line-height:1.3;margin:4px 0 0}
+.ev .el{display:flex;align-items:flex-start;gap:7px;margin:8px 0 0;color:var(--mut);font-size:15.5px;line-height:1.5}
+.ev .el svg{flex:none;margin-top:3px;color:var(--teal)}
+/* entry styles you can add under any event: award, contrib, note, reflect */
+.x{margin:12px 0 0;line-height:1.55}
+.xl{display:inline-block;font:700 11.5px var(--h);letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-right:10px;vertical-align:2px;font-style:normal}
+.x-award{font:700 16.5px/1.5 var(--h);color:var(--ink)}
+.x-award .xl{background:var(--amber);color:#102a43}
+.x-contrib{font:italic 400 16.5px/1.6 var(--b);color:var(--mut)}
+.x-contrib .xl{background:color-mix(in srgb,var(--teal) 14%,var(--card));color:var(--teal)}
+.x-note{font:600 25px/1.25 'Caveat','Bradley Hand',cursive;color:var(--teal)}
+.x-reflect{border-left:3px solid var(--glow);padding:3px 0 3px 16px;font:400 17px/1.65 var(--b);color:var(--ink)}
+.guide{margin:0 0 10px;max-width:640px}
+.guide b{font:700 14px var(--h);color:var(--mut)}
+@media(max-width:700px){.ev{margin-left:4px}.ev li{padding-left:24px}}
+</style></head>
+<body><div id="nav"></div>
+<header class="pagehead"><div class="wrap"><h1>Science Communication</h1><p class="lead">Sharing chemistry beyond the journal page: what I have contributed, and the events where I have learned and presented.</p></div></header>
+
+<section class="s"><div class="wrap">
+<div class="filters" id="tabs" role="tablist" aria-label="Science communication sections"></div>
+<div id="p-contrib"><div class="cg" id="cg"></div></div>
+<div id="p-events" hidden><div id="evl"></div></div>
+</div></section>
+
+<div id="foot"></div>
+<script src="site.js"></script>
+<script>
+/* ===== EDIT ME: contributions =====
+   Each card: k (a short name used for its picture), t (title), s (line under the title), d (description),
+   links (optional list of [label, web address]), ph (1 = show the dashed "add details" hint while SHOW_PLACEHOLDERS is true).
+   PICTURES: save a photo as images/scicom/<k>.jpg (png, jpeg and webp also work), for example images/scicom/chemmag.jpg.
+   To add a card, copy one block and change it. */
+const CT=[
+{k:'chemmag',t:'Editorial work, ChemMag',s:'The department\u2019s chemistry magazine',d:'Editorial role with ChemMag, the department magazine.',ph:1},
+{k:'boarding',t:'Outreach to a residential school',s:'Kings and Queens Residential School, Arakkonam, Aug to Sep 2019',d:'Taught middle school science through a UBCHEA grant for popularizing science among tribal children.'},
+{k:'tribal',t:'Outreach to a tribal community',s:'Tamil Nadu SSA Residential School, Vattakolly, Nilgiris, Feb 2020',d:'Taught basic science in collaboration with the Nilgiris-Wayanad Tribal Welfare Society.'},
+{k:'blogs',t:'Blogs',s:'Computations and Theory in the World of Chemistry, and The Surreal Chemist',d:'Research discussions, academic experiences and chemistry beyond textbooks.',links:[['Computations and Theory in the World of Chemistry','https://abigailjennifer.blogspot.com/'],['The Surreal Chemist','https://abigail-jennifer.blogspot.com/']]},
+{k:'cen',t:'Chemistry Pictures, C&amp;EN',s:'Chemical &amp; Engineering News',d:'Sharing chemistry through pictures for Chemical &amp; Engineering News.',ph:1}];
+
+/* ===== EDIT ME: events (latest first). Each event: y (year), d (dates), t (name), l (place), x (extra lines, optional)
+   Extra lines are [style, text] and you can use as many as you like, in any of four styles:
+     ['award','This poster won the silver medal']                (bold badge, for distinctions and prizes)
+     ['contrib','Presented a poster titled \u201C...\u201D']      (italic serif with a label, for what you presented)
+     ['note','Loved the discussion on spin-orbit coupling!']     (handwritten font, for a personal remark)
+     ['reflect','What I learned: ...']                           (larger serif with a side bar, for a longer reflection) */
+const EV=[
+{y:2026,d:'May 25 \u2013 30, 2026',t:'IITM Workshop on Theoretical and Computational Chemistry (IWTC<sup>2</sup>): Density Functional Theory',l:'Department of Chemistry, IIT-Madras',x:[]},
+{y:2025,d:'December 2 \u2013 5, 2025',t:'Theoretical Chemistry Symposium (TCS) 2025',l:'VMCC, IIT Bombay',x:[]},
+{y:2025,d:'October 6 \u2013 28, 2025',t:'Introduction to Time-Dependent Density-Functional Theory (TDDFT) \u2013 Prof. Carsten A. Ullrich',l:'Department of Physics, IIT-Madras',x:[]},
+{y:2023,d:'September 25 \u2013 October 4, 2023',t:'Next-generation Atomistic Modelling and Simulations with AMS software',l:'Virtual. Organized by: Nyro Research India Pvt. Ltd.',x:[]},
+{y:2023,d:'May 30 \u2013 June 15, 2023',t:'Innovation Training 2023',l:'Virtual. Organized by: Women in Nuclear Innovation (WiNI) Group of Women in Nuclear Global (WiN Global)',x:[]},
+{y:2023,d:'March 29 \u2013 31, 2023',t:'Dr. Paarivendhar Research Colloquium (DPRC)',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[]},
+{y:2023,d:'February 28, 2023',t:'Research Day 2023',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[['contrib','Presented a poster titled \u201CRole of Oxygen Substitution in the Competitive Complexation of Am<sup>3+</sup>/Cm<sup>3+</sup> Trichlorides\u201D']]},
+{y:2023,d:'February 16 \u2013 18, 2023',t:'7<sup>th</sup> International Conference on Recent Advances in Materials Chemistry (ICRAMC) 2023',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[['contrib','Presented a poster titled \u201CComplexation of Highvalent Actinyls (AnO<sub>2</sub>; An=U-Am) with N,O - Mixed Ligand\u201D']]},
+{y:2023,d:'January 23, 2023',t:'Anveshan: Student Research Convention 2023, Project Selection Expo in Basic Sciences',l:'SRM Institute of Science and Technology, Kattankulathur, India. Organized by: Association of Indian Universities (AIU)',x:[['contrib','Presented a project titled \u201CComputational Modelling of Macrocyclic Chelators for Selective Complexation of Actinides over Lanthanides to Facilitate their Environmental Remediation\u201D']]},
+{y:2022,d:'September 22 \u2013 24, 2022',t:'Current Trends in Theoretical Chemistry (CTTC) 2022',l:'Department of Atomic Energy \u2013 Board of Research in Nuclear Sciences (DAE-BRNS), Bhabha Atomic Research Centre (BARC), Mumbai, India',x:[['contrib','Presented a poster titled \u201CChemical Bonding in Actinyl(V/VI) Dipyriamethyrin Complexes for the Actinide Series from Americium to Californium: A Computational Investigation\u201D']]},
+{y:2022,d:'March 24 \u2013 26, 2022',t:'Dr. Paarivendhar Research Colloquium (DPRC)',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[['contrib','Presented a poster titled \u201CComputational Investigation of the Chemical Bonding in Highvalent Actinyl (V/VI) (An=Am,Cm,Bk and Cf) Dipyriamethyrin Complexes\u201D']]},
+{y:2022,d:'February 28, 2022',t:'Research Day 2022',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[['contrib','Presented a poster titled \u201CChemical Bonding in Actinyl (V/VI) Dipyriamethyrin Complexes for Actinide Series from Americium to Californium: A Computational Investigation\u201D'],['award','This poster won the silver medal']]},
+{y:2022,d:'February 17 \u2013 19, 2022',t:'6<sup>th</sup> International Conference on Recent Advances in Materials Chemistry (ICRAMC) 2022',l:'SRM Institute of Science and Technology, Kattankulathur, India',x:[['contrib','Presented a poster titled \u201CEffect of Oxygen Substitution in Dipyriamthyrin Ligands for Highvalent Actinyl (An=U, Np, Pu, Am) Complexation: A DFT Study\u201D']]},
+{y:2021,d:'February 14, 2021',t:'Anveshan: Student Research Convention 2022, Project Selection Expo in Basic Sciences',l:'SRM Institute of Science and Technology, Kattankulathur, India. Organized by: Association of Indian Universities (AIU)',x:[['contrib','Presented a project titled \u201CComputational Design of Novel Chelators for Actinium-225 Radiotherapeutics\u201D']]}];
+
+/* ---- contributions ---- */
+function loadPic(box,k){const ex=['jpg','png','jpeg','webp'];let i=0;const im=new Image();im.alt='';
+ im.onload=()=>{box.classList.remove('ph');box.innerHTML='';box.append(im)};
+ im.onerror=()=>{i++;if(i<ex.length)im.src='images/scicom/'+k+'.'+ex[i];else if(!SHOW_PLACEHOLDERS)box.remove()};
+ im.src='images/scicom/'+k+'.'+ex[0]}
+$('#cg').innerHTML=CT.map(c=>`<article class="cc"><div class="cp ph" data-k="${c.k}">${SHOW_PLACEHOLDERS?'Add a picture<br>save as images/scicom/'+c.k+'.jpg':''}</div><div class="cb"><h3>${c.t}</h3><p class="sub">${c.s}</p><p class="d">${c.d}</p>${c.links?`<div class="lk">${c.links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]}</a>`).join('')}</div>`:''}${c.ph&&SHOW_PLACEHOLDERS?'<div class="note ph">Add more here: your role, the issues or pieces, and what you learned.</div>':''}</div></article>`).join('');
+document.querySelectorAll('.cp').forEach(b=>loadPic(b,b.dataset.k));
+
+/* ---- events ---- */
+const PIN='<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>';
+const XL={award:'Distinction',contrib:'Contribution',note:'',reflect:''};
+const XX=(s,t)=>`<div class="x x-${s}">${XL[s]?`<span class="xl">${XL[s]}</span>`:''}${t}</div>`;
+let h=SHOW_PLACEHOLDERS?`<div class="note ph guide"><b>Entry styles (visible while SHOW_PLACEHOLDERS is true). Add any of these under an event:</b>${XX('award','award: a distinction or prize')}${XX('contrib','contrib: what you presented or contributed')}${XX('note','note: a short personal remark in handwriting')}${XX('reflect','reflect: a longer reflection or what you learned')}</div>`:'',yr='';
+EV.forEach((e,i)=>{if(e.y!==yr){if(yr)h+='</ul>';yr=e.y;h+=`<div class="yrd">${yr}</div><ul class="ev">`}
+ h+=`<li><div class="ed">${e.d}</div><h3>${e.t}</h3><div class="el">${PIN}<span>${e.l}</span></div>${(e.x||[]).map(x=>XX(x[0],x[1])).join('')}</li>`;if(i===EV.length-1)h+='</ul>'});
+$('#evl').innerHTML=h;
+
+/* ---- the two tabs (an address ending in #events opens the Events tab) ---- */
+const TB=[['Contributions','p-contrib'],['Events','p-events']];
+function tab(i){TB.forEach((t,j)=>{$('#'+t[1]).hidden=j!==i});[...$('#tabs').children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i))}
+TB.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[0];b.setAttribute('aria-pressed',false);b.onclick=()=>{tab(i);history.replaceState(null,'',i?'#events':location.pathname)};$('#tabs').append(b)});
+tab(location.hash==='#events'?1:0);
+</script>
+</body></html>
