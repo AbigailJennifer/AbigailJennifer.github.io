@@ -5,7 +5,20 @@
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"></head>
+<link rel="stylesheet" href="style.css">
+<style>
+.fv{display:flex;gap:12px;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.fvb{background:none;border:0;padding:0;width:46px;height:46px;flex:none;cursor:pointer;border-radius:12px}
+.fvb svg{width:100%;height:100%;display:block}
+.fvb:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.flw{transform-box:view-box;transform-origin:50% 50%}
+.fvb.spin .flw{animation:flwspin .9s cubic-bezier(.3,1.2,.5,1)}
+@keyframes flwspin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.fvb.spin .flw{animation:none}}
+.fv p{margin:2px 0 0}
+@media(prefers-reduced-motion:reduce){.fv img{transition:none}}
+ $('#fvi').onclick=e=>{const b=$('#fvi');b.onclick=()=>{b.classList.remove('spin');void b.offsetWidth;b.classList.add('spin')};b.addEventListener('animationend',()=>b.classList.remove('spin'))}
+</style></head>
 <body id="top"><div id="nav"></div>
 
 <header class="hero c"><div class="wrap">
@@ -43,7 +56,8 @@
 <button class="btn p" type="submit" style="cursor:pointer">Send email</button><span class="sm">This opens your email app with the message ready to send.</span></form>
 </div></section>
 
-<div id="info"><div class="pop" id="pop" role="status"><b>Last updated</b><p id="lud"></p></div><button id="ib" aria-label="When was this site last updated?" aria-expanded="false" aria-controls="pop">i</button></div>
+<div id="info"><div class="pop" id="pop" role="status"><b>Last updated</b><p id="lud"></p>
+<div class="fv"><div class="fv"><button type="button" class="fvb" id="fvi" aria-label="Spin the flower" title="Click me"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#102a43"/><g class="flw"><g id="petals"><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(60 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8" transform="rotate(120 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(180 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#2ecbb8" transform="rotate(240 32 32)"/><ellipse cx="32" cy="19.2" rx="6.5" ry="12.7" fill="#f0b626" transform="rotate(300 32 32)"/></g><circle cx="32" cy="32" r="4.5" fill="#f3f4f6"/></g></svg></button><div><b>About the icon</b><p>The flower is a stylised f-orbital, the six-lobed shape that electrons take in the f-block elements. The two colours stand for the alternating phases of the wavefunction, and the "f" in the name once stood for "fun" and "fundamentally" different! :)".</p></div></div>
 
 <div id="foot"></div>
 <script src="site.js"></script>
