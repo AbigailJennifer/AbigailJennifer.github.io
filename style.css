@@ -109,7 +109,7 @@ nav a.on{color:var(--teal);box-shadow:0 2px 0 var(--teal)}
 .rs .card p:not(.methods){
   text-align:justify;
   text-justify:inter-word;
-  hyphens:auto;}
+  hyphens:none;}
 @media(max-width:600px){.pagehead .lead,
   .rs .card p:not(.methods){text-align:left;hyphens:none}}
 .pagehead .wrap{max-width:1240px}
