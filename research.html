@@ -1,35 +1,107 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Research | Abigail Jennifer</title>
-<meta name="description" content="Research topics of Abigail Jennifer: actinide periodicity, nuclear waste separation, X-ray spectra and chemical education.">
+<meta name="description" content="Research topics of Abigail Jennifer: lanthanide spin qubits, X-ray spectroscopy of heavy elements, actinide periodicity, heavy-element separations, collaborations and chemical education.">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="alternate icon" href="./favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"></head>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Image on top of each research card */
+  .card .ga img{display:block;width:100%;height:auto;border-radius:10px}
+  /* Methods line */
+  .methods{margin:.9rem 0 0;font-size:.95em}
+  .methods strong{font-family:"Bricolage Grotesque",sans-serif}
+  /* Tags are links to blog.html?tag=... */
+  a.chip{text-decoration:none;color:inherit;cursor:pointer;transition:transform .15s ease}
+  a.chip:hover,a.chip:focus-visible{text-decoration:underline;transform:translateY(-1px)}
+  a.chip:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+</style></head>
 <body><div id="nav"></div>
-<header class="pagehead"><div class="wrap"><h1>Research</h1><p class="lead">What I work on. Each topic carries a graphical abstract.</p></div></header>
-<section class="s"><div class="wrap"><div class="sc" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))"><div class="card"><div class="ga" data-i="0"></div><h3>Actinide periodicity</h3><div class="tl2">In plain words</div><p>The actinides, from uranium to californium, sit where textbook periodic-table rules start to bend. Their large, fast-moving 5f electrons mean each element can behave differently from its neighbour. I compare element after element with the same ligand, so any difference comes from the metal and not the setup. I look at which oxidation states are stable, how strong the metal-oxygen bonds are, and how much of the bonding is shared electrons.</p><div class="tl2">In technical terms</div><p>Density functional theory, relativistic effects and bonding analysis, with ligands such as dipyriamethyrin, pyrrophen and TEQ.</p><div class="tags"><span class="chip">Actinides</span><span class="chip">DFT</span><span class="chip">Periodic trends</span><span class="chip">Oxidation states</span><span class="chip">Actinyl</span></div></div>
-<div class="card"><div class="ga" data-i="1"></div><h3>Nuclear waste separation</h3><div class="tl2">In plain words</div><p>Used nuclear fuel holds long-lived metals such as americium and curium that behave much like harmless look-alikes. Separating them cleanly could make waste management simpler. I model ring-shaped molecules that grip one metal more tightly than another, then test which design choices tune that preference, such as swapping in an oxygen or adding an electron-withdrawing group.</p><div class="tl2">In technical terms</div><p>Competitive complexation of Am/Cm and Am/Eu, DOTA, and trivalent actinide extraction. Mitacs Globalink project at the University of Manitoba.</p><div class="tags"><span class="chip">Americium</span><span class="chip">Curium</span><span class="chip">Separation</span><span class="chip">Ligand design</span><span class="chip">Nuclear waste</span></div></div>
-<div class="card"><div class="ga" data-i="2"></div><h3>X-ray spectra from theory</h3><div class="tl2">In plain words</div><p>An X-ray can knock an inner electron out of an atom, and the energies absorbed form a fingerprint of that element's electrons. For f-block elements the fingerprint is hard to compute because several electron arrangements matter at once. My postdoctoral work uses multiconfigurational calculations to reproduce and interpret these spectra, including L-edge spectra of actinide complexes.</p><div class="tl2">In technical terms</div><p>X-ray absorption spectroscopy, multireference methods, L-edge.</p><div class="tags"><span class="chip">XAS</span><span class="chip">Multireference</span><span class="chip">L-edge</span><span class="chip">f-block</span><span class="chip">Spectroscopy</span></div></div>
-<div class="card"><div class="ga" data-i="3"></div><h3>Working with experimentalists</h3><div class="tl2">In plain words</div><p>Not every question can be answered from a computer alone. I have teamed up with synthetic and materials groups, using calculations to explain what they see in the lab: corrosion inhibitors for steel, fluorescent probes for ATP, light-emitting molecules, catalysts and the extraction of actinides.</p><div class="tl2">In technical terms</div><p>Hirshfeld surfaces, reactivity descriptors, aromaticity and TADF emitters.</p><div class="tags"><span class="chip">Collaboration</span><span class="chip">Materials</span><span class="chip">Corrosion</span><span class="chip">Fluorescent probes</span><span class="chip">TADF</span></div></div>
-<div class="card"><div class="ga" data-i="4"></div><h3>Chemical education</h3><div class="tl2">In plain words</div><p>My first papers asked how people learn chemistry. What was online learning like for students in 2020? Does a virtual titration meet their expectations? What do students think about becoming chemistry entrepreneurs? I still teach, and I run science camps because curiosity is easiest to catch early.</p><div class="tl2">In technical terms</div><p>Student perspectives, virtual laboratories and service-learning.</p><div class="tags"><span class="chip">Education research</span><span class="chip">Virtual labs</span><span class="chip">Student voice</span><span class="chip">Outreach</span></div></div>
-</div></div></section>
-<section class="s"><div class="wrap"><h2>Peer review</h2><p class="lead">Good science depends on careful readers.</p>
-<div class="card" style="max-width:720px"><h3>Reviewer, Taylor &amp; Francis</h3><p>I review manuscripts in chemical education for a Taylor &amp; Francis journal, assessing the study design, the evidence behind the conclusions and how clearly the work is written.</p>
-</div>
-  <div id="foot">
-<script src="site.js"></script>
-<script>
+<header class="pagehead"><div class="wrap"><h1>Research</h1><p class="lead">My research explores the coordination chemistry, bonding, and electronic structure of heavy-element complexes using computational methods to improve the fundamental understanding of these heavy-elements and the computational approaches to handle them. By accurately and efficiently connecting their chemical properties to molecular structure my research addresses solutions for heavy-element separations and design rules for excited states useful for magnetic and quantum technologies.</p><p>Click any tag to see related blog posts.</p></div></header>
 
-const E=['U','Np','Pu','Am','Cm','Bk','Cf'],T='font-family="Bricolage Grotesque,sans-serif" text-anchor="middle"';
-const G=[
-`<svg viewBox="0 0 320 180"><g ${T} font-size="12">${E.map((e,i)=>`<circle cx="${32+i*43}" cy="125" r="16" fill="var(--teal)"/><text x="${32+i*43}" y="129" fill="#fff" font-weight="700">${e}</text>`).join('')}</g><polyline fill="none" stroke="var(--amber)" stroke-width="3" points="${[0,-10,-18,-6,6,12,2].map((d,i)=>`${32+i*43},${70+d}`).join(' ')}"/><text x="160" y="28" ${T} font-size="12" fill="var(--mut)">bonding changes element by element</text></svg>`,
-`<svg viewBox="0 0 320 180"><circle cx="100" cy="90" r="46" fill="none" stroke="var(--teal)" stroke-width="6" stroke-dasharray="52 10"/><circle cx="100" cy="90" r="17" fill="var(--amber)"/><text x="100" y="95" ${T} font-size="13" font-weight="700" fill="#102a43">Am</text><g ${T} font-size="12" fill="#fff" font-weight="700"><circle cx="250" cy="55" r="17" fill="var(--mut)"/><text x="250" y="59">Cm</text><circle cx="250" cy="125" r="17" fill="var(--mut)"/><text x="250" y="129">Eu</text></g><path d="M220 55h-30M220 125h-30" stroke="var(--mut)" stroke-width="3"/><text x="160" y="172" ${T} font-size="12" fill="var(--mut)">a ring picks one metal, leaves its look-alikes</text></svg>`,
-`<svg viewBox="0 0 320 180"><path d="M10 90q10-22 20 0t20 0t20 0t20 0" fill="none" stroke="var(--amber)" stroke-width="3"/><circle cx="125" cy="90" r="22" fill="var(--teal)"/><circle cx="125" cy="90" r="8" fill="var(--amber)"/><path d="M190 140h120M205 140l12-60 10 40 18-24 16 44" fill="none" stroke="var(--amber)" stroke-width="3"/><text x="160" y="172" ${T} font-size="12" fill="var(--mut)">X-ray in, spectrum out</text></svg>`,
-`<svg viewBox="0 0 320 180"><path d="M65 30h30v35l28 62c4 12-2 20-14 20H51c-12 0-18-8-14-20l28-62z" fill="none" stroke="var(--teal)" stroke-width="4"/><path d="M150 95h40m-10-10l10 10-10 10" fill="none" stroke="var(--mut)" stroke-width="3"/><ellipse cx="245" cy="62" rx="22" ry="30" fill="var(--teal)" opacity=".7"/><ellipse cx="245" cy="122" rx="22" ry="30" fill="var(--amber)" opacity=".85"/><text x="160" y="172" ${T} font-size="12" fill="var(--mut)">lab observation, explained by theory</text></svg>`,
-`<svg viewBox="0 0 320 180"><rect x="70" y="20" width="14" height="90" rx="3" fill="none" stroke="var(--teal)" stroke-width="3"/><circle cx="77" cy="124" r="5" fill="var(--amber)"/><path d="M45 138h64l-8 28H53z" fill="none" stroke="var(--teal)" stroke-width="3"/><rect x="170" y="35" width="130" height="64" rx="14" fill="none" stroke="var(--teal)" stroke-width="3"/><text x="235" y="80" ${T} font-size="38" font-weight="800" fill="var(--amber)">?</text><text x="235" y="130" ${T} font-size="12" fill="var(--mut)">how do students learn?</text></svg>`];
-document.querySelectorAll('.ga').forEach(d=>{const i=+d.dataset.i;d.innerHTML=G[i]+`<img src="images/ga-${i+1}.png" alt="Graphical abstract" onerror="this.remove()">`});
-</script>
+<section class="s"><div class="wrap"><div class="sc" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
+
+<!-- 1. Modelling Spin Qubits in Lanthanide Complexes -->
+<div class="card" id="spin-qubits">
+  <div class="ga"><img src="images/research/qubit.png" alt="Modelling spin qubits in lanthanide complexes" onerror="this.remove()"></div>
+  <h3>Modelling Spin Qubits in Lanthanide Complexes</h3>
+  <div class="tl2">In plain words</div>
+  <p>Some lanthanide ions behave like tiny magnets whose direction can store a bit of information, or, in a quantum setting, a qubit. Whether that works depends on the exact electronic states of the ion and how its surroundings shape them. I calculate these quantum states so we can see which molecules could hold a magnetic memory and which could serve as spin qubits.</p>
+  <div class="tl2">In technical terms</div>
+  <p>Multiconfigurational electronic structure of lanthanide complexes, including relativistic effects, for magnetic memory and spin-qubit design.</p>
+  <p class="methods"><strong>Methods:</strong> DFT, MCPDFT</p>
+  <div class="tags"><a class="chip" href="blog.html?tag=spin-qubits">Spin qubits</a><a class="chip" href="blog.html?tag=lanthanides">Lanthanides</a><a class="chip" href="blog.html?tag=magnetic-memory">Magnetic memory</a><a class="chip" href="blog.html?tag=quantum-states">Quantum states</a></div>
+</div>
+
+<!-- 2. X-ray Spectroscopy for Heavy-Elements -->
+<div class="card" id="xray-spectroscopy">
+  <div class="ga"><img src="images/research-xray-spectroscopy.png" alt="X-ray spectroscopy for heavy elements" onerror="this.remove()"></div>
+  <h3>X-ray Spectroscopy for Heavy-Elements</h3>
+  <div class="tl2">In plain words</div>
+  <p>An X-ray can knock an inner electron out of an atom, and the energies absorbed or emitted form a fingerprint of that element's electrons. For heavy elements the fingerprint is hard to compute because several electron arrangements matter at once. I use multiconfigurational calculations to reproduce and interpret these spectra, including L-edge spectra of actinide complexes and valence-to-core spectra of transition metal complexes.</p>
+  <div class="tl2">In technical terms</div>
+  <p>X-ray absorption and emission spectroscopy, multireference methods, L-edge, valence-to-core XES.</p>
+  <p class="methods"><strong>Methods:</strong> RASCI, RASCI-PDFT, multiconfigurational calculations</p>
+  <div class="tags"><a class="chip" href="blog.html?tag=xas">XAS</a><a class="chip" href="blog.html?tag=xes">XES</a><a class="chip" href="blog.html?tag=multireference">Multireference</a><a class="chip" href="blog.html?tag=l-edge">L-edge</a><a class="chip" href="blog.html?tag=spectroscopy">Spectroscopy</a></div>
+</div>
+
+<!-- 3. Actinide Periodicity -->
+<div class="card" id="actinide-periodicity">
+  <div class="ga"><img src="images/research-actinide-periodicity.png" alt="Actinide periodicity" onerror="this.remove()"></div>
+  <h3>Actinide Periodicity</h3>
+  <div class="tl2">In plain words</div>
+  <p>The actinides, from uranium to californium, sit where textbook periodic-table rules start to bend. Their large, fast-moving 5f electrons mean each element can behave differently from its neighbour. I compare element after element with the same ligand, so any difference comes from the metal and not the setup. I look at which oxidation states are stable, how strong the metal-oxygen bonds are, and how much of the bonding is shared electrons.</p>
+  <div class="tl2">In technical terms</div>
+  <p>Relativistic effects and bonding analysis, with ligands such as dipyriamethyrin, pyrrophen and TEQ.</p>
+  <p class="methods"><strong>Methods:</strong> DFT, relativistic calculations, bonding analysis</p>
+  <div class="tags"><a class="chip" href="blog.html?tag=actinides">Actinides</a><a class="chip" href="blog.html?tag=dft">DFT</a><a class="chip" href="blog.html?tag=periodic-trends">Periodic trends</a><a class="chip" href="blog.html?tag=oxidation-states">Oxidation states</a><a class="chip" href="blog.html?tag=actinyl">Actinyl</a></div>
+</div>
+
+<!-- 4. Heavy-Elements Separations -->
+<div class="card" id="separations">
+  <div class="ga"><img src="images/research-separations.png" alt="Heavy-elements separations" onerror="this.remove()"></div>
+  <h3>Heavy-Elements Separations</h3>
+  <div class="tl2">In plain words</div>
+  <p>Used nuclear fuel holds long-lived metals such as americium and curium that behave much like harmless look-alikes. Separating them cleanly could make waste management simpler. I model ring-shaped molecules that grip one metal more tightly than another, then test which design choices tune that preference, such as swapping in an oxygen or adding an electron-withdrawing group.</p>
+  <div class="tl2">In technical terms</div>
+  <p>Competitive complexation of Am/Cm and Am/Eu, DOTA, and trivalent actinide extraction. Mitacs Globalink project at the University of Manitoba.</p>
+  <p class="methods"><strong>Methods:</strong> DFT, competitive complexation energetics, bonding analysis</p>
+  <div class="tags"><a class="chip" href="blog.html?tag=americium">Americium</a><a class="chip" href="blog.html?tag=curium">Curium</a><a class="chip" href="blog.html?tag=separation">Separation</a><a class="chip" href="blog.html?tag=ligand-design">Ligand design</a><a class="chip" href="blog.html?tag=nuclear-waste">Nuclear waste</a></div>
+</div>
+
+<!-- 5. Collaborations -->
+<div class="card" id="collaborations">
+  <div class="ga"><img src="images/research-collaborations.png" alt="Collaborations with experimental groups" onerror="this.remove()"></div>
+  <h3>Collaborations</h3>
+  <div class="tl2">In plain words</div>
+  <p>Not every question can be answered from a computer alone. I have teamed up with synthetic and materials groups, using calculations to explain what they see in the lab: corrosion inhibitors for steel, fluorescent probes for ATP, light-emitting molecules, catalysts and the extraction of actinides.</p>
+  <div class="tl2">In technical terms</div>
+  <p>Hirshfeld surfaces, reactivity descriptors, aromaticity and TADF emitters.</p>
+  <p class="methods"><strong>Methods:</strong> DFT, Hirshfeld surface analysis, reactivity descriptors, aromaticity analysis</p>
+  <div class="tags"><a class="chip" href="blog.html?tag=collaboration">Collaboration</a><a class="chip" href="blog.html?tag=materials">Materials</a><a class="chip" href="blog.html?tag=corrosion">Corrosion</a><a class="chip" href="blog.html?tag=fluorescent-probes">Fluorescent probes</a><a class="chip" href="blog.html?tag=tadf">TADF</a></div>
+</div>
+
+<!-- 6. Chemical Education -->
+<div class="card" id="chemical-education">
+  <div class="ga"><img src="images/research-chemical-education.png" alt="Chemical education" onerror="this.remove()"></div>
+  <h3>Chemical Education</h3>
+  <div class="tl2">In plain words</div>
+  <p>My first papers asked how people learn chemistry. What was online learning like for students in 2020? Does a virtual titration meet their expectations? What do students think about becoming chemistry entrepreneurs? I still teach, and I run science camps because curiosity is easiest to catch early.</p>
+  <div class="tl2">In technical terms</div>
+  <p>Student perspectives, virtual laboratories and service-learning.</p>
+  <p class="methods"><strong>Methods:</strong> student surveys and perspective studies (no computational methods)</p>
+  <div class="tags"><a class="chip" href="blog.html?tag=education-research">Education research</a><a class="chip" href="blog.html?tag=virtual-labs">Virtual labs</a><a class="chip" href="blog.html?tag=student-voice">Student voice</a><a class="chip" href="blog.html?tag=outreach">Outreach</a></div>
+</div>
+
+</div></div></section>
+
+<section class="s"><div class="wrap"><h2>Peer review</h2><p class="lead">Good science depends on careful readers.</p>
+<div class="card" style="max-width:720px"><h3>Reviewer, Taylor &amp; Francis</h3><p>I review manuscripts in chemical education for a Taylor &amp; Francis journal, assessing the study design, the evidence behind the conclusions and how clearly the work is written.</p></div>
+</div></section>
+
+<div id="foot"></div>
+<script src="site.js"></script>
 </body></html>
