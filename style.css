@@ -103,7 +103,8 @@ footer{
 nav .wrap{max-width:1240px}.links{min-width:0}nav a{font-size:14px}nav b a{font:800 18px var(--h)}
 nav a.on{color:var(--teal);box-shadow:0 2px 0 var(--teal)}
 .pagehead{padding:56px 0 4px}.pagehead h1{font-size:clamp(34px,5vw,56px);font-weight:800;letter-spacing:-.02em}
-.pagehead .lead{margin:12px 0 0}
+.pagehead .lead{margin:12px 0 0;max-width:none}
+.pagehead .wrap{max-width:1240px}
 section.s{padding:36px 0}
 details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;padding:0 22px}
 summary{cursor:pointer;padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
