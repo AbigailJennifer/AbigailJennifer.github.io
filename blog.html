@@ -1,311 +1,206 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Blog - Abigail Jennifer</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | Abigail Jennifer</title>
+<meta name="description" content="Notes on computational chemistry, X-ray spectroscopy, heavy elements and chemical education by Abigail Jennifer.">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="alternate icon" href="./favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Notebook page: dot grid with a faint margin line */
+  body{background-image:radial-gradient(circle,var(--line) 1.1px,transparent 1.5px);background-size:28px 28px;background-position:0 0}
+  /* Pencil-sketch doodles behind the content */
+  #doodles{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;color:var(--teal);opacity:.16}
+  :root[data-theme=dark] #doodles{opacity:.22}
+  #nav{z-index:30}
+  .bp{position:relative;z-index:1}
+  .bp .lead{max-width:62ch}
+  .bp .pagehead .lead{max-width:none}
 
-    <link rel="icon" type="image/png" href="favicon.png">
+  /* Tag shelf */
+  .shelf{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-top:6px}
+  .shelf h2{font-size:20px;margin:0 0 4px}
+  .shelf .sm{margin-bottom:6px}
+  .tg{font:700 13px var(--h);color:var(--mut);margin:16px 0 6px}
+  .tags.f{margin-top:0}
+  a.chip{text-decoration:none;color:inherit;cursor:pointer;transition:border-color .15s,background .15s}
+  a.chip:hover,a.chip:focus-visible{border-color:var(--teal);text-decoration:none}
+  a.chip.has{color:var(--ink);border-color:var(--teal)}
+  a.chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+  a.chip small{font-size:11px;opacity:.75;margin-left:4px}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
- <meta name="color-scheme" content="light only">
-    <style>
-      /* PAGE */
-body {
-    background-color: #ffffff;
-    color: #000000;
-}
+  /* Status line when a tag is chosen */
+  .now{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:26px 0 6px;font:600 16px var(--h)}
+  .now a{font:700 14px var(--h)}
 
-html {
-    color-scheme: light;
-}
+  /* Posts */
+  .posts{display:grid;gap:18px;margin-top:14px}
+  .post{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:var(--r);padding:24px 26px}
+  .post h3{font-size:23px;margin-bottom:4px}
+  .post .meta{font:600 14px var(--h);color:var(--mut);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .post p.sum{margin:12px 0 0;font-size:17px;text-align:justify;text-justify:inter-word;hyphens:none}
+  .state{font:700 12px var(--h);padding:3px 10px;border-radius:99px;background:var(--amber);color:#102a43}
+  .state.draft{background:transparent;border:1px dashed var(--mut);color:var(--mut)}
+  .post details{background:transparent;border:0;border-top:1px dashed var(--line);border-radius:0;padding:0;margin:16px 0 0}
+  .post summary{padding:12px 0 0;font:700 14px var(--h);color:var(--teal);justify-content:flex-start;gap:8px}
+  .post summary:after{font-size:18px}
+  .post .body{padding-top:10px;font-size:17px}
+  .post .body p{margin:0 0 12px;text-align:justify;text-justify:inter-word;hyphens:none}
+  .post .body h4{font-size:18px;margin:16px 0 6px}
+  .post .body .ph{font-style:italic;color:var(--mut)}
+  .empty{border:2px dashed var(--line);border-radius:var(--r);padding:26px;color:var(--mut);background:transparent}
+  .empty b{color:var(--ink);font-family:var(--h)}
 
-.navbar {
-    background-color: #81D8D0;
-}
-
-.navbar-nav {
-    gap: 20px;
-}
-
-/* NAV LINKS */
-.nav-link {
-    color: #333 !important;
-    border-radius: 50px;
-    padding: 8px 16px;
-    transition: 0.3s;
-}
-
-/* HOVER */
-.nav-link:hover {
-    background-color: #e0f7f5;
-}
-
-/* ACTIVE TAB */
-.nav-link.active {
-    background-color: #ffffff !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-/* MOBILE MENU */
-@media (max-width: 991px) {
-
-    .navbar-collapse {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 260px;
-        height: 100%;
-        background-color: #ffffff;
-        padding: 25px;
-        transition: right 0.3s ease;
-        z-index: 1050;
-    }
-
-    .navbar-collapse.show {
-        right: 0;
-    }
-
-    .nav-link {
-        display: block;
-        margin-bottom: 10px;
-    }
-}
-      .blog-section {
-    padding: 80px 10%;
-    background: #f8fbff;
-    color: #111827;
-    font-family: "Inter", sans-serif;
-    min-height: 100vh;
-}
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .section-subtitle {
-            color: #475569;
-            margin-bottom: 50px;
-        }
-
-        .blog-group {
-            margin-bottom: 70px;
-        }
-
-        .blog-group h2 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: #1e3a8a;
-        }
-
-        .blog-card {
-            background: white;
-            padding: 28px;
-            border-radius: 18px;
-            margin-bottom: 22px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            transition: 0.3s;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-        }
-
-        .blog-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #0f172a;
-        }
-
-        .blog-meta {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 14px;
-        }
-
-        .blog-description {
-            color: #475569;
-            line-height: 1.7;
-        }
-
-        .read-btn {
-            display: inline-block;
-            margin-top: 18px;
-            padding: 10px 18px;
-            border-radius: 50px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .read-btn:hover {
-            background: #1d4ed8;
-            color: white;
-        }
-
-    </style>
-
-</head>
-
+  /* External blogs */
+  .ext{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:18px;margin-top:14px}
+  .ext .card{display:flex;flex-direction:column}
+  .ext .card p{color:var(--ink);font-size:16px;text-align:justify;text-justify:inter-word;hyphens:none}
+  .ext .host{font:600 14px var(--h);color:var(--mut);margin:0 0 10px}
+  .ext a.go{margin-top:auto;padding-top:12px}
+  @media(max-width:600px){.post{padding:20px 18px}.shelf{padding:18px 16px}.bp .wrap{padding:0 16px}}
+</style></head>
 <body>
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light"> 
-    <div class="container"> 
-        <a class="navbar-brand" href="index.html">Abigail Jennifer</a>
+<svg id="doodles" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- tetrahedral complex, lower left -->
+  <g transform="translate(120 620)">
+    <circle cx="100" cy="100" r="16"/>
+    <path d="M100 100 L100 14 M100 100 L26 150 M100 100 L176 148 M100 100 L128 170" />
+    <circle cx="100" cy="8" r="9"/><circle cx="18" cy="156" r="9"/><circle cx="184" cy="152" r="9"/><circle cx="132" cy="178" r="9" stroke-dasharray="3 4"/>
+    <path d="M100 14 L26 150 L176 148 Z" stroke-dasharray="2 6" stroke-width="1"/>
+  </g>
+  <!-- energy levels with excitation and emission, upper right -->
+  <g transform="translate(900 90)">
+    <path d="M0 200 H90 M0 120 H90 M0 40 H90"/>
+    <path d="M30 196 V48"/><path d="M24 58 L30 46 L36 58"/>
+    <path d="M62 44 C70 70 54 90 62 116 C70 142 54 162 62 190"/><path d="M56 180 L62 192 L68 180"/>
+    <circle cx="14" cy="200" r="3.5" fill="currentColor"/>
+    <circle cx="14" cy="120" r="3.5"/>
+  </g>
+  <!-- absorption and emission traces, lower right -->
+  <g transform="translate(860 640)">
+    <path d="M0 200 H260 M0 200 V10"/>
+    <path d="M10 196 C50 196 60 190 80 150 C95 112 108 196 140 190 C170 184 176 90 200 60 C214 40 222 150 250 190"/>
+  </g>
+  <!-- octahedral aqua sketch, upper left -->
+  <g transform="translate(70 70)">
+    <circle cx="90" cy="90" r="13"/>
+    <path d="M90 90 L90 6 M90 90 L90 174 M90 90 L12 90 M90 90 L168 90 M90 90 L38 36 M90 90 L142 144"/>
+    <circle cx="90" cy="0" r="7"/><circle cx="90" cy="180" r="7"/><circle cx="5" cy="90" r="7"/><circle cx="175" cy="90" r="7"/><circle cx="34" cy="32" r="7"/><circle cx="146" cy="148" r="7"/>
+  </g>
+  <!-- margin sketch of orbital lobes, middle right -->
+  <g transform="translate(1030 360)"><path d="M40 0 C70 20 70 60 40 70 C10 60 10 20 40 0 Z"/><path d="M40 70 C70 90 70 130 40 140 C10 130 10 90 40 70 Z" stroke-dasharray="4 5"/></g>
+</svg>
 
-    <!-- HAMBURGER BUTTON -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-      
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
-        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
-          <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
-        <li class="nav-item"><a class="nav-link" href="conferences.html">Conferences</a></li>
-        <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
-      </ul>
-    </div>
+<div id="nav"></div>
 
+<div class="bp">
+<header class="pagehead"><div class="wrap">
+  <h1>Blog</h1>
+  <p class="lead">A notebook for computational chemistry, X-ray spectroscopy of heavy elements, and the things I learn while teaching and talking about chemistry. Posts here are tagged with the same topics as my research page, so a tag on that page brings you straight to the related reading.</p>
+  <p class="lead">Longer, looser writing lives on my two external blogs, linked <a href="#external">at the bottom of this page</a>.</p>
+</div></header>
+
+<section class="s"><div class="wrap">
+  <div class="shelf">
+    <h2>Browse by tag</h2>
+    <span class="sm">Tags with a teal outline have posts. The rest are placeholders for posts still to come.</span>
+    <div id="shelf"></div>
   </div>
-</nav>
-    <section class="blog-section">
 
-        <h1 class="section-title">
-            Blog
-        </h1>
-        <p class="section-subtitle">
-            Scientific articles, computational chemistry notes, conference reflections, and research discussions.
-        </p>
+  <div class="now" id="now" hidden></div>
+  <div class="posts" id="posts"></div>
+</div></section>
 
-  <!-- EXTERNAL BLOGS SECTION -->
-
-<div class="blog-group">
-
-    <h2>
-        External Blog Platforms
-    </h2>
-
-    <!-- BLOG 1 -->
-    <div class="blog-card">
-
-        <div class="blog-title">
-            Computations and Theory in the World of Chemistry
-        </div>
-
-        <div class="blog-meta">
-            abigailjennifer.blogspot.com
-        </div>
-
-        <div class="blog-description">
-            Research discussions, scientific communication,
-            academic experiences, and computational chemistry insights.
-        </div>
-
-        <a class="read-btn"
-           href="https://abigailjennifer.blogspot.com/"
-           target="_blank">
-
-            Visit Blog
-
-        </a>
-
+<section class="s" id="external"><div class="wrap">
+  <h2>Blogs elsewhere</h2>
+  <p class="lead">Two longer-running blogs, written in a more personal voice.</p>
+  <div class="ext">
+    <div class="card">
+      <h3>Computations and Theory in the World of Chemistry</h3>
+      <p class="host">abigailjennifer.blogspot.com</p>
+      <p>Research discussions, scientific communication, academic experiences and computational chemistry insights.</p>
+      <a class="go" href="https://abigailjennifer.blogspot.com/" target="_blank" rel="noopener">Visit blog</a>
     </div>
-
-    <!-- BLOG 2 -->
-    <div class="blog-card">
-
-        <div class="blog-title">
-            The Surreal Chemist
-        </div>
-
-        <div class="blog-meta">
-            abigail-jennifer.blogspot.com
-        </div>
-
-        <div class="blog-description">
-            From computational chemistry and spectroscopy to Disney metaphors and random scientific musings, this blog explores chemistry beyond textbooks. The science is fascinating, but often the most interesting part is the perspective from which we see it.
-        </div>
-
-        <a class="read-btn"
-           href="https://abigail-jennifer.blogspot.com/"
-           target="_blank">
-
-            Visit Blog
-
-        </a>
-
+    <div class="card">
+      <h3>The Surreal Chemist</h3>
+      <p class="host">abigail-jennifer.blogspot.com</p>
+      <p>From computational chemistry and spectroscopy to Disney metaphors and random scientific musings, this blog explores chemistry beyond textbooks. The science is fascinating, but often the most interesting part is the perspective from which we see it.</p>
+      <a class="go" href="https://abigail-jennifer.blogspot.com/" target="_blank" rel="noopener">Visit blog</a>
     </div>
-
+  </div>
+</div></section>
 </div>
 
-        <!-- HOSTED BLOGS -->
-        <div class="blog-group">
+<div id="foot"></div>
+<script src="site.js"></script>
+<script>
+/* ---------- 1. Tags: slugs must match the links on research.html ---------- */
+var GROUPS=[
+ ["Spin qubits",[["spin-qubits","Spin qubits"],["lanthanides","Lanthanides"],["magnetic-memory","Magnetic memory"],["quantum-states","Quantum states"]]],
+ ["X-ray spectroscopy",[["xas","XAS"],["xes","XES"],["multireference","Multireference"],["l-edge","L-edge"],["spectroscopy","Spectroscopy"]]],
+ ["Actinide periodicity",[["actinides","Actinides"],["dft","DFT"],["periodic-trends","Periodic trends"],["oxidation-states","Energetics"],["actinyl","Electronic Properties"]]],
+ ["Separations",[["americium","Americium"],["curium","Curium"],["separation","Separation"],["ligand-design","Ligand design"],["nuclear-waste","Nuclear waste"]]],
+ ["Collaborations",[["collaboration","Collaboration"],["materials","Materials"],["corrosion","Corrosion"],["fluorescent-probes","Fluorescent probes"],["tadf","TADF"]]],
+ ["Chemical education",[["education-research","Education research"],["virtual-labs","Virtual labs"],["student-voice","Student voice"],["outreach","Outreach"]]]
+];
+var LABEL={};GROUPS.forEach(function(g){g[1].forEach(function(t){LABEL[t[0]]=t[1]})});
 
-            <h2>
-                Website Blog Posts
-            </h2>
+/* ---------- 2. Posts: add new ones at the top of this list ---------- */
+var POSTS=[
+ {title:"From core hole to spectrum: why X-ray spectra need more than one configuration",
+  date:"November 2026",state:"Placeholder",
+  tags:["xas","xes","multireference","l-edge","spectroscopy"],
+  sum:"A short placeholder post showing how a published article will look. It sketches how an X-ray absorption and emission experiment maps onto the electronic states of a small heavy-element complex.",
+  body:'<p class="ph">Placeholder text. Replace this with your own writing when you are ready.</p>'+
+   '<h4>Absorption</h4><p>In X-ray absorption, a photon lifts a core electron into an empty orbital and leaves a core hole behind. The energy of the absorbed photon tells us how far that electron moved and what the empty orbitals look like around the metal.</p>'+
+   '<h4>Emission</h4><p>In X-ray emission, an electron from a higher occupied level falls into the core hole and a photon leaves. For valence-to-core emission, the electrons doing the falling are those involved in bonding to the donor atoms of the ligands.</p>'+
+   '<h4>Why several configurations</h4><p>Near a heavy metal, spin-orbit coupling is large and the core-excited states mix several electron configurations. A single-determinant picture misses this, so a multiconfigurational wavefunction is used and the spectrum is built from the computed states and their intensities.</p>'+
+   '<p class="ph">Add figures, references and a closing thought here.</p>'},
+ {title:"Understanding actinide spectroscopy simulations",
+  date:"In progress",state:"Draft",
+  tags:["actinides","xas","l-edge","multireference","spectroscopy"],
+  sum:"A discussion on electronic structure methods, L-edge spectroscopy and multireference calculations.",
+  body:'<p class="ph">Draft in progress. Full text coming soon.</p>'},
+ {title:"My experience at the CAS Future Leaders Program",
+  date:"In progress",state:"Draft",
+  tags:["outreach","student-voice"],
+  sum:"Reflections on scientific networking, leadership training and interdisciplinary collaboration.",
+  body:'<p class="ph">Draft in progress. Full text coming soon.</p>'}
+];
 
-            <div class="blog-card">
+/* ---------- 3. Render ---------- */
+var sel=(new URLSearchParams(location.search).get("tag")||"").toLowerCase();
+var counts={};POSTS.forEach(function(p){p.tags.forEach(function(t){counts[t]=(counts[t]||0)+1})});
 
-                <div class="blog-title">
-                    Understanding Actinide Spectroscopy Simulations
-                </div>
+function chip(slug,withCount){
+  var c=counts[slug]||0;
+  var cls="chip"+(c?" has":"")+(slug===sel?" on":"");
+  return '<a class="'+cls+'" href="blog.html?tag='+slug+'">'+LABEL[slug]+(withCount&&c?'<small>'+c+'</small>':'')+'</a>';
+}
+document.getElementById("shelf").innerHTML=GROUPS.map(function(g){
+  return '<div class="tg">'+g[0]+'</div><div class="tags f">'+g[1].map(function(t){return chip(t[0],true)}).join("")+'</div>';
+}).join("");
 
-                <div class="blog-meta">
-                    In progress • Computational Chemistry
-                </div>
-
-                <div class="blog-description">
-                    A discussion on electronic structure methods,
-                    L-edge spectroscopy, and multireference calculations.
-                </div>
-
-                <a class="read-btn"
-                   href="actinide-spectroscopy.html">
-
-                    Read Article
-
-                </a>
-
-            </div>
-
-            <div class="blog-card">
-
-                <div class="blog-title">
-                    My Experience at the CAS Future Leaders Program
-                </div>
-
-                <div class="blog-meta">
-                    In progress • Conference Experience
-                </div>
-
-                <div class="blog-description">
-                    Reflections on scientific networking,
-                    leadership training, and interdisciplinary collaboration.
-                </div>
-
-                <a class="read-btn"
-                   href="cas-future-leaders.html">
-
-                    Read Article
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</body>
-
-</html>
+var shown=sel?POSTS.filter(function(p){return p.tags.indexOf(sel)>-1}):POSTS;
+var now=document.getElementById("now");
+if(sel){
+  now.hidden=false;
+  now.innerHTML='<span>'+shown.length+(shown.length===1?' post':' posts')+' tagged '+(LABEL[sel]||sel)+'</span><a href="blog.html">Show all posts</a>';
+}
+var box=document.getElementById("posts");
+if(!shown.length){
+  box.innerHTML='<div class="empty"><b>No posts with this tag yet.</b><br>Posts about '+(LABEL[sel]||sel)+' will appear here once they are published. Meanwhile, the <a href="#external">external blogs</a> may have related reading.</div>';
+}else{
+  box.innerHTML=shown.map(function(p){
+    var dr=p.state==="Draft"?" draft":"";
+    return '<article class="post"><h3>'+p.title+'</h3>'+
+      '<div class="meta"><span>'+p.date+'</span><span class="state'+dr+'">'+p.state+'</span></div>'+
+      '<p class="sum">'+p.sum+'</p>'+
+      '<div class="tags">'+p.tags.map(function(t){return chip(t,false)}).join("")+'</div>'+
+      '<details><summary>Read post</summary><div class="body">'+p.body+'</div></details></article>';
+  }).join("");
+}
+</script>
+</body></html>
