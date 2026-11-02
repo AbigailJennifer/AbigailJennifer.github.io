@@ -20,19 +20,16 @@
   a.chip:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 </style></head>
 <body><div id="nav"></div>
-<header class="pagehead"><div class="wrap"><h1>Research</h1><p class="lead">My research explores the coordination chemistry and electronic structure of heavy-element complexes using computational methods to improve the fundamental understanding of these heavy-elements and the computational approaches to handle them. By accurately and efficiently connecting their chemical properties to molecular structure my research addresses solutions for heavy-element separations and design rules for excited states useful for magnetic and quantum technologies.</p><p class="lead">Click any tag to see related blog posts.</p></div></header>
+<header class="pagehead"><div class="wrap"><h1>Research</h1><p class="lead">My research explores the coordination chemistry and electronic structure of rare earth metal complexes using computational methods to improve the fundamental understanding of these elements and the computational approaches to handle them. By working on the balance between numerical accuracy and computational efficiency for connecting their chemical properties to molecular structure, my research addresses solutions for heavy-element separations and design rules for excited states useful for magnetic and quantum technologies.</p><p class="lead">Beyond my core research, I am interested in science education and contribute to collaborative research in catalysis and optoelectronics.</p><p class="lead">Click any tag to see related blog posts.</p></div></header>
 
 <section class="s rs"><div class="wrap"><div class="sc" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
 
 <!-- 1. Modelling Spin Qubits in Lanthanide Complexes -->
 <div class="card" id="spin-qubits">
   <div class="ga"><img src="images/research/qubit.png" alt="Modelling spin qubits in lanthanide complexes" onerror="this.remove()"></div>
-  <h3>Modelling Spin Qubits in Lanthanide Complexes</h3>
-  <div class="tl2">In plain words</div>
-  <p>Some lanthanide ions behave like tiny magnets whose direction can store a bit of information, or, in a quantum setting, a qubit. Whether that works depends on the exact electronic states of the ion and how its surroundings shape them. I calculate these quantum states so we can see which molecules could hold a magnetic memory and which could serve as spin qubits.</p>
-  <div class="tl2">In technical terms</div>
-  <p>Multiconfigurational electronic structure of lanthanide complexes, including relativistic effects, for magnetic memory and spin-qubit design.</p>
-  <p class="methods"><strong>Methods:</strong> DFT, MCPDFT</p>
+  <h3>Molecular Spin Qubits</h3>
+  <p>Some f-elements behave like tiny magnets whose direction can store a bit of information, or, in a quantum setting, a qubit. Whether that works depends on the exact electronic states of the ion and how its surroundings shape them. Strong spin-orbit coupling and partially filled f shells give rise to large magnetic anisotropy and reduce decoherence in quantum states, which are central to high-density information storage and quantum technologies. I use electronic structure methods to understand and predict this behaviour at the molecular level. With multiconfigurational wavefunction approaches that treat electron correlation, relativistic effects and spin-orbit coupling explicitly, we compute crystal-field splittings, magnetic anisotropy, relaxation barriers and clock transitions, and use them to model magnetic susceptibility and qubit states.</p>
+  <p class="methods"><strong>Methods:</strong> CASSCF, CASPT2, NEVPT2, Single Anisotropy</p>
   <div class="tags"><a class="chip" href="blog.html?tag=spin-qubits">Spin qubits</a><a class="chip" href="blog.html?tag=lanthanides">Lanthanides</a><a class="chip" href="blog.html?tag=magnetic-memory">Magnetic memory</a><a class="chip" href="blog.html?tag=quantum-states">Quantum states</a></div>
 </div>
 
@@ -40,11 +37,8 @@
 <div class="card" id="xray-spectroscopy">
   <div class="ga"><img src="images/research-xray-spectroscopy.png" alt="X-ray spectroscopy for heavy elements" onerror="this.remove()"></div>
   <h3>X-ray Spectroscopy for Heavy-Elements</h3>
-  <div class="tl2">In plain words</div>
-  <p>An X-ray can knock an inner electron out of an atom, and the energies absorbed or emitted form a fingerprint of that element's electrons. For heavy elements the fingerprint is hard to compute because several electron arrangements matter at once. I use multiconfigurational calculations to reproduce and interpret these spectra, including L-edge spectra of actinide complexes and valence-to-core spectra of transition metal complexes.</p>
-  <div class="tl2">In technical terms</div>
-  <p>X-ray absorption and emission spectroscopy, multireference methods, L-edge, valence-to-core XES.</p>
-  <p class="methods"><strong>Methods:</strong> RASCI, RASCI-PDFT, multiconfigurational calculations</p>
+  <p>X-rays give an element-specific probe of electronic structure and the local chemical environment. While absorption involves the excitation of core electrons into unoccupied states, emission arises from the radiative relaxation of the resulting core hole. I investigate these processes in heavy-element-based systems where their theoretical description is particularly challenging due to strong electron correlation, spin–orbit coupling, relativistic effects and the involvement of multiple electronic configurations. My work uses multiconfigurational wavefunction methods to calculate and interpret metal L-edge and ligand K-edge X-ray absorption spectra of actinide complexes, as well as valence-to-core X-ray emission spectra of transition-metal complexes. By analysing the calculated spectral features in terms of core-excited electronic states, orbital contributions and metal–ligand interactions, I establish connections between spectroscopic signatures and the underlying electronic structure and bonding.</p>
+  <p class="methods"><strong>Methods:</strong> RASSCF, RASCI, RASPT2, MC-PDFT, Peak Broadening</p>
   <div class="tags"><a class="chip" href="blog.html?tag=xas">XAS</a><a class="chip" href="blog.html?tag=xes">XES</a><a class="chip" href="blog.html?tag=multireference">Multireference</a><a class="chip" href="blog.html?tag=l-edge">L-edge</a><a class="chip" href="blog.html?tag=spectroscopy">Spectroscopy</a></div>
 </div>
 
@@ -53,22 +47,17 @@
   <div class="ga"><img src="images/research-actinide-periodicity.png" alt="Actinide periodicity" onerror="this.remove()"></div>
   <h3>Actinide Periodicity</h3>
   <div class="tl2">In plain words</div>
-  <p>The actinides, from uranium to californium, sit where textbook periodic-table rules start to bend. Their large, fast-moving 5f electrons mean each element can behave differently from its neighbour. I compare element after element with the same ligand, so any difference comes from the metal and not the setup. I look at which oxidation states are stable, how strong the metal-oxygen bonds are, and how much of the bonding is shared electrons.</p>
-  <div class="tl2">In technical terms</div>
-  <p>Relativistic effects and bonding analysis, with ligands such as dipyriamethyrin, pyrrophen and TEQ.</p>
-  <p class="methods"><strong>Methods:</strong> DFT, relativistic calculations, bonding analysis</p>
-  <div class="tags"><a class="chip" href="blog.html?tag=actinides">Actinides</a><a class="chip" href="blog.html?tag=dft">DFT</a><a class="chip" href="blog.html?tag=periodic-trends">Periodic trends</a><a class="chip" href="blog.html?tag=oxidation-states">Oxidation states</a><a class="chip" href="blog.html?tag=actinyl">Actinyl</a></div>
+  <p>The actinides sit where textbook periodic-table rules start to bend. Their 5f, 6d and 7s orbitals, relativistic effects and electron correlation mean each element can behave differently from its neighbour. Unlike the more familiar periodic trends across the lighter elements, changes in the electronic structure of actinides can lead to significant variations in their oxidation-state stability, bonding and chemical reactivity. My research investigates these trends through systematic comparisons of actinide complexes in a particular ligand environment, allowing the influence of the metal centre to be examined independently of changes in the coordination environment. Using quantum chemical methods, the computed energetics and electronic properties give information on oxidation-state stability, metal–oxygen bond strengths and metal–ligand covalency across the series. The participation of 5f orbitals in bonding and the changing balance between ionic and covalent interactions provide insights into the electronic origins of actinide periodicity and the factors governing the distinct chemical behaviour of individual actinide elements.</p>
+  <p class="methods"><strong>Methods:</strong> DFT, NBO, EDA, ETS-NOCV, QTAIM</p>
+  <div class="tags"><a class="chip" href="blog.html?tag=actinides">Actinides</a><a class="chip" href="blog.html?tag=dft">DFT</a><a class="chip" href="blog.html?tag=periodic-trends">Periodic trends</a><a class="chip" href="blog.html?tag=oxidation-states">Energetics</a><a class="chip" href="blog.html?tag=actinyl">Electronic Properties</a></div>
 </div>
 
 <!-- 4. Heavy-Elements Separations -->
 <div class="card" id="separations">
   <div class="ga"><img src="images/research-separations.png" alt="Heavy-elements separations" onerror="this.remove()"></div>
   <h3>Heavy-Elements Separations</h3>
-  <div class="tl2">In plain words</div>
-  <p>Used nuclear fuel holds long-lived metals such as americium and curium that behave much like harmless look-alikes. Separating them cleanly could make waste management simpler. I model ring-shaped molecules that grip one metal more tightly than another, then test which design choices tune that preference, such as swapping in an oxygen or adding an electron-withdrawing group.</p>
-  <div class="tl2">In technical terms</div>
-  <p>Competitive complexation of Am/Cm and Am/Eu, DOTA, and trivalent actinide extraction. Mitacs Globalink project at the University of Manitoba.</p>
-  <p class="methods"><strong>Methods:</strong> DFT, competitive complexation energetics, bonding analysis</p>
+  <p>The separation of minor actinides from spent nuclear fuel is an important challenge in nuclear waste management, particularly because trivalent actinides such as americium and curium exhibit chemical similarities to lanthanides. My research uses quantum chemical methods to investigate the metal-ion selectivity of macrocyclic and acycic ligands and understand the factors governing their coordination preferences. I examine how changes in ligand architecture, donor atoms and functional groups, such as the incorporation of oxygen donors or electron-withdrawing substituents, influence metal–ligand interactions and complex stability. By comparing the binding preferences of different ligands towards competing metal ions, I evaluate their ability to discriminate between actinides and lanthanides. These studies establish relationships between ligand structure, coordination chemistry and metal-ion selectivity, providing molecular-level insights into the design of more selective extractants for actinide separation.</p>
+  <p class="methods"><strong>Methods:</strong> DFT, NBO, EDA, ETS-NOCV, QTAIM</p>
   <div class="tags"><a class="chip" href="blog.html?tag=americium">Americium</a><a class="chip" href="blog.html?tag=curium">Curium</a><a class="chip" href="blog.html?tag=separation">Separation</a><a class="chip" href="blog.html?tag=ligand-design">Ligand design</a><a class="chip" href="blog.html?tag=nuclear-waste">Nuclear waste</a></div>
 </div>
 
@@ -76,11 +65,8 @@
 <div class="card" id="collaborations">
   <div class="ga"><img src="images/research-collaborations.png" alt="Collaborations with experimental groups" onerror="this.remove()"></div>
   <h3>Collaborations</h3>
-  <div class="tl2">In plain words</div>
-  <p>Not every question can be answered from a computer alone. I have teamed up with synthetic and materials groups, using calculations to explain what they see in the lab: corrosion inhibitors for steel, fluorescent probes for ATP, light-emitting molecules, catalysts and the extraction of actinides.</p>
-  <div class="tl2">In technical terms</div>
-  <p>Hirshfeld surfaces, reactivity descriptors, aromaticity and TADF emitters.</p>
-  <p class="methods"><strong>Methods:</strong> DFT, Hirshfeld surface analysis, reactivity descriptors, aromaticity analysis</p>
+  <p>My collaborative research involves working with experimental groups across different areas of chemistry, using quantum chemical calculations to complement experimental investigations. These collaborations span the study of molecular corrosion inhibitors for steel, fluorescent probes for ATP detection, luminescent molecular systems, and catalytic processes. My computational contributions include computing theoretical descriptors for exprimental observables and analyzing molecular structures, electronic properties, bonding interactions and reaction mechanisms to understand the factors underlying experimentally observed behaviour. By connecting electronic structure with spectroscopic, photophysical, catalytic and coordination properties, these studies provide a molecular-level interpretation of experimental results and help establish structure–property relationships across diverse chemical systems.</p>
+  <p class="methods"><strong>Methods:</strong> DFT, Hirshfeld surface analysis, reactivity descriptors, NICS</p>
   <div class="tags"><a class="chip" href="blog.html?tag=collaboration">Collaboration</a><a class="chip" href="blog.html?tag=materials">Materials</a><a class="chip" href="blog.html?tag=corrosion">Corrosion</a><a class="chip" href="blog.html?tag=fluorescent-probes">Fluorescent probes</a><a class="chip" href="blog.html?tag=tadf">TADF</a></div>
 </div>
 
@@ -88,18 +74,14 @@
 <div class="card" id="chemical-education">
   <div class="ga"><img src="images/research-chemical-education.png" alt="Chemical education" onerror="this.remove()"></div>
   <h3>Chemical Education</h3>
-  <div class="tl2">In plain words</div>
-  <p>My first papers asked how people learn chemistry. What was online learning like for students in 2020? Does a virtual titration meet their expectations? What do students think about becoming chemistry entrepreneurs? I still teach, and I run science camps because curiosity is easiest to catch early.</p>
-  <div class="tl2">In technical terms</div>
-  <p>Student perspectives, virtual laboratories and service-learning.</p>
-  <p class="methods"><strong>Methods:</strong> student surveys and perspective studies (no computational methods)</p>
+   <p>My contributions to chemical education include research on student learning experiences, teaching practices and engagement with chemistry. The COVID-19 brought about a lot of changes to the education system. This motivated my first research publication on the experiences of students during the transition to online learning in 2020. Later, I have worked on perceptions of virtual titration experiments as alternatives to conventional laboratory activities, and student attitudes and efforts towards chemistry entrepreneurship.</p>
   <div class="tags"><a class="chip" href="blog.html?tag=education-research">Education research</a><a class="chip" href="blog.html?tag=virtual-labs">Virtual labs</a><a class="chip" href="blog.html?tag=student-voice">Student voice</a><a class="chip" href="blog.html?tag=outreach">Outreach</a></div>
 </div>
 
 </div></div></section>
 
 <section class="s"><div class="wrap"><h2>Peer review</h2><p class="lead">Good science depends on careful readers.</p>
-<div class="card" style="max-width:720px"><h3>Reviewer, Taylor &amp; Francis</h3><p>I review manuscripts in chemical education for a Taylor &amp; Francis journal, assessing the study design, the evidence behind the conclusions and how clearly the work is written.</p></div>
+<div class="card" style="max-width:720px"><h3>Reviewer, Taylor &amp; Francis, 2026</h3><p>Reviewed a book proposal for Routledge.</p></div>
 </div></section>
 
 <div id="foot"></div>
