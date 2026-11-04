@@ -20,7 +20,10 @@ function slug(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-
 
 function side(toc){
  var h='<aside id="side" aria-label="Search and browse"><form class="sbar" id="sform" action="blog.html" role="search"><input type="search" name="q" value="'+esc(q)+'" placeholder="Search posts" aria-label="Search posts" autocomplete="off"><button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></form>';
-h+='<div class="spanel">'+(toc?'<div class="sh">Contents</div><div class="toc">'+toc+'</div>':'')+'<div class="sh">Browse by tags</div>'+GROUPS.map(function(g){return'<div class="tg">'+g[0]+'</div><div class="tags">'+g[1].map(function(t){return chip(t[0],true)}).join("")+'</div>'}).join("")+'<a class="dall" href="blog.html">Show all posts</a></div>';
+var t=!!toc;
+ h+='<div class="stabs" role="tablist">'+(t?'<button type="button" role="tab" data-p="toc" aria-selected="true">Contents</button>':'')+'<button type="button" role="tab" data-p="tags" aria-selected="'+!t+'">Browse by tags</button></div>';
+ if(t)h+='<div class="spanel toc" id="p-toc">'+toc+'</div>';
+ h+='<div class="spanel" id="p-tags"'+(t?' hidden':'')+'>'+GROUPS.map(function(g){return'<div class="tg">'+g[0]+'</div><div class="tags">'+g[1].map(function(t){return chip(t[0],true)}).join("")+'</div>'}).join("")+'<a class="dall" href="blog.html">Show all posts</a></div>';
  return h+'</aside>';
 }
 function mount(toc){
@@ -31,6 +34,9 @@ function mount(toc){
  function set(o){s.classList.toggle("open",o);bk.classList.toggle("open",o);tab.hidden=o}
  tab.onclick=function(){set(true)};bk.onclick=function(){set(false)};
  document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});
+ s.querySelectorAll(".stabs button").forEach(function(b){b.onclick=function(){
+  s.querySelectorAll(".stabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
+  s.querySelectorAll(".spanel").forEach(function(p){p.hidden=p.id!=="p-"+b.dataset.p})}});
  s.querySelectorAll(".toc a").forEach(function(a){a.addEventListener("click",function(){set(false)})});
 }
 
