@@ -20,9 +20,7 @@ function slug(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-
 
 function side(toc){
  var h='<aside id="side" aria-label="Search and browse"><form class="sbar" id="sform" action="blog.html" role="search"><input type="search" name="q" value="'+esc(q)+'" placeholder="Search posts" aria-label="Search posts" autocomplete="off"><button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></form>';
- h+='<div class="stabs" role="tablist"><button type="button" role="tab" data-p="tags" aria-selected="true">Browse by tags</button>'+(toc?'<button type="button" role="tab" data-p="toc" aria-selected="false">Contents</button>':'')+'</div>';
- h+='<div class="spanel" id="p-tags">'+GROUPS.map(function(g){return'<div class="tg">'+g[0]+'</div><div class="tags">'+g[1].map(function(t){return chip(t[0],true)}).join("")+'</div>'}).join("")+'<a class="dall" href="blog.html">Show all posts</a></div>';
- if(toc)h+='<div class="spanel toc" id="p-toc" hidden>'+toc+'</div>';
+h+='<div class="spanel">'+(toc?'<div class="sh">Contents</div><div class="toc">'+toc+'</div>':'')+'<div class="sh">Browse by tags</div>'+GROUPS.map(function(g){return'<div class="tg">'+g[0]+'</div><div class="tags">'+g[1].map(function(t){return chip(t[0],true)}).join("")+'</div>'}).join("")+'<a class="dall" href="blog.html">Show all posts</a></div>';
  return h+'</aside>';
 }
 function mount(toc){
@@ -33,9 +31,6 @@ function mount(toc){
  function set(o){s.classList.toggle("open",o);bk.classList.toggle("open",o);tab.hidden=o}
  tab.onclick=function(){set(true)};bk.onclick=function(){set(false)};
  document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});
- s.querySelectorAll(".stabs button").forEach(function(b){b.onclick=function(){
-  s.querySelectorAll(".stabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
-  s.querySelectorAll(".spanel").forEach(function(p){p.hidden=p.id!=="p-"+b.dataset.p})}});
  s.querySelectorAll(".toc a").forEach(function(a){a.addEventListener("click",function(){set(false)})});
 }
 
@@ -66,7 +61,7 @@ if(page==="post"){
  if(i<0){art.innerHTML='<div class="empty"><b>Post not found.</b><br><a href="blog.html">Back to all posts</a></div>';mount(null)}
  else{
   var p=P[i];document.title=p.title+" | Abigail Jennifer";
-  art.innerHTML='<article class="art">'+img(p.img,"banner")+'<div class="ah"><div class="pdate">'+fmt(p.date)+'</div><h1>'+p.title+'</h1><p class="psub">'+p.sub+'</p><div class="tags">'+p.tags.map(function(t){return chip(t)}).join("")+'</div></div><div class="abody" id="abody">'+p.body+'</div><div class="afoot"><a class="btn p" href="index.html">← Main page</a><a class="btn" href="blog.html">All blog posts</a></div></article>';
+  art.innerHTML='<article class="art">'+img(p.img,"banner")+'<div class="ah"><div class="pdate">'+fmt(p.date)+'</div><h1>'+p.title+'</h1><p class="psub">'+p.sub+'</p><div class="tags">'+p.tags.map(function(t){return chip(t)}).join("")+'</div></div><div class="abody" id="abody">'+p.body+'</div><div class="afoot"><a class="btn p" href="blog.html">← All blog posts</a></div></article>';
   var toc=null,hs=document.querySelectorAll("#abody h2,#abody h3");
   if(p.toc!==false&&hs.length){toc="";hs.forEach(function(h){h.id=slug(h.textContent);toc+='<a class="'+(h.tagName==="H3"?"l3":"l2")+'" href="#'+h.id+'">'+h.textContent+'</a>'})}
   mount(toc);
@@ -75,6 +70,7 @@ if(page==="post"){
    var m=document.getElementById("more");
    m.innerHTML='<h2>Keep reading</h2><div class="mrow" id="mrow">'+others.map(function(o){return'<div class="mcard">'+img(o.img)+'<div><div class="pdate">'+fmt(o.date)+'</div><h3><a href="post.html?p='+o.id+'">'+o.title+'</a></h3></div></div>'}).join("")+'</div><div class="nc"><button type="button" id="mp" aria-label="Scroll left">‹</button><button type="button" id="mn2" aria-label="Scroll right">›</button></div>';
    var row=document.getElementById("mrow");
+   function chk(){document.querySelector(".more .nc").style.display=row.scrollWidth>row.clientWidth+4?"flex":"none"}chk();window.addEventListener("resize",chk);
    document.getElementById("mp").onclick=function(){row.scrollBy({left:-row.clientWidth*.8,behavior:"smooth"})};
    document.getElementById("mn2").onclick=function(){row.scrollBy({left:row.clientWidth*.8,behavior:"smooth"})};
   }
