@@ -5,7 +5,10 @@ const PAGES=[['index.html','About'],['work.html','Experience & Education'],['res
 /* every page exists now. To hide a page from the menu while you work on it, list only the finished pages here, e.g. ['index.html','work.html'] */
 const BUILT=PAGES.map(p=>p[0]);
 const norm=x=>x.replace('.html','')||'index';
-const cur=norm(location.pathname.split('/').pop());
+/* pages that belong to a menu section: post.html counts as Blog */
+const SECTION={post:'blog'};
+const page=norm(location.pathname.split('/').pop());
+const cur=SECTION[page]||page;
 const items=PAGES.map(p=>BUILT.includes(p[0])?`<a href="${p[0]}"${norm(p[0])===cur?' class="on" aria-current="page"':''}>${p[1]}</a>`:`<span class="soon" title="Coming soon">${p[1]}</span>`).join('');
 $('#nav').innerHTML=`<nav><div class="wrap"><b><a href="index.html">Abigail Jennifer</a></b><div class="links">${items}</div><button id="th" aria-label="Switch light or dark theme">&#9788;</button><button id="mn" aria-expanded="false" aria-controls="pl" aria-label="Open page menu"><svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M0 1h16M0 6h16M0 11h16" stroke="currentColor" stroke-width="2"/></svg>Menu</button></div><div class="plist" id="pl" hidden>${items}</div></nav>`;
 const mn=$('#mn'),pl=$('#pl'),navEl=$('nav');
