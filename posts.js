@@ -1,15 +1,14 @@
 /* Add new posts at the TOP of this list. Dates are YYYY-MM-DD (shown as 18 November 2026).
    img: banner image path. toc:false hides the Contents tab. Tags must match research.html slugs. */
 window.POSTS=[
-{id:"welcome",img:"images/blog/welcome.svg",date:"2026-11-04",
- title:"Welcome: why this page exists",
- sub:"A home for my inputs, outputs and the way I handle calculations",
- tags:["multireference","dft","spectroscopy"],toc:false,
+{id:"welcome",img:"images/blog/welcome.png",date:"2026-11-04",
+ title:"Welcome to my Open Notebook: Why this Blog Exists",
+ sub:"A home for my inputs, outputs, their interpretations and general discussions",
  body:'<p>Welcome. This page keeps my work in one place: the calculations I run, the inputs I write, the outputs and spectra that come out of them, and the notes I make along the way.</p>'+
  '<h2>Why I made it</h2><p>Research on heavy elements involves many small decisions that rarely reach a paper: which active space I tried, why a calculation did not converge, how a spectrum was broadened. Writing these down helps me repeat my own work and, I hope, helps students who are starting on similar problems.</p>'+
  '<h2>What you will find here</h2><ul><li><b>Inputs:</b> annotated examples of how a calculation is set up.</li><li><b>Outputs:</b> results, spectra and the plots made from them.</li><li><b>Notes:</b> what worked, what failed and what I would do differently.</li></ul><p>Every post carries tags that match the topics on my research page, so a tag there leads you to the related posts here.</p>'+
- '<h2>How I handle calculations</h2><ol><li>One folder per calculation, named by system, method and basis set.</li><li>The input, the output and a short readme (what was run and why) stay together.</li><li>I record the geometry source, the active space or orbital choice, and the convergence checks.</li><li>A multiconfigurational result is compared with a simpler method before I trust it.</li><li>Failed attempts are kept with a note, because they teach as much as the successes.</li><li>Processed spectra and plots are named after the calculation they came from.</li></ol>'+
- '<p class="ph">Draft text: edit this list so it reflects your own workflow.</p>'},
+'<h2>A note on images</h2><p>Most of the images on this blog and on my research page are AI-generated. They are there to illustrate, not to present data. The graphical abstracts that accompany my publications are the exception: I created those from scratch myself.</p>'+
+'<h2>A last word</h2><p>I will add posts as my work moves along, so the blog will grow unevenly, in step with the research. These are my own working notes, so if something is unclear, I would be glad to hear about it.</p>'},
 {id:"core-hole-to-spectrum",img:"images/blog/xray.svg",date:"2026-11-04",
  title:"From core hole to spectrum",
  sub:"Why X-ray spectra of small heavy-element complexes need more than one configuration",
