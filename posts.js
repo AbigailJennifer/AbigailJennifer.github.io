@@ -4,6 +4,7 @@ window.POSTS=[
 {id:"welcome",img:"images/blog/welcome.png",date:"2026-11-04",
  title:"Welcome to my Open Notebook: Why this Blog Exists",
  sub:"A home for my inputs, outputs, their interpretations and general discussions",
+ tags:[],toc:false,
  body:'<p>Welcome. This page keeps my work in one place: the calculations I run, the inputs I write, the outputs and spectra that come out of them, and the notes I make along the way.</p>'+
  '<h2>Why I made it</h2><p>Research on heavy elements involves many small decisions that rarely reach a paper: which active space I tried, why a calculation did not converge, how a spectrum was broadened. Writing these down helps me repeat my own work and, I hope, helps students who are starting on similar problems.</p>'+
  '<h2>What you will find here</h2><ul><li><b>Inputs:</b> annotated examples of how a calculation is set up.</li><li><b>Outputs:</b> results, spectra and the plots made from them.</li><li><b>Notes:</b> what worked, what failed and what I would do differently.</li></ul><p>Every post carries tags that match the topics on my research page, so a tag there leads you to the related posts here.</p>'+
