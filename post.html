@@ -19,24 +19,34 @@
 <script src="site.js"></script><script src="posts.js?v=4"></script><script src="blog.js?v=4"></script>
 
 <!-- Comments and likes under each published post (drafts without a date get none).
-     It reads the post name from the address, so blog.js does not need to change. -->
-<script type="module">
-import { mountComments } from './comments.js';
-const holder = document.getElementById('comments'), art = document.getElementById('art');
-const posts = window.POSTS || [], ids = posts.map(p => p.id);
-const detect = () => {                       // finds the post name in the address, e.g. post.html?id=welcome or post.html#welcome
-  const q = new URLSearchParams(location.search);
-  return [...q.values(), location.hash.replace(/^#\/?/, '').split('&')[0]].find(v => v && ids.includes(v)) || null;
-};
-let current = null;
-const sync = () => {
-  const id = detect(); if (id === current) return; current = id;
-  const p = posts.find(x => x.id === id);
-  holder.innerHTML = ''; if (!id || !p || !p.date) return;
-  const box = document.createElement('div'); holder.append(box); mountComments(box, id);
-};
-sync();
-addEventListener('hashchange', sync); addEventListener('popstate', sync);
-if (art) new MutationObserver(sync).observe(art, { childList: true });
+     It reads the post name from the address (post.html?p=welcome), so blog.js does not need to change.
+     If something is wrong you will see a short message here instead of nothing. -->
+<script>
+(function () {
+  var holder = document.getElementById('comments'), art = document.getElementById('art');
+  var posts = window.POSTS || [], ids = posts.map(function (p) { return p.id; });
+  function detect() {
+    var q = new URLSearchParams(location.search), c = [];
+    q.forEach(function (v) { c.push(v); });
+    c.push(location.hash.replace(/^#\/?/, '').split('&')[0]);
+    for (var i = 0; i < c.length; i++) if (c[i] && ids.indexOf(c[i]) > -1) return c[i];
+    return null;
+  }
+  var current = null, mod = null;
+  function sync() {
+    var id = detect(); if (id === current) return; current = id;
+    var p = posts.filter(function (x) { return x.id === id; })[0];
+    holder.innerHTML = ''; if (!id || !p || !p.date) return;
+    var box = document.createElement('div'); holder.appendChild(box);
+    if (!mod) mod = import('./comments.js');
+    mod.then(function (m) { return m.mountComments(box, id); }).catch(function (e) {
+      console.error('Comments:', e);
+      box.innerHTML = '<div style="margin-top:40px;padding:14px 18px;border:1px dashed #c2410c;border-radius:12px;color:#c2410c;font:600 15px sans-serif">The comment box could not be loaded (' + String(e && e.message || e).replace(/</g, '&lt;') + '). Check that comments.js is uploaded next to post.html.</div>';
+    });
+  }
+  sync();
+  addEventListener('hashchange', sync); addEventListener('popstate', sync);
+  if (art) new MutationObserver(sync).observe(art, { childList: true });
+})();
 </script>
 </body></html>
