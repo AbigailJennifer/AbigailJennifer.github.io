@@ -10,7 +10,7 @@
 
 /* Firebase console > Project settings (gear icon) > General > Your apps > Web app > "SDK setup and configuration" > Config.
    Paste your four values between the quotes. These values are safe to be public; your Firestore rules protect the data. */
-const firebaseConfig = {
+const FIREBASE_CONFIG = {
   apiKey: "AIzaSyAUGWH1TA8xaVrJ29BjW4dkzWnjavj7DVw",
   authDomain: "abigail-blog.firebaseapp.com",
   projectId: "abigail-blog",
