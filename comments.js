@@ -10,11 +10,13 @@
 
 /* Firebase console > Project settings (gear icon) > General > Your apps > Web app > "SDK setup and configuration" > Config.
    Paste your four values between the quotes. These values are safe to be public; your Firestore rules protect the data. */
-const FIREBASE_CONFIG = {
-  apiKey: '',        // e.g. 'AIza...'
-  authDomain: '',    // e.g. 'your-project.firebaseapp.com'
-  projectId: '',     // e.g. 'your-project'
-  appId: ''          // e.g. '1:1234567890:web:abcdef123456'
+const firebaseConfig = {
+  apiKey: "AIzaSyAUGWH1TA8xaVrJ29BjW4dkzWnjavj7DVw",
+  authDomain: "abigail-blog.firebaseapp.com",
+  projectId: "abigail-blog",
+  storageBucket: "abigail-blog.firebasestorage.app",
+  messagingSenderId: "1037631465956",
+  appId: "1:1037631465956:web:30e844ca6a94838395fff1"
 };
 
 const LIVE = !!FIREBASE_CONFIG.projectId, FB = '10.12.2', cdn = f => `https://www.gstatic.com/firebasejs/${FB}/${f}.js`;
@@ -70,7 +72,8 @@ function style() {
   s.textContent = `
 .cm{margin:18px 0 0;border-top:2px solid var(--line);padding-top:18px;font-family:var(--b,Georgia,serif)}
 .cm *{box-sizing:border-box}
-.cm-top{display:flex;justify-content:space-between;align-items:center;gap:12px 16px;flex-wrap:wrap;margin:0 0 4px}
+.cm-top{margin:0 0 6px}
+.cm-lk{display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;color:var(--mut);font-size:15px;padding:6px 0 2px}
 .cm-q{display:block;font:800 22px var(--h,sans-serif);color:var(--ink)}.cm-s{display:block;color:var(--mut);font-size:15px;margin-top:2px}
 .cm-like{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:8px 16px;font:700 15px var(--h,sans-serif);cursor:pointer;transition:.2s}
 .cm-like:hover{border-color:var(--teal);color:var(--teal)}
@@ -84,13 +87,13 @@ function style() {
 .cm-n{font:800 16px var(--h,sans-serif);color:var(--ink)}.cm-d{font:500 14px var(--h,sans-serif);color:var(--mut);margin-left:10px}
 .cm-t{margin:6px 0 10px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:17px;line-height:1.6}
 .cm-empty{color:var(--mut);font-style:italic;padding:10px 0 4px}
-.cm-f{display:grid;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:14px}
-.cm-f h4{font:800 20px var(--h,sans-serif);margin:0}
-.cm-f label{display:block;font:700 14px var(--h,sans-serif);margin-bottom:6px}.cm-f label i{font-weight:500;color:var(--mut);font-style:normal}
-.cm-f input,.cm-f textarea{width:100%;font:16px var(--b,serif);padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
-.cm-f textarea{min-height:120px;resize:vertical}
-.cm-f .hint{font-size:13.5px;color:var(--mut);margin-top:5px}
-.cm-f button[type=submit]{justify-self:start;border:0;border-radius:99px;background:var(--ink);color:var(--bg);font:700 15px var(--h,sans-serif);padding:12px 24px;cursor:pointer}
+.cm-f{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-top:12px}
+.cm-f h4{font:800 18px var(--h,sans-serif);margin:0}
+.cm-f label{display:block;font:700 14px var(--h,sans-serif);margin-bottom:4px}.cm-f label i{font-weight:500;color:var(--mut);font-style:normal}
+.cm-f input,.cm-f textarea{width:100%;font:16px var(--b,serif);padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.cm-f textarea{min-height:84px;resize:vertical}
+.cm-f .hint{font-size:13.5px;color:var(--mut);margin-top:3px}
+.cm-f button[type=submit]{justify-self:start;border:0;border-radius:99px;background:var(--ink);color:var(--bg);font:700 15px var(--h,sans-serif);padding:10px 22px;cursor:pointer}
 .cm-f button[type=submit]:disabled{opacity:.6;cursor:default}
 .cm-hp{position:absolute!important;left:-9999px!important;height:0;overflow:hidden}
 .cm-msg{font:600 15px var(--h,sans-serif);color:var(--teal);min-height:1.2em;transition:opacity .6s}.cm-msg.err{color:#c2410c}.cm-msg.cm-fade{opacity:0}
@@ -113,7 +116,8 @@ export async function mountComments(el, postId) {
   try { be = await backend() }
   catch (e) { console.error('Comments: could not start', e); el.className = 'cm'; el.innerHTML = '<div class="cm-empty">Comments are not available right now. Please check back soon.</div>'; return }
   el.classList.add('cm');
-  el.innerHTML = `<div class="cm-top"><div><b class="cm-q">Share Your Perspectives</b><span class="cm-s">An open space for thoughts and discussion.</span></div><button data-t="post"></button></div>
+  el.innerHTML = `<div class="cm-top"><b class="cm-q">Share Your Perspectives</b><span class="cm-s">An open space for thoughts and discussion.</span></div>
+<div class="cm-lk"><span>If you found this read worthwhile, you’re welcome to leave a like.</span><button data-t="post"></button></div>
 <div class="cm-list"></div>
 <form class="cm-f" novalidate><h4>Leave a comment</h4>
 <div><label for="cmn-${post}">Name</label><input id="cmn-${post}" name="name" maxlength="80" autocomplete="name" required></div>
