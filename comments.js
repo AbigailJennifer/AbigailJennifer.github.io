@@ -68,23 +68,23 @@ function style() {
   if (document.getElementById('cm-style')) return;
   const s = document.createElement('style'); s.id = 'cm-style';
   s.textContent = `
-.cm{margin:48px 0 0;border-top:1px solid var(--line);padding-top:30px;font-family:var(--b,Georgia,serif)}
+.cm{margin:18px 0 0;border-top:2px solid var(--line);padding-top:18px;font-family:var(--b,Georgia,serif)}
 .cm *{box-sizing:border-box}
-.cm-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px}
-.cm-q{display:block;font:800 18px var(--h,sans-serif);color:var(--ink)}.cm-s{display:block;color:var(--mut);font-size:15px;margin-top:2px}
+.cm-top{display:flex;justify-content:space-between;align-items:center;gap:12px 16px;flex-wrap:wrap;margin:0 0 4px}
+.cm-q{display:block;font:800 22px var(--h,sans-serif);color:var(--ink)}.cm-s{display:block;color:var(--mut);font-size:15px;margin-top:2px}
 .cm-like{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:8px 16px;font:700 15px var(--h,sans-serif);cursor:pointer;transition:.2s}
 .cm-like:hover{border-color:var(--teal);color:var(--teal)}
 .cm-like[aria-pressed=true]{background:var(--teal);border-color:var(--teal);color:#fff}
 .cm-like.sm{padding:4px 11px;font-size:13px}.cm-like.sm svg{width:15px;height:15px}
 .cm-like:disabled{opacity:.55;cursor:default}
-.cm-h{font:800 24px var(--h,sans-serif);margin:34px 0 18px}
-.cm-c{display:grid;grid-template-columns:42px 1fr;gap:4px 14px;padding:18px 0;border-top:1px solid var(--line)}
+.cm-c{display:grid;grid-template-columns:42px 1fr;gap:4px 14px;padding:14px 0;border-top:1px solid var(--line)}
 .cm-c:first-of-type{border-top:0}
+.cm-list{margin:0}
 .cm-av{width:42px;height:42px;border-radius:50%;background:color-mix(in srgb,var(--teal) 16%,var(--card));color:var(--teal);display:grid;place-items:center;font:800 17px var(--h,sans-serif)}
 .cm-n{font:800 16px var(--h,sans-serif);color:var(--ink)}.cm-d{font:500 14px var(--h,sans-serif);color:var(--mut);margin-left:10px}
 .cm-t{margin:6px 0 10px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:17px;line-height:1.6}
-.cm-empty{color:var(--mut);font-style:italic;padding:6px 0 14px}
-.cm-f{display:grid;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-top:26px}
+.cm-empty{color:var(--mut);font-style:italic;padding:10px 0 4px}
+.cm-f{display:grid;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:14px}
 .cm-f h4{font:800 20px var(--h,sans-serif);margin:0}
 .cm-f label{display:block;font:700 14px var(--h,sans-serif);margin-bottom:6px}.cm-f label i{font-weight:500;color:var(--mut);font-style:normal}
 .cm-f input,.cm-f textarea{width:100%;font:16px var(--b,serif);padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
@@ -113,8 +113,8 @@ export async function mountComments(el, postId) {
   try { be = await backend() }
   catch (e) { console.error('Comments: could not start', e); el.className = 'cm'; el.innerHTML = '<div class="cm-empty">Comments are not available right now. Please check back soon.</div>'; return }
   el.classList.add('cm');
-  el.innerHTML = `<div class="cm-top"><div><b class="cm-q">Enjoyed this post?</b><span class="cm-s">A like helps me know what to write next.</span></div><button data-t="post"></button></div>
-<h3 class="cm-h">Comments</h3><div class="cm-list"></div>
+  el.innerHTML = `<div class="cm-top"><div><b class="cm-q">Share Your Perspectives</b><span class="cm-s">An open space for thoughts and discussion.</span></div><button data-t="post"></button></div>
+<div class="cm-list"></div>
 <form class="cm-f" novalidate><h4>Leave a comment</h4>
 <div><label for="cmn-${post}">Name</label><input id="cmn-${post}" name="name" maxlength="80" autocomplete="name" required></div>
 <div><label for="cme-${post}">Email <i>(optional)</i></label><input id="cme-${post}" name="email" type="email" maxlength="200" autocomplete="email"><div class="hint">Never shown on this site. Only I can see it, so I can write back to you.</div></div>
