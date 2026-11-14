@@ -76,3 +76,10 @@ a.chip small{font-size:11px;opacity:.75;margin-left:4px}
   hyphens:none;
   text-wrap:pretty;
 }
+/* comments inside the post card */
+.abody{padding-bottom:20px}
+.art #comments{padding:0 38px}
+.art .cm{margin:0 0 22px;padding-top:20px}
+.art .cm-f{background:var(--bg)}
+.art .cm-f input,.art .cm-f textarea{background:var(--card)}
+@media(max-width:600px){.art #comments{padding:0 20px}}
