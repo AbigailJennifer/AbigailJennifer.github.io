@@ -11,10 +11,32 @@
 <body data-page="post">
 <div id="nav"></div>
 <div class="bp">
-<section class="s"><div class="wrap" style="max-width:1240px"><div class="bl"><main><div id="art"></div></main><div id="sidemount"></div></div></div></section>
+<section class="s"><div class="wrap" style="max-width:1240px"><div class="bl"><main><div id="art"></div><div id="comments"></div></main><div id="sidemount"></div></div></div></section>
 <section class="s" style="padding-top:0"><div class="wrap" style="max-width:1240px"><div class="more" id="more"></div></div></section>
 </div>
 <button id="sidetab" type="button"></button>
 <div id="foot"></div>
 <script src="site.js"></script><script src="posts.js?v=4"></script><script src="blog.js?v=4"></script>
+
+<!-- Comments and likes under each published post (drafts without a date get none).
+     It reads the post name from the address, so blog.js does not need to change. -->
+<script type="module">
+import { mountComments } from './comments.js';
+const holder = document.getElementById('comments'), art = document.getElementById('art');
+const posts = window.POSTS || [], ids = posts.map(p => p.id);
+const detect = () => {                       // finds the post name in the address, e.g. post.html?id=welcome or post.html#welcome
+  const q = new URLSearchParams(location.search);
+  return [...q.values(), location.hash.replace(/^#\/?/, '').split('&')[0]].find(v => v && ids.includes(v)) || null;
+};
+let current = null;
+const sync = () => {
+  const id = detect(); if (id === current) return; current = id;
+  const p = posts.find(x => x.id === id);
+  holder.innerHTML = ''; if (!id || !p || !p.date) return;
+  const box = document.createElement('div'); holder.append(box); mountComments(box, id);
+};
+sync();
+addEventListener('hashchange', sync); addEventListener('popstate', sync);
+if (art) new MutationObserver(sync).observe(art, { childList: true });
+</script>
 </body></html>
