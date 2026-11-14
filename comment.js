@@ -7,7 +7,15 @@
    Until you paste your Firebase details below, it runs in PREVIEW MODE: everything is kept in the
    visitor's own browser, so you can see and try the layout before setting anything up.
    =========================================================================== */
-const FIREBASE_CONFIG = { apiKey: '', authDomain: '', projectId: '', appId: '' };   // paste from Firebase (see the setup steps)
+
+/* Firebase console > Project settings (gear icon) > General > Your apps > Web app > "SDK setup and configuration" > Config.
+   Paste your four values between the quotes. These values are safe to be public; your Firestore rules protect the data. */
+const FIREBASE_CONFIG = {
+  apiKey: '',        // e.g. 'AIza...'
+  authDomain: '',    // e.g. 'your-project.firebaseapp.com'
+  projectId: '',     // e.g. 'your-project'
+  appId: ''          // e.g. '1:1234567890:web:abcdef123456'
+};
 
 const LIVE = !!FIREBASE_CONFIG.projectId, FB = '10.12.2', cdn = f => `https://www.gstatic.com/firebasejs/${FB}/${f}.js`;
 const THUMB = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>';
@@ -101,7 +109,9 @@ function like(b, target, be) {
 }
 export async function mountComments(el, postId) {
   const post = String(postId).replace(/[\/\s]+/g, '-'); style();
-  const be = await backend();
+  let be;
+  try { be = await backend() }
+  catch (e) { console.error('Comments: could not start', e); el.className = 'cm'; el.innerHTML = '<div class="cm-empty">Comments are not available right now. Please check back soon.</div>'; return }
   el.classList.add('cm');
   el.innerHTML = `<div class="cm-top"><div><b class="cm-q">Enjoyed this post?</b><span class="cm-s">A like helps me know what to write next.</span></div><button data-t="post"></button></div>
 <h3 class="cm-h">Comments</h3><div class="cm-list"></div>
