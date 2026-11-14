@@ -68,6 +68,8 @@ if(page==="post"){
  else{
   var p=P[i];document.title=p.title+" | Abigail Jennifer";
   art.innerHTML='<article class="art">'+img(p.img,"banner")+'<div class="ah"><div class="pdate">'+fmt(p.date)+'</div><h1>'+p.title+'</h1><p class="psub">'+p.sub+'</p><div class="tags">'+p.tags.map(function(t){return chip(t)}).join("")+'</div></div><div class="abody" id="abody">'+p.body+'</div><div class="afoot"><a class="btn p" href="blog.html">← All blog posts</a></div></article>';
+   var cmh=document.getElementById("comments"),foot=art.querySelector(".afoot");
+  if(cmh&&foot)foot.parentNode.insertBefore(cmh,foot);
   var toc=null,hs=document.querySelectorAll("#abody h2,#abody h3");
   if(p.toc!==false&&hs.length){toc="";hs.forEach(function(h){h.id=slug(h.textContent);toc+='<a class="'+(h.tagName==="H3"?"l3":"l2")+'" href="#'+h.id+'">'+h.textContent+'</a>'})}
   mount(toc);
