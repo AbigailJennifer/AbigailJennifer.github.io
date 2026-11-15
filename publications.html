@@ -54,6 +54,23 @@ a.t{color:var(--teal);text-decoration:none;font-weight:600}a.t:hover{text-decora
 .fc,.ac{align-items:center}
 .gi{margin:0 auto}
 .gi img{margin:0 auto}
+   /* justified text: featured papers, the All list and the topic tabs */
+.fc h3,.fc .cit,.fc .au,.fc .sy,
+.pr>div,
+.ac h3,.ac .cit,.ac .au,.ac .sy{
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:none;
+  -webkit-hyphens:none;
+  word-break:normal;
+  overflow-wrap:normal;
+  text-wrap:pretty;
+}
+@media(max-width:420px){
+  .fc h3,.fc .cit,.fc .au,.fc .sy,
+  .pr>div,
+  .ac h3,.ac .cit,.ac .au,.ac .sy{text-align:left}
+}
 </style></head>
 <body><div id="nav"></div>
 <header class="pagehead"><div class="wrap"><h1>Publications</h1><p class="lead">Research articles on actinide chemistry, nuclear waste separation, chemical education and collaborations.</p></div></header>
