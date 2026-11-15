@@ -48,7 +48,7 @@ window.POSTS=[
  '</ul>'+
  '<p>The analogy: a node is a lab, cores are the researchers working in it, and memory is the shared bench space. More researchers can work faster, but only if there is enough bench space for all of them, and only if the work can actually be divided.</p>'+
 
- '<h2>3. Reading your node’s memory: an example</h2>'+
+ '<h2>3. Reading your node’s memory: An example</h2>'+
  '<p>Before choosing memory, find out what your compute node actually has. On a SLURM cluster, run:</p>'+
  CB(`sinfo -N -o "%N %X %Y %Z %c %m"`,'Command')+
  '<p>This cluster prints:</p>'+
@@ -121,7 +121,7 @@ Core(s) per socket:  20
 Socket(s):           2`,'Output')+
  '<p>So 2 sockets × 20 cores per socket = 40 cores. This is the login node, so it’s only for editing and submitting (maybe for very small jobs like plotting or small Python codes for post-calculation processing of output).</p>'+
 
- '<h2>4. Should I increase memory or cores? For effective calculations</h2>'+
+ '<h2>4. Should I increase memory or cores for effective calculations?</h2>'+
  '<p>These are two separate things depending on the module of the program to consider for every calculation:</p>'+
  '<ul>'+
  '<li>More cores make a calculation faster, but only if the program can split its work among them.</li>'+
