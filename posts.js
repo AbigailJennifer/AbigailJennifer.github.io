@@ -10,7 +10,6 @@ window.POSTS=[
  '<h2>What you will find here</h2><ul><li><b>Inputs:</b> annotated examples of how a calculation is set up.</li><li><b>Outputs:</b> results, spectra and the plots made from them.</li><li><b>Notes:</b> what worked, what failed and what I would do differently.</li></ul><p>Every post carries tags that match the topics on my research page, so a tag there leads you to the related posts here.</p>'+
 '<h2>A note on images</h2><p>Most of the images on this blog and on my research page are AI-generated. They are there to illustrate, not to present data. The graphical abstracts that accompany my publications are the exception: I created those from scratch myself.</p>'+
 '<h2>A last word</h2><p>I will keep adding posts to this notebook alongside my research, and there is more to come. These are my own working notes, so I would be glad to hear your comments and questions.</p>'},
-
 {id:"cluster-hardware-memory",img:"images/blog/cluster-hardware.png",date:"2026-11-07",
  title:"Understanding Cluster Hardware and Memory Allocations for Calculations on OpenMolcas, NWChem, Gaussian, and ORCA",
  sub:"A beginner-friendly guide to nodes, cores and memory, and how four quantum chemistry programs use them",
@@ -213,7 +212,6 @@ pymolcas input.input -o output.out`,'SLURM script')+
  '<p>Choosing resources is less about memorizing numbers and more about understanding what your program does with them. Once you understand node, core, and memory, those differences make sense, and your jobs spend less time in the queue and more time finishing.</p>'+
  '<p>If you are just starting out or moving into a new cluster, spend time to know the node specifications, run <code>sinfo</code> once, and keep those numbers handy. They will save you many failed jobs.</p>'+
  '<p>Happy computing!</p>'},
-   
 {id:"core-hole-to-spectrum",img:"images/blog/xray.svg",date:"2026-11-04",
  title:"From core hole to spectrum",
  sub:"Why X-ray spectra of small heavy-element complexes need more than one configuration",
