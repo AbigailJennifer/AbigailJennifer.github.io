@@ -70,6 +70,13 @@
 #lb.open{display:flex}
 #lb img{display:block;max-width:min(94vw,1100px);max-height:80vh;width:auto;height:auto;border-radius:12px}
 #lb p{margin:0;color:#e7f0f4;font:600 15px/1.4 var(--h);text-align:center;max-width:min(94vw,800px)}
+   /* captions: one line when there is room, wrap only when the space runs out */
+.ep,.ep.wide{max-width:100%}
+.ep img{max-width:min(340px,calc(100vw - 80px))}
+.ep.wide img{max-width:min(520px,calc(100vw - 80px))}
+.ep figcaption{width:auto;min-width:0;max-width:100%}
+.ev li.has-pics>.eg{max-width:min(460px,45vw)}
+.ev li.has-pics>.eg:has(.wide){max-width:min(560px,50vw)}
 </style></head>
 <body><div id="nav"></div>
 <header class="pagehead"><div class="wrap"><h1>Science Communication</h1><p class="lead">Sharing chemistry beyond the journal page: what I have contributed, and the events where I have learned and presented.</p></div></header>
