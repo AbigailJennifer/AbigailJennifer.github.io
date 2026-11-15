@@ -83,3 +83,12 @@ a.chip small{font-size:11px;opacity:.75;margin-left:4px}
 .art .cm-f{background:var(--bg)}
 .art .cm-f input,.art .cm-f textarea{background:var(--card)}
 @media(max-width:600px){.art #comments{padding:0 20px}}
+
+/* code in posts */
+.abody code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.88em;background:color-mix(in srgb,var(--teal) 10%,var(--bg));border:1px solid var(--line);border-radius:6px;padding:1px 6px;overflow-wrap:anywhere}
+.abody pre.code{position:relative;margin:16px 0 20px;padding:34px 18px 14px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:12px;overflow-x:auto;text-align:left}
+.abody pre.code::before{content:attr(data-label);position:absolute;top:9px;left:18px;font:700 11px var(--h);letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.abody pre.code code{display:block;background:none;border:0;padding:0;font-size:14.5px;line-height:1.55;white-space:pre;color:var(--ink)}
+.copy{position:absolute;top:6px;right:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;font:700 12px var(--h);padding:4px 12px;cursor:pointer}
+.copy:hover{border-color:var(--teal);color:var(--teal)}
+.abody .cap{font-size:15px;font-style:italic;color:var(--mut);text-align:center}
