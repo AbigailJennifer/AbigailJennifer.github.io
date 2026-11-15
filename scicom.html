@@ -55,15 +55,30 @@
 .cc[data-k="chemmag"] .cp img{max-height:260px}
 .cc[data-k="kings"] .cp img{max-height:350px}
 .cc[data-k="ssa"] .cp img{max-height:350px}
-.cc[data-k="cen"] .cp img{max-height:410px}   
+.cc[data-k="cen"] .cp img{max-height:410px}
+   /* event photos: shown only when the image file exists */
+.eg{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 0}
+.eg:empty{display:none}
+.ep{margin:0;flex:0 0 auto;width:fit-content;max-width:min(100%,340px)}
+.ep.wide{max-width:min(100%,520px)}
+.ep button{display:block;padding:0;border:0;background:none;cursor:zoom-in;line-height:0;border-radius:14px}
+.ep button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.ep img{display:block;width:auto;height:auto;max-width:100%;max-height:260px;border-radius:14px;border:1px solid var(--line)}
+.ep.wide img{max-height:340px}
+.ep figcaption{width:0;min-width:100%;margin:7px 2px 0;font:600 13.5px/1.4 var(--h);color:var(--mut)}
+#lb{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:rgba(7,19,31,.88);padding:24px;cursor:zoom-out}
+#lb.open{display:flex}
+#lb img{display:block;max-width:min(94vw,1100px);max-height:80vh;width:auto;height:auto;border-radius:12px}
+#lb p{margin:0;color:#e7f0f4;font:600 15px/1.4 var(--h);text-align:center;max-width:min(94vw,800px)}
 </style></head>
 <body><div id="nav"></div>
 <header class="pagehead"><div class="wrap"><h1>Science Communication</h1><p class="lead">Sharing chemistry beyond the journal page: what I have contributed, and the events where I have learned and presented.</p></div></header>
 
 <section class="s"><div class="wrap">
 <div class="filters" id="tabs" role="tablist" aria-label="Science communication sections"></div>
-<div id="p-contrib"><div class="cg" id="cg"></div></div>
-<div id="p-events" hidden><div id="evl"></div></div>
+<div id="p-events"><div id="evl"></div></div>
+<div id="p-contrib" hidden><div class="cg" id="cg"></div></div>
+<div id="lb" role="dialog" aria-label="Enlarged photo"><img alt=""><p></p></div>
 </div></section>
 
 <div id="foot"></div>
@@ -88,7 +103,7 @@ const CT=[
      ['reflect','What I learned: ...']                           (larger serif with a side bar, for a longer reflection) */
 const EV=[
 {y:2026,d:'May 25 \u2013 30, 2026',t:'IITM Workshop on Theoretical and Computational Chemistry (IWTC<sup>2</sup>): Density Functional Theory',l:'Department of Chemistry, IIT-Madras',x:[]},
-{y:2025,d:'December 2 \u2013 5, 2025',t:'Theoretical Chemistry Symposium (TCS) 2025',l:'VMCC, IIT Bombay',x:[]},
+{y:2025,d:'December 2 \u2013 5, 2025',t:'Theoretical Chemistry Symposium (TCS) 2025',l:'VMCC, IIT-Bombay',x:[],pics:[['TCS2025.jpg','TCS 2025, IIT-B, Mumbai. Dec 2, 2025']]},},
 {y:2025,d:'October 6 \u2013 28, 2025',t:'Introduction to Time-Dependent Density-Functional Theory (TDDFT) \u2013 Prof. Carsten A. Ullrich',l:'Department of Physics, IIT-Madras',x:[]},
 {y:2023,d:'September 25 \u2013 October 4, 2023',t:'Next-generation Atomistic Modelling and Simulations with AMS software',l:'Virtual. Organized by: Nyro Research India Pvt. Ltd.',x:[]},
 {y:2023,d:'May 30 \u2013 June 15, 2023',t:'Innovation Training 2023',l:'Virtual. Organized by: Women in Nuclear Innovation (WiNI) Group of Women in Nuclear Global (WiN Global)',x:[]},
@@ -118,13 +133,27 @@ const XL={award:'Distinction',contrib:'Contribution',note:'',reflect:''};
 const XX=(s,t)=>`<div class="x x-${s}">${XL[s]?`<span class="xl">${XL[s]}</span>`:''}${t}</div>`;
 let h=SHOW_PLACEHOLDERS?`<div class="note ph guide"><b>Entry styles (visible while SHOW_PLACEHOLDERS is true). Add any of these under an event:</b>${XX('award','award: a distinction or prize')}${XX('contrib','contrib: what you presented or contributed')}${XX('note','note: a short personal remark in handwriting')}${XX('reflect','reflect: a longer reflection or what you learned')}</div>`:'',yr='';
 EV.forEach((e,i)=>{if(e.y!==yr){if(yr)h+='</ul>';yr=e.y;h+=`<div class="yrd">${yr}</div><ul class="ev">`}
- h+=`<li><div class="ed">${e.d}</div><h3>${e.t}</h3><div class="el">${PIN}<span>${e.l}</span></div>${(e.x||[]).map(x=>XX(x[0],x[1])).join('')}</li>`;if(i===EV.length-1)h+='</ul>'});
+ h+=`<li><div class="ed">${e.d}</div><h3>${e.t}</h3><div class="el">${PIN}<span>${e.l}</span></div>${(e.x||[]).map(x=>XX(x[0],x[1])).join('')}<div class="eg" data-i="${i}"></div></li>`;if(i===EV.length-1)h+='</ul>'});
 $('#evl').innerHTML=h;
 
+/* event photos: an image appears only if its file exists in images/scicom/events/ */
+const lb=$('#lb'),lbi=lb.querySelector('img'),lbp=lb.querySelector('p');
+lb.onclick=()=>lb.classList.remove('open');
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+document.querySelectorAll('.eg').forEach(g=>{(EV[g.dataset.i].pics||[]).forEach(p=>{
+ const im=new Image();im.alt=p[1]||'';
+ im.onload=()=>{const f=document.createElement('figure');f.className='ep'+(p[2]==='wide'?' wide':'');
+  const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Enlarge photo: '+(p[1]||''));b.append(im);
+  b.onclick=()=>{lbi.src=im.src;lbi.alt=im.alt;lbp.textContent=p[1]||'';lb.classList.add('open')};
+  f.append(b);if(p[1]){const c=document.createElement('figcaption');c.textContent=p[1];f.append(c)}
+  g.append(f)};
+ im.src='images/scicom/events/'+p[0]})});
+
 /* ---- the two tabs (an address ending in #events opens the Events tab) ---- */
-const TB=[['Contributions','p-contrib'],['Events','p-events']];
+const TB=[['Events','p-events'],['Contributions','p-contrib']];
+b.onclick=()=>{tab(i);history.replaceState(null,'',i?'#contributions':location.pathname)}
 function tab(i){TB.forEach((t,j)=>{$('#'+t[1]).hidden=j!==i});[...$('#tabs').children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i))}
 TB.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[0];b.setAttribute('aria-pressed',false);b.onclick=()=>{tab(i);history.replaceState(null,'',i?'#events':location.pathname)};$('#tabs').append(b)});
-tab(location.hash==='#events'?1:0);
+tab(location.hash==='#contributions'?1:0);
 </script>
 </body></html>
