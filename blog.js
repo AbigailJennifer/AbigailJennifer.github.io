@@ -5,7 +5,7 @@ var GROUPS=[
 ["Actinide periodicity",[["actinides","Actinides"],["dft","DFT"],["periodic-trends","Periodic trends"],["oxidation-states","Energetics"],["actinyl","Electronic Properties"]]],
 ["Separations",[["americium","Americium"],["curium","Curium"],["separation","Separation"],["ligand-design","Ligand design"],["nuclear-waste","Nuclear waste"]]],
 ["Collaborations",[["collaboration","Collaboration"],["materials","Materials"],["corrosion","Corrosion"],["fluorescent-probes","Fluorescent probes"],["tadf","TADF"]]],
-["Chemical education",[["education-research","Education research"],["virtual-labs","Virtual labs"],["student-voice","Student voice"],["outreach","Outreach"]]]];
+["Chemical education",[["education-research","Education research"],["virtual-labs","Virtual labs"],["student-voice","Student voice"],["outreach","Outreach"]]], ["Computational practice",[["computational-chemistry","Computational chemistry"],["hardware","Hardware"],["memory","Memory"],["orca","ORCA"],["nwchem","NWChem"],["gaussian","Gaussian"],["openmolcas","OpenMolcas"]]]];
 var LABEL={};GROUPS.forEach(function(g){g[1].forEach(function(t){LABEL[t[0]]=t[1]})});
 var P=window.POSTS||[],page=document.body.getAttribute("data-page");
 var qs=new URLSearchParams(location.search),sel=(qs.get("tag")||"").toLowerCase(),q=(qs.get("q")||"").trim();
@@ -70,6 +70,11 @@ if(page==="post"){
   art.innerHTML='<article class="art">'+img(p.img,"banner")+'<div class="ah"><div class="pdate">'+fmt(p.date)+'</div><h1>'+p.title+'</h1><p class="psub">'+p.sub+'</p><div class="tags">'+p.tags.map(function(t){return chip(t)}).join("")+'</div></div><div class="abody" id="abody">'+p.body+'</div><div class="afoot"><a class="btn p" href="blog.html">← All blog posts</a></div></article>';
    var cmh=document.getElementById("comments"),foot=art.querySelector(".afoot");
   if(cmh&&foot)foot.parentNode.insertBefore(cmh,foot);
+    document.querySelectorAll("#abody pre.code").forEach(function(pre){
+   var b=document.createElement("button");b.type="button";b.className="copy";b.textContent="Copy";
+   b.onclick=function(){var t=pre.querySelector("code").textContent;
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).catch(function(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(e){}a.remove()}).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1800)})};
+   pre.appendChild(b)});
   var toc=null,hs=document.querySelectorAll("#abody h2,#abody h3");
   if(p.toc!==false&&hs.length){toc="";hs.forEach(function(h){h.id=slug(h.textContent);toc+='<a class="'+(h.tagName==="H3"?"l3":"l2")+'" href="#'+h.id+'">'+h.textContent+'</a>'})}
   mount(toc);
