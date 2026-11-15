@@ -103,7 +103,7 @@ const CT=[
      ['reflect','What I learned: ...']                           (larger serif with a side bar, for a longer reflection) */
 const EV=[
 {y:2026,d:'May 25 \u2013 30, 2026',t:'IITM Workshop on Theoretical and Computational Chemistry (IWTC<sup>2</sup>): Density Functional Theory',l:'Department of Chemistry, IIT-Madras',x:[]},
-{y:2025,d:'December 2 \u2013 5, 2025',t:'Theoretical Chemistry Symposium (TCS) 2025',l:'VMCC, IIT-Bombay',x:[],pics:[['TCS2025.jpg','TCS 2025, IIT-B, Mumbai. Dec 2, 2025']]},},
+{y:2025,d:'December 2 \u2013 5, 2025',t:'Theoretical Chemistry Symposium (TCS) 2025',l:'VMCC, IIT-Bombay',x:[],pics:[['TCS2025.jpg','TCS 2025, IIT-B, Mumbai. Dec 2, 2025']]},
 {y:2025,d:'October 6 \u2013 28, 2025',t:'Introduction to Time-Dependent Density-Functional Theory (TDDFT) \u2013 Prof. Carsten A. Ullrich',l:'Department of Physics, IIT-Madras',x:[]},
 {y:2023,d:'September 25 \u2013 October 4, 2023',t:'Next-generation Atomistic Modelling and Simulations with AMS software',l:'Virtual. Organized by: Nyro Research India Pvt. Ltd.',x:[]},
 {y:2023,d:'May 30 \u2013 June 15, 2023',t:'Innovation Training 2023',l:'Virtual. Organized by: Women in Nuclear Innovation (WiNI) Group of Women in Nuclear Global (WiN Global)',x:[]},
@@ -149,11 +149,10 @@ document.querySelectorAll('.eg').forEach(g=>{(EV[g.dataset.i].pics||[]).forEach(
   g.append(f)};
  im.src='images/scicom/events/'+p[0]})});
 
-/* ---- the two tabs (an address ending in #events opens the Events tab) ---- */
+/* ---- the two tabs (an address ending in #contributions opens the Contributions tab) ---- */
 const TB=[['Events','p-events'],['Contributions','p-contrib']];
-b.onclick=()=>{tab(i);history.replaceState(null,'',i?'#contributions':location.pathname)}
 function tab(i){TB.forEach((t,j)=>{$('#'+t[1]).hidden=j!==i});[...$('#tabs').children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i))}
-TB.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[0];b.setAttribute('aria-pressed',false);b.onclick=()=>{tab(i);history.replaceState(null,'',i?'#events':location.pathname)};$('#tabs').append(b)});
+TB.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[0];b.setAttribute('aria-pressed',false);b.onclick=()=>{tab(i);history.replaceState(null,'',i?'#contributions':location.pathname)};$('#tabs').append(b)});
 tab(location.hash==='#contributions'?1:0);
 </script>
 </body></html>
