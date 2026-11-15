@@ -25,7 +25,6 @@ window.POSTS=[
  body:
  '<p>The first time I submitted a calculation to a cluster, I had no idea what “nodes,” “cores,” or “memory per CPU” really meant. I copied a job script from a senior colleague, changed the input file, and hoped for the best. Sometimes it ran. Sometimes it died with a cryptic out-of-memory message after two days in the queue. If that sounds familiar, this post is for you.</p>'+
  '<p>We will start from the very basics of cluster hardware, then look at how four popular quantum chemistry programs (OpenMolcas, NWChem, Gaussian and ORCA) each treat processors and memory, and finally put together some rules of thumb for choosing memory.</p>'+
- '<p class="cap">AI-generated illustration of hardware allocations for quantum chemical calculations.</p>'+
 
  '<h2>1. What is a computing cluster?</h2>'+
  '<p>Instead of one computer on your desk, a computing cluster is access to dozens or hundreds of machines, each far more capable than a laptop. A single DFT or multireference calculation on a heavy-element complex can need hundreds of gigabytes of memory and days of computing time on a laptop, which typically has 8 to 16 GB of memory, while a cluster lets you borrow a large machine with more memory for such large computations.</p>'+
