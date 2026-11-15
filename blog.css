@@ -61,7 +61,7 @@ a.chip small{font-size:11px;opacity:.75;margin-left:4px}
 .ext .card{display:flex;flex-direction:column}.ext .card p{color:var(--ink);text-align:justify;text-justify:inter-word;hyphens:none}
 .ext .host{font:600 14px var(--h);color:var(--mut);margin:0 0 10px}.ext a.go{margin-top:auto;padding-top:12px}
 @media(max-width:900px){
- .bl{grid-template-columns:1fr}
+ .bl{grid-template-columns:minmax(0,1fr)}
  #side{position:fixed;top:0;right:0;bottom:0;max-height:none;width:min(340px,88vw);z-index:40;border-radius:0;transform:translateX(105%);transition:transform .3s ease;visibility:hidden;box-shadow:-18px 0 40px -20px rgba(0,0,0,.5)}
  #side.open{transform:none;visibility:visible}
  #sidetab{display:block;position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:20;writing-mode:vertical-rl;background:var(--teal);color:#fff;border:0;border-radius:12px 0 0 12px;padding:18px 11px;font:700 14px var(--h);cursor:pointer;box-shadow:-6px 8px 20px -10px rgba(0,0,0,.45)}
@@ -92,3 +92,6 @@ a.chip small{font-size:11px;opacity:.75;margin-left:4px}
 .copy{position:absolute;top:6px;right:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;font:700 12px var(--h);padding:4px 12px;cursor:pointer}
 .copy:hover{border-color:var(--teal);color:var(--teal)}
 .abody .cap{font-size:15px;font-style:italic;color:var(--mut);text-align:center}
+.bl>main{min-width:0}
+.art,.abody{min-width:0;max-width:100%}
+.abody pre.code{max-width:100%}
