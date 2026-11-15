@@ -1,5 +1,12 @@
 /* Add new posts at the TOP of this list. Dates are YYYY-MM-DD (shown as 18 November 2026).
    img: banner image path. toc:false hides the Contents tab. Tags must match research.html slugs. */
+
+/* CB(text, label) makes a copy-paste box for commands, outputs and scripts.
+   Write the text exactly as it should be copied; characters like < and > are handled for you. */
+function CB(t,label){
+ return '<pre class="code" data-label="'+(label||'Code')+'"><code>'+t.replace(/^\n/,'').replace(/\s+$/,'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code></pre>';
+}
+
 window.POSTS=[
 {id:"welcome",img:"images/blog/welcome.png",date:"2026-11-04",
  title:"Welcome to my Open Notebook: Why this Blog Exists",
@@ -10,6 +17,7 @@ window.POSTS=[
  '<h2>What you will find here</h2><ul><li><b>Inputs:</b> annotated examples of how a calculation is set up.</li><li><b>Outputs:</b> results, spectra and the plots made from them.</li><li><b>Notes:</b> what worked, what failed and what I would do differently.</li></ul><p>Every post carries tags that match the topics on my research page, so a tag there leads you to the related posts here.</p>'+
 '<h2>A note on images</h2><p>Most of the images on this blog and on my research page are AI-generated. They are there to illustrate, not to present data. The graphical abstracts that accompany my publications are the exception: I created those from scratch myself.</p>'+
 '<h2>A last word</h2><p>I will keep adding posts to this notebook alongside my research, and there is more to come. These are my own working notes, so I would be glad to hear your comments and questions.</p>'},
+
 {id:"cluster-hardware-memory",img:"images/blog/cluster-hardware.png",date:"2026-11-07",
  title:"Understanding Cluster Hardware and Memory Allocations for Calculations on OpenMolcas, NWChem, Gaussian, and ORCA",
  sub:"A beginner-friendly guide to nodes, cores and memory, and how four quantum chemistry programs use them",
@@ -18,7 +26,7 @@ window.POSTS=[
  '<p>The first time I submitted a calculation to a cluster, I had no idea what “nodes,” “cores,” or “memory per CPU” really meant. I copied a job script from a senior colleague, changed the input file, and hoped for the best. Sometimes it ran. Sometimes it died with a cryptic out-of-memory message after two days in the queue. If that sounds familiar, this post is for you.</p>'+
  '<p>We will start from the very basics of cluster hardware, then look at how four popular quantum chemistry programs (OpenMolcas, NWChem, Gaussian and ORCA) each treat processors and memory, and finally put together some rules of thumb for choosing memory.</p>'+
  '<p class="cap">AI-generated illustration of hardware allocations for quantum chemical calculations.</p>'+
- 
+
  '<h2>1. What is a computing cluster?</h2>'+
  '<p>Instead of one computer on your desk, a computing cluster is access to dozens or hundreds of machines, each far more capable than a laptop. A single DFT or multireference calculation on a heavy-element complex can need hundreds of gigabytes of memory and days of computing time on a laptop, which typically has 8 to 16 GB of memory, while a cluster lets you borrow a large machine with more memory for such large computations.</p>'+
  '<p>A cluster has 4 parts:</p>'+
@@ -28,7 +36,7 @@ window.POSTS=[
  '<li><b>Compute nodes:</b> the machines that actually run your calculation. You normally don’t log in to them directly, the scheduler sends your job there.</li>'+
  '<li><b>Shared storage:</b> your home directory, visible from every node, along with a scratch area for the large temporary files that quantum chemistry programs write.</li>'+
  '</ol>'+
- 
+
  '<h2>2. The vocabulary: node, processor, core, memory</h2>'+
  '<p>Think of a cluster as a research building.</p>'+
  '<ul>'+
@@ -40,7 +48,7 @@ window.POSTS=[
  '<li><b>Disk / scratch:</b> slower storage for large temporary files (integrals, checkpoint files, read-write files). Programs use it when memory is not enough.</li>'+
  '</ul>'+
  '<p>The analogy: a node is a lab, cores are the researchers working in it, and memory is the shared bench space. More researchers can work faster, but only if there is enough bench space for all of them, and only if the work can actually be divided.</p>'+
- 
+
  '<h2>3. Reading your node’s memory: an example</h2>'+
  '<p>Before choosing memory, find out what your compute node actually has. On a SLURM cluster, run:</p>'+
  CB(`sinfo -N -o "%N %X %Y %Z %c %m"`,'Command')+
@@ -113,7 +121,7 @@ Thread(s) per core:  1
 Core(s) per socket:  20
 Socket(s):           2`,'Output')+
  '<p>So 2 sockets × 20 cores per socket = 40 cores. This is the login node, so it’s only for editing and submitting (maybe for very small jobs like plotting or small Python codes for post-calculation processing of output).</p>'+
- 
+
  '<h2>4. Should I increase memory or cores? For effective calculations</h2>'+
  '<p>These are two separate things depending on the module of the program to consider for every calculation:</p>'+
  '<ul>'+
@@ -123,7 +131,7 @@ Socket(s):           2`,'Output')+
  '<p>The need for cores and the need for memory are independent. A program may scale beautifully across 64 cores and need little memory (a DFT single point on a small molecule), or it may use only a few cores but demand a huge amount of memory (a large active-space multireference calculation).</p>'+
  '<p><b>Serial:</b> the calculation runs on one core, one step after another. Extra cores are of no use here, so the only thing you can usefully increase is the memory. Many modules of programs such as OpenMolcas run serially unless the program was built and started for parallel use.</p>'+
  '<p><b>Parallel:</b> the calculation is split into pieces that run on several cores at the same time, which is what makes it faster. Programs such as ORCA, NWChem, and Gaussian can run in parallel. The memory can be shared or divided. With shared memory, all cores work on the same data, so you ask for one total for the whole job (Gaussian). With divided memory, each core keeps its own working data, so you ask for an amount per core and the total is that amount × the number of cores (ORCA and NWChem).</p>'+
- 
+
  '<h2>5. Program by program</h2>'+
  '<h3>ORCA: the well-parallelized one</h3>'+
  '<p>ORCA is built around MPI parallelism and scales well for most of its common workloads: DFT, Hartree-Fock, RI approximations, TD-DFT and coupled-cluster-type methods like DLPNO. Using 16 to 32 cores on a single node is routine, and large jobs can use more.</p>'+
@@ -136,7 +144,7 @@ Socket(s):           2`,'Output')+
  '<li>Total memory = <code>nprocs</code> × <code>%maxcore</code> = 16 × 4000 MB = 64 GB.</li>'+
  '</ul>'+
  '<p>One thing to watch: <code>%maxcore</code> is a target, not a hard wall. ORCA can use more than this in some steps. A common recommendation is to set <code>%maxcore</code> to roughly 70 to 80% of the memory available per core and leave the rest as a safety margin. Also, for parallel runs, ORCA must be called with its full path (for example <code>/path/to/orca input.inp &gt; output.out</code>), because it launches MPI internally.</p>'+
- 
+
  '<h3>OpenMolcas: memory first, parallelism second</h3>'+
  '<p>OpenMolcas does not have parallelism across cores for all its modules. It is a multiconfigurational program, designed for CASSCF, RASSCF, CASPT2, RASSI and related methods. Only certain modules are currently parallel (i.e., <code>gateway</code>, <code>seward</code>, <code>scf</code>, <code>rasscf</code>, <code>caspt2</code>) and within these, the parallel behaviour depends on how your OpenMolcas was compiled (an MPI-enabled build with Global Arrays is needed for real multi-process parallelism). In practice, this means that, beyond a modest number of cores, adding more cores often gives little or no speedup for typical calculations. This matches what many of us see: the calculation finishes when it finishes, no matter how many cores you throw at it.</p>'+
  '<p>What does matter is memory:</p>'+
@@ -150,7 +158,7 @@ export MOLCAS_WORKDIR=/path/to/scratch`,'OpenMolcas environment')+
  '<li>Leave headroom: the actual footprint can slightly exceed <code>MOLCAS_MEM</code>, so I set it to around 80 to 90% of what I requested from the scheduler.</li>'+
  '</ul>'+
  '<p>So for OpenMolcas, the practical strategy is: request few cores, request a lot of memory, and give it fast scratch space. Asking for 32 cores on a 251 GiB node while running a mostly serial module wastes cores that other people could use.</p>'+
- 
+
  '<h3>Gaussian: shared memory, one node</h3>'+
  '<p>Gaussian’s standard parallel model is shared-memory (threads within one node). Multi-node runs require the separate Linda add-on. You set both resources in the input file’s header:</p>'+
  CB(`%nprocshared=16
@@ -163,7 +171,7 @@ export MOLCAS_WORKDIR=/path/to/scratch`,'OpenMolcas environment')+
  '<li>Leave around 10 to 20% of the node’s memory free. Gaussian can use somewhat more than <code>%mem</code> in some steps.</li>'+
  '</ul>'+
  '<p>Gaussian also writes large temporary files (the read-write file, or <code>.rwf</code>) to scratch, so make sure your scratch space is generous. Frequency calculations and large-basis jobs can produce very big scratch files.</p>'+
- 
+
  '<h3>NWChem: memory per process, and it adds up fast</h3>'+
  '<p>NWChem is MPI-based (using Global Arrays) and was designed for large-scale parallel runs, so it can scale across many cores and nodes. Memory is set with the <code>memory</code> directive in the input file:</p>'+
  CB(`memory total 2000 mb`,'NWChem input')+
@@ -173,7 +181,7 @@ export MOLCAS_WORKDIR=/path/to/scratch`,'OpenMolcas environment')+
  '<p>Run it with something like:</p>'+
  CB(`mpirun -np 32 nwchem input.nw`,'Command')+
  '<p>If you see errors about <code>ga_create failed</code> or insufficient memory, increase <code>global</code> or the total, or reduce the number of processes per node so that each gets more memory.</p>'+
- 
+
  '<h2>6. How to choose memory</h2>'+
  '<ol>'+
  '<li><b>Know your node.</b> Run <code>sinfo</code> to see total memory and cores across the compute node. Calculate to know the approximate memory per core.</li>'+
@@ -183,7 +191,7 @@ export MOLCAS_WORKDIR=/path/to/scratch`,'OpenMolcas environment')+
  '<li><b>Start small and check.</b> Run a short test, then look at the actual usage (<code>seff &lt;jobid&gt;</code> or <code>sacct</code> on SLURM, or <code>top</code>/<code>htop</code>). Adjust for the production run.</li>'+
  '<li><b>More is not always faster.</b> Extra cores with too little memory per core cause crashes. Extra memory beyond what the method needs gives no speedup. Do not hog resources that other users are waiting for.</li>'+
  '</ol>'+
- 
+
  '<h3>A sample SLURM script (ORCA)</h3>'+
  CB(`#!/bin/bash
 #SBATCH --job-name=orca_test
@@ -194,7 +202,7 @@ export MOLCAS_WORKDIR=/path/to/scratch`,'OpenMolcas environment')+
 # Input has: %pal nprocs 16 end and %maxcore 4000  (total 64 GB)
 /path/to/orca input.inp > output.out`,'SLURM script')+
  '<p>Here the scheduler gets 72 GB, and ORCA is told to aim for 64 GB (16 × 4000 MB). The 8 GB difference is the safety margin.</p>'+
- 
+
  '<h3>A sample SLURM script (OpenMolcas)</h3>'+
  CB(`#!/bin/bash
 #SBATCH --job-name=molcas_test
@@ -207,11 +215,12 @@ export MOLCAS_WORKDIR=$SCRATCH/molcas_$SLURM_JOB_ID
 mkdir -p $MOLCAS_WORKDIR
 pymolcas input.input -o output.out`,'SLURM script')+
  '<p><b>Note:</b> Adjust <code>MOLCAS_MEM</code> carefully if more than one process is really running.</p>'+
- 
+
  '<h2>7. Final thoughts</h2>'+
  '<p>Choosing resources is less about memorizing numbers and more about understanding what your program does with them. Once you understand node, core, and memory, those differences make sense, and your jobs spend less time in the queue and more time finishing.</p>'+
  '<p>If you are just starting out or moving into a new cluster, spend time to know the node specifications, run <code>sinfo</code> once, and keep those numbers handy. They will save you many failed jobs.</p>'+
  '<p>Happy computing!</p>'},
+
 {id:"core-hole-to-spectrum",img:"images/blog/xray.svg",date:"2026-11-04",
  title:"From core hole to spectrum",
  sub:"Why X-ray spectra of small heavy-element complexes need more than one configuration",
