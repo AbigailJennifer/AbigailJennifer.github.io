@@ -85,7 +85,7 @@ function style() {
 .cm-list{margin:0}
 .cm-av{width:42px;height:42px;border-radius:50%;background:color-mix(in srgb,var(--teal) 16%,var(--card));color:var(--teal);display:grid;place-items:center;font:800 17px var(--h,sans-serif)}
 .cm-n{font:800 16px var(--h,sans-serif);color:var(--ink)}.cm-d{font:500 14px var(--h,sans-serif);color:var(--mut);margin-left:10px}
-.cm-t{margin:6px 0 10px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:17px;line-height:1.6}
+.cm-t{margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:17px;line-height:1.6}
 .cm-empty{color:var(--mut);font-style:italic;padding:10px 0 4px}
 .cm-f{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-top:12px}
 .cm-f h4{font:800 18px var(--h,sans-serif);margin:0}
@@ -133,9 +133,9 @@ export async function mountComments(el, postId) {
     cs.forEach(c => {
       const row = document.createElement('div'); row.className = 'cm-c';
       const av = document.createElement('div'); av.className = 'cm-av'; av.textContent = (c.name || '?').trim().charAt(0).toUpperCase();
-      const body = document.createElement('div'), head = document.createElement('div'), nm = document.createElement('span'), d = document.createElement('span'), tx = document.createElement('p'), lk = document.createElement('button');
+      const body = document.createElement('div'), head = document.createElement('div'), nm = document.createElement('span'), d = document.createElement('span'), tx = document.createElement('p');
       nm.className = 'cm-n'; nm.textContent = c.name; d.className = 'cm-d'; d.textContent = dt(c.t); tx.className = 'cm-t'; tx.textContent = c.text;
-      head.append(nm, d); lk.dataset.sm = 1; like(lk, 'comment:' + c.id, be); body.append(head, tx, lk); row.append(av, body); list.append(row)
+      head.append(nm, d); body.append(head, tx); row.append(av, body); list.append(row)
     });
   }
   render();
