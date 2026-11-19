@@ -171,7 +171,7 @@ document.querySelectorAll('.eg').forEach(g=>{(EV[g.dataset.i].pics||[]).forEach(
  im.src='images/scicom/events/'+p[0]})});
 
 /* ---- the two tabs (an address ending in #contributions opens the Contributions tab) ---- */
-const TB=[['Events','p-events'],['Contributions','p-contrib']];
+const TB=[['Events','p-events'],['Outreach & Services','p-contrib']];
 function tab(i){TB.forEach((t,j)=>{$('#'+t[1]).hidden=j!==i});[...$('#tabs').children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i))}
 TB.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[0];b.setAttribute('aria-pressed',false);b.onclick=()=>{tab(i);history.replaceState(null,'',i?'#contributions':location.pathname)};$('#tabs').append(b)});
 tab(location.hash==='#contributions'?1:0);
