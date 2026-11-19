@@ -85,6 +85,7 @@
   border:2px solid var(--ink);background:transparent;color:var(--ink);
   transition:transform .15s,box-shadow .15s,background .15s}
 #tabs button:hover{transform:translateY(-2px);box-shadow:0 6px 14px -8px rgba(0,0,0,.45)}
+#tabs button:hover,#tabs button:focus-visible{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
 #tabs button:active{transform:translateY(0);box-shadow:none}
 /* open tab: filled, like the index page's main button */
 #tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
