@@ -27,3 +27,7 @@ if(!SHOW_PLACEHOLDERS)document.querySelectorAll('.ph').forEach(e=>e.remove());
 /* links to other websites open in a new tab; links inside your own site stay in the same tab */
 document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a)return;let u;try{u=new URL(a.href,location.href)}catch(x){return}
 if(/^https?:$/.test(u.protocol)&&u.origin!==location.origin){a.target='_blank';a.rel='noopener noreferrer'}});
+/* GoatCounter analytics: no cookies, no personal data */
+(function(){var s=document.createElement('script');s.async=true;
+s.dataset.goatcounter='https://abigailjennifer.goatcounter.com/count';
+s.src='https://gc.zgo.at/count.js';document.head.appendChild(s)})();
