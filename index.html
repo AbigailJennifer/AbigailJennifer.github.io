@@ -49,6 +49,7 @@
 <h2>News</h2>
 <div class="board" id="nw" tabindex="0" aria-label="News: swipe, drag or use the arrows"></div>
 <div class="nc"><button id="np" aria-label="Previous news">&#8592;</button><div class="nd" id="nd"></div><button id="nn" aria-label="Next news">&#8594;</button></div>
+<div style="text-align:center;margin-top:20px"><a class="btn p" href="news.html">All news &rarr;</a></div>
 </div></section>
 
 <section id="contact"><div class="wrap two">
@@ -66,6 +67,7 @@
 </div><button id="ib" aria-label="When was this site last updated?" aria-expanded="false" aria-controls="pop">i</button></div>
  <div id="foot"></div>
 <script src="site.js"></script>
+<script src="news.js"></script>
 <script>
  {const b=$('#fvi');b.onclick=()=>{b.classList.remove('spin');void b.offsetWidth;b.classList.add('spin')};b.addEventListener('animationend',()=>b.classList.remove('spin'))}
 /* ===== photo: tries these paths in order; keep your portrait at the first one ===== */
@@ -73,22 +75,15 @@ const PH=["images/profile.jpeg","images/profile.jpg","images/profile.png","image
 let pk=0;const pf=$("#pf");
 pf.onerror=()=>{pk++;pk<PH.length?pf.src=PH[pk]:pf.remove()};pf.src=PH[0];
 
-/* ===== EDIT ME: news notice board. [date, text, optional image path, optional link] ===== */
-const N=[
-["July 2026","Recommended by ANRF for funding under National Post-Doctoral Fellowship Scheme","",""],
-["March 2026","Named to the CAS Future Leaders Program Top 100","images/news-cas.jpg",""],
-["May 2026","Attended the IITM Workshop on Theoretical and Computational Chemistry (DFT)","",""],
-["Dec 2025","Theoretical Chemistry Symposium, IIT Bombay","",""],
-["Oct 2025","Joined the Electronic Structure Theory group at IIT Madras","images/news-iitm.jpg",""],
-["May 2025","PhD viva voce completed at SRM Institute","",""],
-["2025","New paper: Actinide(II) dioxo stabilization, Inorganic Chemistry","","https://doi.org/10.1021/acs.inorgchem.4c05176"]];
-$('#nw').innerHTML=N.map(n=>`<article class="pin">${n[2]?`<img src="${n[2]}" alt="" onerror="this.remove()">`:''}<time>${n[0]}</time><p>${n[1]}</p>${n[3]?`<a href="${n[3]}">Read more</a>`:''}</article>`).join('');
+/* ===== news: the list lives in news.js; the home page shows the latest 6 ===== */
+const NS=N.slice(0,6);
+$('#nw').innerHTML=NS.map(n=>`<article class="pin">${n[2]?`<img src="${n[2]}" alt="" onerror="this.remove()">`:''}<time>${n[0]}</time><p>${n[1]}</p>${n[3]?`<a href="${n[3]}">Read more</a>`:''}</article>`).join('');
 
 
 /* news carousel: three cards per view, swipe, drag or use the arrows for the rest */
 {const bd=$('#nw'),np=$('#np'),nn=$('#nn'),nd=$('#nd');
 const step=()=>bd.clientWidth+22,per=()=>Math.max(1,Math.round((bd.clientWidth+22)/(bd.firstElementChild.offsetWidth+22)));
-const upd=()=>{const pg=Math.ceil(N.length/per());if(nd.children.length!==pg)nd.innerHTML='<i></i>'.repeat(pg);
+const upd=()=>{const pg=Math.ceil(NS.length/per());if(nd.children.length!==pg)nd.innerHTML='<i></i>'.repeat(pg);
  const i=Math.round(bd.scrollLeft/step());[...nd.children].forEach((d,k)=>d.classList.toggle('on',k===i));
  np.disabled=bd.scrollLeft<4;nn.disabled=bd.scrollLeft+bd.clientWidth>=bd.scrollWidth-4;
  document.querySelector('.nc').style.display=pg>1?'flex':'none'};
