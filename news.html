@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News | Abigail Jennifer</title>
+<meta name="description" content="News and updates from Abigail Jennifer: fellowships, papers, conferences and milestones.">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.yrd{display:flex;align-items:center;gap:18px;margin:40px 0 18px;font:800 18px var(--h);color:var(--mut)}
+.yrd:first-child{margin-top:6px}
+.yrd:before,.yrd:after{content:"";flex:1;border-bottom:1px solid var(--line)}
+.nz{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 26px;margin-bottom:18px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px 28px;align-items:start}
+.nz.has{grid-template-columns:minmax(0,1fr) minmax(0,38%)}
+.nz time{font:700 14px var(--h);color:var(--teal);letter-spacing:.02em}
+.nz h3{font-size:clamp(19px,2.2vw,23px);line-height:1.3;margin:4px 0 0}
+.nz .nzd{margin:10px 0 0;font-size:17px;text-align:justify;text-justify:inter-word;hyphens:none;text-wrap:pretty}
+.nz .nzl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.nz .nzl a{font:700 14px var(--h);border:1px solid var(--line);border-radius:99px;padding:7px 14px;color:var(--teal);text-decoration:none}
+.nz .nzl a:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.nzp{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end;align-items:flex-start}
+.nzp:empty{display:none}
+.nzp button{padding:0;border:0;background:none;cursor:zoom-in;line-height:0;border-radius:14px}
+.nzp button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.nzp img{display:block;width:auto;height:auto;max-width:100%;max-height:120px;border-radius:12px;border:1px solid var(--line)}
+.nzp .m img{max-height:280px;border-radius:14px}
+.back{margin-top:28px}
+@media(max-width:700px){
+ .nz.has{grid-template-columns:1fr}
+ .nzp{justify-content:flex-start}
+ .nz .nzd{text-align:left}
+ .nzp .m img{max-height:240px}
+}
+#lb{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(7,19,31,.88);padding:24px;cursor:zoom-out}
+#lb.open{display:flex}
+#lb img{display:block;max-width:min(94vw,1100px);max-height:86vh;width:auto;height:auto;border-radius:12px}
+</style></head>
+<body><div id="nav"></div>
+<header class="pagehead"><div class="wrap"><h1>News</h1><p class="lead">Fellowships, papers, conferences and other milestones, latest first.</p></div></header>
+
+<section class="s"><div class="wrap">
+<div id="nl"></div>
+<div class="back"><a class="btn p" href="index.html">&#8592; Back to home</a></div>
+</div></section>
+
+<div id="lb" role="dialog" aria-label="Enlarged photo"><img alt=""></div>
+<div id="foot"></div>
+<script src="site.js"></script>
+<script src="news.js"></script>
+<script>
+/* the list comes from news.js, so new items are added there and appear here and on the home page */
+const yrOf=d=>(String(d).match(/\d{4}/)||[''])[0];
+let h='',yr=null;
+N.forEach((n,i)=>{
+ const y=yrOf(n[0]);
+ if(y!==yr){yr=y;if(y)h+=`<div class="yrd">${y}</div>`}
+ h+=`<article class="nz" data-i="${i}"><div><time>${n[0]}</time><h3>${n[1]}</h3>${n[4]?`<p class="nzd">${n[4]}</p>`:''}${n[3]?`<div class="nzl"><a href="${n[3]}" target="_blank" rel="noopener noreferrer">Read more</a></div>`:''}</div><div class="nzp"></div></article>`;
+});
+$('#nl').innerHTML=h;
+
+/* pictures: each one appears only if its file exists */
+const lb=$('#lb'),lbi=lb.querySelector('img');
+lb.onclick=()=>lb.classList.remove('open');
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+document.querySelectorAll('.nz').forEach(a=>{
+ const n=N[a.dataset.i],box=a.querySelector('.nzp');
+ [n[2]].concat(n[5]||[]).filter(Boolean).forEach((src,k)=>{
+  const b=document.createElement('button'),im=new Image();
+  b.type='button';b.hidden=true;if(k===0)b.className='m';
+  im.alt='';b.setAttribute('aria-label','Enlarge photo');
+  im.onload=()=>{b.hidden=false;a.classList.add('has')};
+  im.onerror=()=>b.remove();
+  b.onclick=()=>{lbi.src=im.src;lb.classList.add('open')};
+  b.append(im);box.append(b);im.src=src});
+});
+</script>
+</body></html>
