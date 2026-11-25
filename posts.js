@@ -232,7 +232,7 @@ pymolcas input.input -o output.out`,'SLURM script')+
  '<p>If you are just starting out or moving into a new cluster, spend time to know the node specifications, run <code>sinfo</code> once, and keep those numbers handy. They will save you many failed jobs.</p>'+
  '<p>Happy computing!</p>'},
 
-{id:"symmetry-d2h",img:"images/blog/placeholder.svg",date:"2026-11-14",
+{id:"symmetry-d2h",img:"images/blog/symmetry.png",date:"2026-11-14",
  title:"Symmetry Settings in Quantum Chemistry: Making the Most of D2h",
  sub:"What “full symmetry” means, why programs work in D2h, and a uranyl example in OpenMolcas and ORCA",
  tags:["computational-chemistry","openmolcas","orca","actinides","multireference","excited-states","xas","spectroscopy","l-edge"],toc:true,
@@ -379,6 +379,17 @@ O   0.000000   0.000000  -1.700000
  '</ul>'+
  '<p style="color:var(--muted,#6b7280);font-style:italic">Note: the orbital counts and input syntax are illustrative. Check them against your SCF output and the manual of your program version before running calculations.</p>'},
 
+{id:"Relativistic Effects",img:"images/blog/xray.svg",date:"2026-11-21",
+ title:"Relativistic Effects",
+ sub:"Coming soon",
+ tags:["xas","xes","multireference","l-edge","spectroscopy"],toc:true,
+ body:'<p class="ph">Placeholder text. Replace it with your own writing when you are ready.</p>'+
+ '<h2>Absorption</h2><p>In X-ray absorption, a photon lifts a core electron into an empty orbital and leaves a core hole behind. The energy of the absorbed photon tells us how far that electron moved and what the empty orbitals around the metal look like.</p>'+
+ '<h2>Emission</h2><p>In X-ray emission, an electron from a higher occupied level falls into the core hole and a photon leaves. For valence-to-core emission, the electrons that fall are those involved in bonding to the donor atoms of the ligands.</p>'+
+ '<h3>Small complexes as test cases</h3><p>Tetrahalide and hexaaqua complexes keep the focus on the metal and its bonded donor atoms, which makes the link between spectrum and bonding easier to read.</p>'+
+ '<h2>Why several configurations</h2><p>Near a heavy metal, spin-orbit coupling is large and core-excited states mix several electron configurations. A single-determinant picture misses this, so a multiconfigurational wavefunction is used and the spectrum is built from the computed states and their intensities.</p>'+
+ '<p class="ph">Add figures, references and a closing thought here.</p>'},
+   
 {id:"core-hole-to-spectrum",img:"images/blog/xray.svg",date:"2026-11-04",
  title:"From core hole to spectrum",
  sub:"Why X-ray spectra of small heavy-element complexes need more than one configuration",
