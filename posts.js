@@ -235,7 +235,7 @@ pymolcas input.input -o output.out`,'SLURM script')+
 {id:"symmetry-d2h",img:"images/blog/symmetry.png",date:"2026-11-14",
  title:"Symmetry Settings in Quantum Chemistry: Making the Most of D2h",
  sub:"What “full symmetry” means, why programs work in D2h, and a uranyl example in OpenMolcas and ORCA",
- tags:["computational-chemistry","openmolcas","orca","actinides","multireference","excited-states","xas","spectroscopy","l-edge"],toc:true,
+ tags:["computational-chemistry","openmolcas","orca","actinides","multireference","xas","spectroscopy","l-edge"],toc:true,
  body:
  '<p>Symmetry is one of the most useful tools in electronic structure calculations. Every orbital and state carries a symmetry label, so the results are easier to interpret and you can choose exactly which irrep to target. That control lets you reach a much wider range of electronic transitions than a calculation without symmetry can, and in some cases it also makes the calculation cheaper. This Open Notebook post explains what “full symmetry” means in practice, why programs such as ORCA and OpenMolcas work in D2h rather than in the true point group (D4h, Oh, D∞h …), and where symmetry contributes. The uranyl dication, UO₂²⁺, is used as a worked example in both programs.</p>'+
 
