@@ -8,6 +8,166 @@ function CB(t,label){
 }
 
 window.POSTS=[
+{id:"symmetry-d2h",img:"images/blog/placeholder.svg",date:"2026-11-25",
+ title:"Symmetry Settings in Quantum Chemistry: Making the Most of D2h",
+ sub:"What “full symmetry” means, why programs work in D2h, and a uranyl example in OpenMolcas and ORCA",
+ tags:["computational-chemistry","openmolcas","orca","actinides","multireference"],toc:true,
+ body:
+ '<p>Symmetry is one of the most useful tools in electronic structure calculations. Every orbital and state carries a symmetry label, so the results are easier to interpret and you can choose exactly which irrep to target. That control lets you reach a much wider range of electronic transitions than a calculation without symmetry can, and in some cases it also makes the calculation cheaper. This Open Notebook post explains what “full symmetry” means in practice, why programs such as ORCA and OpenMolcas work in D2h rather than in the true point group (D4h, Oh, D∞h …), and where symmetry contributes. The uranyl dication, UO₂²⁺, is used as a worked example in both programs.</p>'+
+
+ '<h2>1. Why bother with symmetry?</h2>'+
+ '<ul>'+
+ '<li><b>Modest cost savings.</b> Integrals, Fock matrices and CI vectors become block diagonal by irreducible representation (irrep). For SCF and DFT, the gain is usually small, but the CI space of a CASSCF calculation shrinks noticeably when the active space is large.</li>'+
+ '<li><b>Stability.</b> Orbitals and states are labelled by irrep, so the SCF/CASSCF cannot wander into a lower-symmetry solution unless you let it.</li>'+
+ '<li><b>State control.</b> In multiconfigurational calculations, you can request “the lowest three ³Δg-type states” by choosing the irrep and spin, instead of hoping the right roots come out. Higher states of one irrep are not buried behind lower states of other irreps, so you can reach a wider energy range of the electronic spectrum than a no-symmetry calculation can, which would need many roots and suffers from root flipping and slow convergence.</li>'+
+ '<li><b>Interpretation.</b> Orbital and state labels (σu, πg, δu, φu, Ag, B1u …) tell you immediately what an excitation is.</li>'+
+ '</ul>'+
+ '<p><b>The catch:</b> you must use the symmetry correctly (axis orientation, orbital counts per irrep, one irrep per state), and you must be aware of what the program does with degenerate pairs.</p>'+
+
+ '<h2>2. Why D2h as “full symmetry”, and not D4h, Oh or D∞h?</h2>'+
+ '<p>Because the programs can only use <b>abelian</b> point groups (i.e., two operations within the group commute, mathematically AB = BA). The true point group of a molecule (D∞h, D4h, Oh …) usually has degenerate irreps (E, T, Π, Δ …) of dimension two or more. Exploiting them needs non-abelian group theory for the integrals, orbitals and CI vectors. Most wavefunction codes, including ORCA and OpenMolcas, do not implement this (to my knowledge, a few programs, such as AMS-ADF, handle some non-abelian groups).</p>'+
+ '<p>The standard solution is to work in the <b>largest abelian subgroup</b> of the true point group. For the molecules discussed here that is almost always <b>D2h</b>: eight operations (E, three C₂ axes, i, three mirror planes) and eight one-dimensional irreps, the biggest block-diagonalisation an abelian group can give:</p>'+
+ '<p>Ag, B1g, B2g, B3g, Au, B1u, B2u, B3u.</p>'+
+ '<p>Orbitals and states that are degenerate in the true group simply appear as pairs or triples of D2h irreps with identical energies. This is how the common point groups reduce:</p>'+
+ '<table>'+
+ '<tr><th>True point group</th><th>Uranyl species</th><th>Abelian subgroup used</th><th>Degenerate irreps split as</th></tr>'+
+ '<tr><td>D∞h</td><td>UO₂²⁺</td><td>D2h</td><td>Π → B2 + B3, Δ → Ag + B1 (g/u kept)</td></tr>'+
+ '<tr><td>D4h</td><td>[UO₂Cl₄]²⁻</td><td>D2h</td><td>Eg → B2g + B3g, Eu → B2u + B3u</td></tr>'+
+ '<tr><td>D5h</td><td>[UO₂(H₂O)₅]²⁺</td><td>C2v (or Cs)</td><td>E → two one-dimensional irreps</td></tr>'+
+ '</table>'+
+ '<p>Two consequences are worth stating up front.</p>'+
+ '<ol>'+
+ '<li><b>“Full symmetry” means the highest abelian subgroup the program can use, not the true point group.</b> You cannot request D4h or Oh in ORCA or OpenMolcas. You give D2h (or let the program find it), and the higher symmetry survives only as degeneracies in the results.</li>'+
+ '<li><b>D4h and Oh contain more than one D2h.</b> In D4h the C₂ axes can pass through the ligands or between them, giving two non-equivalent D2h subgroups with different orbital labels. Decide the orientation first and keep it the same for every state.</li>'+
+ '</ol>'+
+ '<p>Going lower than D2h (C2h, C2v, Cs, C1) is always possible, at the cost of larger blocks and less control. You do it on purpose when the molecule really has lower symmetry, or when you want to allow symmetry breaking.</p>'+
+
+ '<h3>Correlation D∞h → D2h (molecular axis = z)</h3>'+
+ '<table>'+
+ '<tr><th>D∞h</th><th>D2h components</th></tr>'+
+ '<tr><td>Σg⁺</td><td>Ag</td></tr>'+
+ '<tr><td>Σg⁻</td><td>B1g</td></tr>'+
+ '<tr><td>Σu⁺</td><td>B1u</td></tr>'+
+ '<tr><td>Σu⁻</td><td>Au</td></tr>'+
+ '<tr><td>Πg</td><td>B2g + B3g</td></tr>'+
+ '<tr><td>Πu</td><td>B2u + B3u</td></tr>'+
+ '<tr><td>Δg</td><td>Ag + B1g</td></tr>'+
+ '<tr><td>Δu</td><td>Au + B1u</td></tr>'+
+ '<tr><td>Φg</td><td>B2g + B3g</td></tr>'+
+ '<tr><td>Φu</td><td>B2u + B3u</td></tr>'+
+ '</table>'+
+ '<p>The axis choice matters: <b>put the O–U–O axis along z</b>. With another orientation the labels in the table change, and so do the orbital counts you feed to the program.</p>'+
+
+ '<h2>3. An example: Uranyl orbitals in D2h</h2>'+
+ '<p>UO₂²⁺ is a closed-shell ¹Σg⁺ system (Ag in D2h) with formally U(VI), 5f⁰6d⁰. The valence picture:</p>'+
+ '<ul>'+
+ '<li><b>Bonding, O 2p-based (12 electrons):</b> σg (Ag), σu (B1u), πg (B2g + B3g), πu (B2u + B3u). Six orbitals, twelve electrons.</li>'+
+ '<li><b>Non-bonding U 5f:</b> δu (B1u + Au) and φu (B2u + B3u). These form the low-lying virtual space, and the luminescent excited states are σu → 5fδ, 5fφ excitations.</li>'+
+ '</ul>'+
+ '<p>A convenient active space is therefore <b>CAS(12,10)</b>: the six bonding orbitals plus the four non-bonding 5f orbitals. Distributed over D2h irreps (z = molecular axis) it looks like this:</p>'+
+ '<table>'+
+ '<tr><th>Irrep</th><th>Ag</th><th>B1g</th><th>B2g</th><th>B3g</th><th>Au</th><th>B1u</th><th>B2u</th><th>B3u</th></tr>'+
+ '<tr><td>Active orbitals</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td></tr>'+
+ '</table>'+
+ '<p>The orbitals are: Ag = σg; B1u = σu and 5fδ; Au = 5fδ; B2g, B3g = πg; B2u, B3u = πu and 5fφ.</p>'+
+ '<p>Similarly, the excited states follow from irrep products. σu (B1u) → 5fδ (B1u, Au) gives Ag and B1g, which are the two components of Δg; σu → 5fφ (B3u, B2u) gives B2g and B3g, the two components of Φg. So if you want the lowest ³Δg and ³Φg states you run four irreps (Ag, B1g, B2g, B3g) at triplet spin. These four are all gerade, so they are dipole forbidden from the Ag ground state, which is why uranyl luminescence is weak and long-lived. The bright, dipole-allowed states are the ungerade ones (B1u, B2u, B3u), which lie higher in energy.</p>'+
+ '<p><b>Symmetry is also a trap if used blindly.</b> A molecule with a degenerate ground state (Jahn–Teller or Renner–Teller cases) forced into a high-symmetry subgroup converges to a saddle point or an averaged state. For such cases lower the symmetry and compare.</p>'+
+ '<p>With that background, the rest of this post follows one concrete example in detail: the uranyl dication, UO₂²⁺.</p>'+
+
+ '<h2>4. OpenMolcas</h2>'+
+ '<p>OpenMolcas makes symmetry very explicit, which is both its strength and the main source of user error.</p>'+
+ '<h3>Geometry</h3>'+
+ '<p>Use a linear geometry along z (the U=O distance of about 1.70 Å is typical for the free ion; use your optimised value):</p>'+
+ CB(`3
+UO2(2+)
+U   0.000000   0.000000   0.000000
+O   0.000000   0.000000   1.700000
+O   0.000000   0.000000  -1.700000`,'XYZ file')+
+ '<p>Save this as <code>uo2.xyz</code>.</p>'+
+
+ '<h3>Symmetry generators</h3>'+
+ '<p>In <code>&amp;GATEWAY</code> you request symmetry through generators. Specifying three reflections, <code>Symmetry = x y z</code>, generates D2h. (<code>Group = Full</code> asks the program to find the highest abelian subgroup itself; I prefer this because it is less explicit.)</p>'+
+
+ '<h3>Irrep ordering in OpenMolcas</h3>'+
+ '<p>This is the part that trips people up. OpenMolcas does <b>not</b> list irreps in the textbook order. For D2h the order is:</p>'+
+ '<table>'+
+ '<tr><th>Index</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>'+
+ '<tr><td>Irrep</td><td>Ag</td><td>B3u</td><td>B2u</td><td>B1g</td><td>B1u</td><td>B2g</td><td>B3g</td><td>Au</td></tr>'+
+ '</table>'+
+ '<p>Every per-irrep list (<code>Occupied</code>, <code>Inactive</code>, <code>Ras2</code>, …) uses this order, and the <code>Symmetry</code> keyword in <code>&amp;RASSCF</code> is the index from this table (Ag = 1, B1g = 4, B2g = 6, B3g = 7).</p>'+
+
+ '<h3>Counting orbitals</h3>'+
+ '<p>To fill in <code>Inactive</code> you need the doubly occupied orbitals. Treating U as a Rn-like core plus the O 1s and 2s combinations as inactive, the count per irrep (in textbook order) is:</p>'+
+ '<table>'+
+ '<tr><th>Irrep</th><th>Ag</th><th>B1g</th><th>B2g</th><th>B3g</th><th>Au</th><th>B1u</th><th>B2u</th><th>B3u</th><th>Total</th></tr>'+
+ '<tr><td>Inactive</td><td>14</td><td>3</td><td>3</td><td>3</td><td>1</td><td>9</td><td>7</td><td>7</td><td>47</td></tr>'+
+ '</table>'+
+ '<p>In OpenMolcas order this is <code>14 7 7 3 9 3 3 1</code>. Adding the six occupied bonding orbitals gives 53 occupied orbitals (106 electrons), distributed as <code>15 8 8 3 10 4 4 1</code> for the SCF <code>Occupied</code> keyword. These numbers assume all semicore shells (5s, 5p, 5d, 4f, 6s, 6p) are kept as inactive orbitals and that the SCF converges to the expected configuration. <b>Always check the orbital irrep occupations printed by <code>&amp;SCF</code> before further calculations;</b> if you freeze core orbitals, adjust accordingly.</p>'+
+
+ '<h3>Input: SCF and ground state CASSCF</h3>'+
+ CB(`&GATEWAY
+ Coord = uo2.xyz
+ Basis = ANO-RCC-VTZP
+ Group = Full
+ RICD
+&SEWARD
+ Douglas-Kroll
+&SCF
+ Charge = 2
+ Occupied = 15 8 8 3 10 4 4 1
+&RASSCF
+ Charge = 2
+ Spin = 1
+ Symmetry = 1
+ Nactel = 12 0 0
+ Inactive = 14 7 7 3 9 3 3 1
+ Ras2 = 1 2 2 0 2 1 1 1
+ CIRoot = 1 1 1`,'OpenMolcas input')+
+ '<p>If you use <code>Group = Full</code>, check the output to make sure the program found D2h with the orientation you expect; if it picked a different axis assignment, switch to explicit generators (<code>Symmetry = x y z</code>) and make sure the molecule lies along z.</p>'+
+
+ '<h3>Excited states: one RASSCF per irrep, then RASSI</h3>'+
+ '<p>For the lowest triplets of Δg and Φg, run <code>&amp;RASSCF</code> separately for each irrep and combine with <code>&amp;RASSI</code> to include spin-orbit coupling. Schematically, for the B2g component:</p>'+
+ CB(`&RASSCF
+ Charge = 2
+ Spin = 3
+ Symmetry = 6
+ Nactel = 12 0 0
+ Inactive = 14 7 7 3 9 3 3 1
+ Ras2 = 1 2 2 0 2 1 1 1
+ CIRoot = 2 2 1`,'OpenMolcas input')+
+ '<p>Repeat with <code>Symmetry = 1</code> (Ag), <code>4</code> (B1g) and <code>7</code> (B3g). Save the <code>JobIph</code> files under distinct names and feed them to <code>&amp;RASSI</code> with <code>SpinOrbit</code>, adding the SO-CASSCF ground-state <code>JobIph</code>. Since orbitals are optimised separately for each irrep and root set, RASSI will handle the non-orthogonality.</p>'+
+
+ '<h2>5. ORCA</h2>'+
+ '<p>ORCA also detects the point group and uses the abelian subgroup, but it is far more automatic and gives you less direct control than OpenMolcas. Unlike OpenMolcas, ORCA follows the textbook (Mulliken) order for D2h: Ag, B1g, B2g, B3g, Au, B1u, B2u, B3u. The irrep index in the <code>%casscf</code> block counts from 0 for Ag in ORCA v6.1. The syntax below is a template. <b>Check the symmetry and CASSCF sections of the manual for your ORCA version,</b> since the details have changed between releases.</p>'+
+ CB(`! DKH2 UseSym TightSCF
+%basis
+  NewGTO U "SARC-DKH-TZVP" end
+  NewGTO O "DKH-def2-TZVP" end
+end
+%casscf
+  nel    12
+  norb   10
+  irrep  0   # totally symmetric (Ag), required with UseSym
+  mult   1
+  nroots 1
+end
+* xyz 2 1
+U   0.000000   0.000000   0.000000
+O   0.000000   0.000000   1.700000
+O   0.000000   0.000000  -1.700000
+*`,'ORCA input')+
+ '<p>A few things are worth knowing in ORCA. Symmetry is switched on with the <code>UseSym</code> keyword (also available as <code>UseSym true</code> in the <code>%method</code> block), and the point group detection tolerance can be loosened with <code>SymThresh</code> if your coordinates have small numerical noise. ORCA may reorient the molecule into a standard frame, so check the printed orientation and the irrep labels of the orbitals before you interpret them in terms of σ, π, δ and φ. Active space selection is orbital-based rather than irrep-count-based: unlike OpenMolcas, you do not give “1 2 2 0 2 1 1 1”, but instead run an SCF, inspect the orbital energies and irreps, and pick the six bonding and four 5f orbitals by reordering them (for example with the <code>Rotate</code> option or a prepared orbital file with <code>MOInp</code>). CASSCF can then be run for a specific irrep and multiplicity using the <code>irrep</code> setting in the <code>%casscf</code> block. Spin–orbit coupling is handled afterwards, for instance through QDPT on top of the CASSCF states, so keep the state manifold for every irrep consistent.</p>'+
+
+ '<h2>6. In short</h2>'+
+ '<ul>'+
+ '<li>D2h is the abelian subgroup that lets programs exploit the symmetry of linear (D∞h) and many high-symmetry molecules.</li>'+
+ '<li>For uranyl, put the O–U–O axis on z and describe the valence space as σg, σu, πg, πu plus the 5fδ and 5fφ orbitals.</li>'+
+ '<li>In OpenMolcas, you specify orbitals per irrep, in the order Ag, B3u, B2u, B1g, B1u, B2g, B3g, Au. Combine individual irreps through <code>RASSI</code>, along with SOC.</li>'+
+ '<li>In ORCA, symmetry is more automatic, so verify the detected orientation and select the active orbitals by inspection. Irreps are combined by mentioning them as integers separated by a comma, along with respective multiplicities.</li>'+
+ '<li>Treat each state irrep separately, then combine with spin-orbit coupling.</li>'+
+ '</ul>'+
+ '<p><b>Note:</b> the orbital counts and input syntax are illustrative. Check them against your SCF output and the manual of your program version before running calculations.</p>'},
+
 {id:"welcome",img:"images/blog/welcome.png",date:"2026-11-04",
  title:"Welcome to my Open Notebook: Why this Blog Exists",
  sub:"A home for my inputs, outputs, their interpretations and general discussions",
